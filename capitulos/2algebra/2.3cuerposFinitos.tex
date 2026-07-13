@@ -1,0 +1,482 @@
+El propósito de esta sección es la clasificación de los cuerpos finitos a través de los siguientes tres resultados principales: 
+\begin{itemize}[label={--}]
+    \item Si $\F$ es un cuerpo finito, entonces está compuesto por $p^n$ elementos, con $p$ primo y $n\geq 1$.
+    \item El Teorema de existencia, que garantiza la existencia de cuerpos finitos con $p^n$ elementos, para todo $p$ primo y $n\geq 1$.
+    \item El Teorema de unicidad, que garantiza que si un cuerpo finito tiene $p^n$ elementos, entonces es isomorfo a $\Z_p[X]/(f)$, con $f$ polinomio irreducible de grado $n$ en $\Z_p[X]$.
+\end{itemize}
+
+\begin{teorema}[El número de elementos de un cuerpo finito es, necesariamente, potencia de un primo.]\label{teorema:cuerpo_finito_p^n_elementos}\end{teorema}
+
+\begin{dem}{\cite[p.~412]{GamboaAnillos}}
+    Sea $\F$ un cuerpo finito con $q\geq2$ elementos. Si $q = p$ primo, se tiene que $\F \cong \Z_p$, pues $\overline{\phi}$ es biyectiva, y su característica es un primo. Sea entonces $q$ no primo. Por \ref{caracteristica_primo}, debe existir $\Z_p$ como subcuerpo de $\F$ con $p$ primo, y al menos un elemento $a_1\in\F$ que no pertenezca a $\Z_p$. Se define el conjunto 
+    \[
+    \gen{1,a_1} = \Z_p + a_1\Z_p = \{x + a_1y \in \F\mid x,y\in \Z_p\}
+    \]
+    Se tiene entonces que la aplicación 
+    \[
+    \begin{array}{rcl}
+     \Z_p \times \Z_p & \longrightarrow & \gen{1,a_1} \\[1ex]
+            (x,y) & \longmapsto & x + a_1y
+    \end{array}
+    \]
+    es biyectiva:
+    \begin{itemize}[label={--}]
+        \item Es sobreyectiva por la definición de $\gen{1,a_1}$: si $u\in\gen{1,a_1}$, es $u = x + a_1y$, para ciertos $x,y\in\Z_p$, por lo que todo elemento tiene imagen inversa.
+        \item Es inyectiva: sean $x,x',y,y'\in\Z_p$ con \[x + a_1y = x' + a_1y'\] Operando se obtiene que \[x - x' = a_1(y'-y)\] Si fuera $(x,y)\neq (x',y')$, se tendría que $(y'-y)\neq 0$, y por lo tanto tiene inversa: \[(x - x')\inv{(y'-y)} = a_1,\] obteniéndose que $a_1\in \Z_p$, en contra de la elección de $a_1$, por lo que ha de ser $(y'-y) = 0$, de donde se deriva que también ha de ser $x = x'$, obteniendo $(x,y) = (x',y')$.
+    \end{itemize}
+    Si fuera $\F = \gen{1,a_1}$, entonces $\F$ tiene tantos elementos como $\Z_p \times \Z_p$, es decir, $p^2$. En caso contrario, existe algún otro elemento $a_2\in \F$ que no está en $\gen{1,a_1}$. Construyendo de nuevo un conjunto de la forma 
+    \[
+    \gen{1,a_1,a_2} =  \gen{1,a_1} + a_2\Z_p = \{x + a_2y \in \F\mid x\in\gen{1,a_1}, y\in \Z_p\}
+    \]
+    se obtiene que
+    \[
+    \begin{array}{rcl}
+     \gen{1,a_1} \times \Z_p & \longrightarrow & \gen{1,a_1, a_2} \\[1ex]
+            (x,y) & \longmapsto & x + a_2y
+    \end{array}
+    \]
+    vuelve a ser biyectiva, pues la sobreyectividad vuelve a ser trivial, y la inyectividad se prueba de manera idéntica. Se tiene que si $\F = \gen{1,a_1,a_2}$, entonces $\F$ tiene $p^3$ elementos. En caso contrario, se continúa hasta que $\F = \gen{1,a_1, a_2, \ldots, \begin{segRevision}a_{n-1}\end{segRevision}}$, pues $\F$ es un conjunto finito, y en cada paso la demostración de la biyectividad se realiza de manera idéntica. Se obtiene por lo tanto que un cuerpo finito cualquiera, $\F$, debe tener $p^n$ elementos.
+\end{dem}
+
+El teorema \ref{teorema:cuerpo_finito_p^n_elementos} muestra que si $\F$ es un cuerpo finito, entonces debe tener $p^n$ elementos, para algún primo $p$ y algún $n\geq1$. Sin embargo, no garantiza la existencia de cualquier cuerpo finito con $p^n$ elementos.
+
+ 
+\begin{teorema}[Teorema de existencia: para cada primo $p$ y cada entero positivo $n$, existe un cuerpo con $p^n$ elementos.]\label{teorema:existencia_cuerpo}\end{teorema}
+
+\begin{dem}{\cite[p.~416]{GamboaAnillos}}
+    Sean $p$ primo y $n\geq1$. Sean $\Z_p$ , $\Z_p[X]$ su anillo de polinomios y $f\in \Z_p[X]$ el polinomio de grado $p^n$ definido como \[f = X^{p^n}-X\]
+    Derivando $f$ se tiene $f' = p^nX^{p^n-1}-1$, pero $p^n$ pertenece a la clase $0$ en $\Z_p$, por lo que se tiene $f' = 0X^{p^n-1}-1 = -1$. Por la Proposición \ref{proposicion:raiz simple-derivada} se tiene que $f$ no tiene raíces múltiples, en consecuencia, tendrá $p^n$ raíces distintas en $\overline{\Z_p}$, la clausura algebraica de $\Z_p$. Sea $\F$ el conjunto formado por las $p^n$ raíces. Se afirma que $\F$ es un cuerpo con las operaciones heredadas de $\overline{\Z_p}$: 
+    \begin{itemize}
+        \item Se aprecia que tanto el $0$ como el $1$ son raíces de $f$, por lo que $0,1\in \F$.
+        \item Las operaciones heredadas de $\overline{\Z_p}$ son internas en $\F$:
+        
+        Un elemento $\gamma$ de $\overline{\Z_p}$ pertenece a $\F$ si y solo si $\gamma^{p^n} - \gamma = 0$, es decir, $\gamma^{p^n} = \gamma$. Sean $\alpha$ y $\beta$ elementos de $\F$.
+        
+        -- Para la suma se tiene:
+        \[
+        (\alpha + \beta)^p = \sum_{k=0}^p \frac{p!}{k!(p-k)!} \alpha^{p-k}\beta^k = \alpha^p + \beta^p.
+        \]
+        La última igualdad se da por ser todos los términos intermedios múltiplos de $p$ (pues al ser $p$ primo, no se factoriza con los elementos del denominador) y tener $\overline{\Z_p}$ característica $p$ (el producto de elementos por $p$ es nulo, pues $p =\underbrace{1 +  \cdots + 1}_{p} = 0$). Multiplicando ambos lados de la igualdad por sí mismo $p$ veces resulta en $(\alpha + \beta)^{p^2} = (\alpha^p + \beta^p)^p = \alpha^{p^2} + \beta^{p^2}$. Repitiendo el proceso $n$ veces se tiene $(\alpha + \beta)^{p^n} = \alpha^{p^n} + \beta^{p^n} = \alpha + \beta \in \F$.
+        
+        -- Para el producto se tiene:
+        \[
+        (\alpha \beta)^{p^n} = \alpha^{p^n}\beta^{p^n} = \alpha \beta \in \F.
+        \]
+
+        \item Los elementos inversos para la suma y el producto pertenecen a $\F$, pues si $\alpha\in \F$ y $\beta\in \overline{\Z_p}$, entonces:\\
+        -- si $\alpha + \beta = 0, \text{ es } \alpha + \beta = 0 = 0^{p^n} =
+        (\alpha + \beta)^{p^n} = \alpha + \beta^{p^n}$
+        por lo que $\beta = \beta^{p^n}$ y $\beta\in \F$;\\
+        -- si $\alpha \beta = 1, \text{ es } \alpha\beta = 1 = 1^{p^n} =
+        (\alpha \beta)^{p^n} = \alpha  \beta^{p^n}$ por lo que $\beta = \beta^{p^n}$ y $\beta\in \F$;
+    \end{itemize}
+    El resto de propiedades se heredan de $\overline{\Z_p}$, y por tanto, se ha obtenido un cuerpo finito $\F$ con $p^n$ elementos.
+\end{dem}
+
+Los teoremas \ref{teorema:cuerpo_finito_p^n_elementos} y \ref{teorema:existencia_cuerpo} garantizan la existencia de un cuerpo finito de $p^n$ elementos para cada $p$ primo y $n\geq 1$, y que no hay más cuerpos finitos aparte de estos. Sin embargo, no garantizan que dos cuerpos finitos con la misma cantidad de elementos sean isomorfos. 
+
+\begin{teorema}[Teorema de unicidad: dos cuerpos finitos con la misma cantidad de elementos son isomorfos.]\label{Teorema:unicidad}\end{teorema}
+
+\begin{dem}{\cite[p.~417]{GamboaAnillos}}
+    Sea $\F$ un cuerpo finito con $p^n$ elementos. Por ser cuerpo, $\F^*$ es un grupo para el producto que consta de $p^n-1$ elementos. Por ser además finito, $\F^*$ es cíclico \cite[pp.~136-137]{Rosenberger}, por lo que existe $\beta\in\F$ con $\gen{\beta} = \F^*$.
+    
+    \item Sea la función evaluación en $\beta$:\vspace{-0.5em}
+    \[
+    \begin{array}{rcl}
+    \evb: \Z_p[X] & \longrightarrow & \F \\[1ex]
+    f & \longmapsto & f(\beta)
+    \end{array}
+    \]
+    Se tiene que $\evb$ es sobreyectiva, pues \vspace{-0.5em}
+    \[
+    \begin{array}{ll}
+    f_0 = 1&; f_0(\beta) =1 \\
+    f_1 = X&; f_1(\beta) =\beta \\
+    f_2 = X^2&; f_2(\beta) =\beta^2 \\
+     \vdots\quad\quad   &\quad\quad\vdots\\
+    f_{p^n-1} = X^{p^n-1}&; f_{p^n-1}(\beta) =\beta^{p^n-1} = 1 \\
+    \end{array}
+    \]    
+    y por el Teorema de isomorfía se tiene que $\Z_p[X]/\ker(\evb) \cong \F$. Por ser $\Z_p$ cuerpo, $\Z_p[X]$ es dominio euclídeo, específicamente, dominio de ideales principales, por lo que el núcleo $\ker(\evb)$ está generado por un elemento $g\in\Z_p[X]$. Además, se ha obtenido que $\Z_p[X]/(g)$ es un cuerpo de $p^n$ elementos, \begin{Revision}por lo que $g$ debe ser un polinomio irreducible en $\Z_p[X]$ de grado $n$ (\ref{prop:IdealmaximalCuerpo}).\end{Revision} Queda así demostrado que todo cuerpo de $p^n$ elementos es isomorfo a  $\Z_p[X]/(g)$, con $g$ polinomio irreducible de grado $n$, \begin{Revision}y en consecuencia, todos los cuerpos finitos con la misma cantidad de elementos son isomorfos entre sí.\end{Revision}
+\end{dem}
+
+\begin{Revision}
+    Como consecuencia de este resultado se tiene la siguiente definición:
+    \begin{deff}[Cuerpo de Galois]{\cite[p.~278]{Hungerford}}
+        Sea $\F$ el cuerpo finito formado por $p^n$ elementos. Entonces, $\F$ se denomina \textit{cuerpo de Galois} y se suele denotar por GF($p^n$) o $\F_{p^n}$.
+    \end{deff}
+    
+    \subsection*{Construcción de cuerpos finitos}
+    
+    A través de las observaciones de las Proposiciones \ref{resultado:op_cocientes} y \ref{prop:K_cuerpo_K[X]_DE}, y culminando en el Teorema de unicidad, se ha estudiado que se puede construir el cuerpo finito de $p^n$ elementos tomando el anillo de polinomios $\Z_p[X]$ y un polinomio irreducible $g$ de grado $n$ en $\Z_p[X]$, cuya existencia está garantizada por dicho teorema. Así, todo elemento de dicho cuerpo, $\Z_p[X]/(g)$, se puede expresar como un polinomio de grado menor que $n$ con coeficientes en $\Z_p$, y por lo tanto, se puede representar de manera compacta mediante un vector $b = (b_{n-1}, \ldots , b_1, b_0)$, donde $b = b_0 + b_1X + \ldots + b_{n-1}X^{n-1}$.
+
+    A pesar de que la existencia de polinomios irreducibles para cada grado $n$ en $\Z_p[X]$ esté garantizada, no se ha estudiado ningún método para encontrarlos. Un primer acercamiento es descartar los polinomios que no sean irreducibles. Por ejemplo, para $n\geq2$, los polinomios con término independiente nulo son reducibles, pues tendrán a $X$ como factor. Esto es un caso particular de las observaciones de \ref{lema:rufini}, donde se ha estudiado que si $\alpha$ es raíz de un polinomio, este será divisible por $(X-\alpha)$, y en consecuencia reducible. De hecho, en $\Z_p[X]$ se puede afirmar que un polinomio de grado 2 o 3 es reducible si y solo si tiene alguna raíz en $\Z_p$ \cite[p.~142]{GamboaAnillos}, por lo que la irreducibilidad se puede comprobar rápidamente. De forma más general, el método más simple de buscar polinomios irreducibles de grado $n$ en $\Z_p[X]$ es ir probando aleatoriamente con polinomios mónicos de dicho grado y comprobar si efectivamente son irreducibles, hasta encontrar uno. Computacionalmente, esto se puede realizar de manera eficiente (véase \cite{Shoup2005}).
+
+
+    \begin{ejs}
+    
+        \item El polinomio $x^3 + 1$ en $\Z_2[x]$ no es irreducible, pues tiene a $1$ como raíz. En consecuencia, $x^3 + 1$ tiene como factor a $x+1$. Para hallar el otro factor, simplemente se divide $x^3 + 1$ por $x+1$: 
+            \[
+            \begin{array}{rl|l}
+                &x^3 + 1 & x + 1 \\\cline{3-3} 
+                + & \underline{x^3 + x^2\phantom{l}} & x^2\\
+                 &x^2 + 1 &  \\
+                + &\underline{x^2+x\phantom{  1}} &x\\
+                 &x + 1 &  \\
+                + &\underline{x + 1\phantom{ n 1}} &1\\
+                &0& x^2 + x +1 \\
+            \end{array}
+            \]
+        Por lo que se tiene $x^3 + 1 = (x+1)\cdot(x^2+x+1)$. Además, $x^2+x+1$ es el único polinomio irreducible de grado 2 en $\Z_2[x]$. Se puede comprobar dividiendo por $x$ y $x+1$ y comprobando que el resto no sea nulo, pero también se puede comprobar excluyendo los demás polinomios de grado 2: $x^2$ y $x^2 + x$ son divisibles por $x$, pues tienen término independiente 0, y $x^2 + 1$ tiene a 1 como raíz, por lo que es divisible por $x+1$; como no hay más polinomios de grado 2, el restante, $x^2+x+1$, debe ser irreducible.
+        
+        \item El cuerpo de 4 elementos es el formado por el cociente $\Z_2[x]/(x^2+x+1)$, por lo que sus elementos son las clases $\{[0],[1],[x],[x+1]\}$, que se denotarán simplemente como $\{0,1,x,x+1\}$ cuando no haya confusión. Al realizarse la suma y el producto vía representantes, la única operación no trivial es el producto, por ejemplo $x\cdot x = x^2$. Sin embargo, tal y como se dedujo en \ref{resultado:op_cocientes}, cuando no se sepa a qué clase pertenece un elemento, este ha de dividirse por el polinomio que genere el ideal, en este caso $x^2+x+1$, y su clase será dicho resto. Dividiendo $x^2$ por $x^2+x+1$ resulta en $q = 1$ y $r = x + 1$, y por lo tanto, $[x]\cdot[x] = [x+1]$. De la misma manera se obtienen el producto $[x]\cdot[x+1] = 1$ y $[x+1]\cdot[x+1] = x$.
+
+        Para calcular el inverso, se expresa como una identidad de Bézout y se utiliza el algoritmo de Euclides, tal y como se realizó en \ref{Ejemplo:inversoEuclides}. Por ejemplo, para el inverso de $[x]$, se expresa como $a\cdot(x) + b\cdot(x^2+x+1) = 1$ y el algoritmo de Euclides extendido genera la tabla
+         \[
+                \begin{array}{|c|c|c|c|}
+                    \hline
+                    q_i     &  -          & x + 1     & x \\
+                    \hline
+                    r_i    &  x^2 + x + 1 & x & 1  \\
+                    \hline
+                    r_{i+1} &  x & 1           &  0        \\
+                    \hline
+                    a_i     &0            &  1          &  x + 1       \\
+                    \hline
+                \end{array}
+        \]        
+        Obteniendo que el inverso de $[x]$ es $[x+1]$, tal y como se vio en el producto.
+
+        
+        \item Para construir \textit{el} cuerpo de 9 elementos se toma el anillo de polinomios $\Z_3[x]$ y un polinomio irreducible de grado 2, pues es $9 = 3^2$. Al ser de grado 2, basta con encontrar un polinomio que no tenga raíces en $\Z_3$. Por ejemplo, $f = x^2 + 1$ y $g = x^2 + x + 2$ son irreducibles, pues es
+        \begin{equation*}
+            \begin{aligned}
+                f(0) &= 1 \quad     &; g(0) &= 2.\\
+                f(1) &= 2 \quad     &; g(1) &= 4 = 1.\\
+                f(2) &= 5 =2 \quad  &; g(2) &= 8 = 2.
+            \end{aligned}
+        \end{equation*}
+        Así, se puede construir \textit{el} cuerpo de 9 elementos de la forma $\Z_3[x]/(f)$ o $\Z_3[x]/(g)$, que a pesar de ser distintos, pues designan elementos distintos, son isomorfos. Que son distintos se aprecia inmediatamente al expresar explícitamente los elementos que forman sus clases de equivalencia. Por ejemplo, el $[0]$ en ambos anillos son, respectivamente,
+            \begin{equation*}
+                \begin{aligned}\relax 
+                    [0] &= 0 + (x^2 + 1) &&= \{0&&,x^2 + 1&&, 2x^2 + 2&&, x^3 + x&&, \ldots \};&&\\
+                    [0] &= 0 + (x^2 + x +  2)&&= \{0&&,x^2 + x +  2&&, 2x^2 + 2x + 1&&, x^3 + x^2 + 2x&&, \ldots\};&&\\
+                \end{aligned}
+            \end{equation*}
+        donde los paréntesis denotan el ideal que generan, y no una separación de las operaciones.
+    
+        Recordemos que lo importante del álgebra no es cómo están representados sus elementos, sino cómo se relacionan estos entre sí mediante las operaciones definidas en la estructura. Así, si dos cuerpos son isomorfos, entonces existe una forma de relacionar los elementos que se comportan de igual manera (un isomorfismo). Veamos cómo construir dicho isomorfismo $\phi: \Z_3[x]/(f) \longrightarrow \Z_3[x]/(g)$ en este ejemplo:
+        
+        Por ser $\phi$ un homomorfismo, se tiene que $\phi([0]) = [0]$ y $\phi([1]) = [1]$. El $[2]$ también es un elemento fijo, pues es $\phi([2]) = \phi([1] + [1]) =\phi([1]) +\phi([1]) = [1] + [1] = [2]$. Para el resto de elementos, busquemos propiedades que los puedan diferenciar, por ejemplo, cómo se comporta $x$ al multiplicarse por sí mismo en ambos cuerpos: 
+    
+        \begin{center}\vspace{-0.3em}
+            \begin{tabular}{cc}
+                % --- FILA 1: Títulos proceso
+                \begin{minipage}[t]{0.4\textwidth}
+                    \centering
+                    \underline{$\Z_3[x]/(x^2 + 1)$}\vspace{-0.3em}
+                   \[
+                    \begin{aligned}
+                        x^1 &= x\\
+                        x^2 &= 2\\
+                        x^3 &= 2x\\
+                        x^4 &= 1\\
+                    \end{aligned}
+                    \]
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.4\textwidth}
+                    \centering
+                    \underline{$\Z_3[x]/(x^2 + x + 2)$}\vspace{-0.3em}
+                    \[
+                    \begin{aligned}
+                        x^1 &= x\\
+                        x^2 &= 2x + 1\\
+                        x^3 &= 2x + 2\\
+                        x^4 &= 2\\
+                        &\ \vdots \\
+                        x^8 &= 1
+                    \end{aligned}
+                    \]
+                \end{minipage}\\
+                % --- FILA 2: Algunas divisiones
+                \begin{minipage}[t]{0.4\textwidth}
+                    \vspace{0.1em}
+                    \centering
+                    Por ejemplo, $x^2 =  2$, pues es\vspace{-0.2em}
+                    \[
+                    \begin{array}{rl|l}
+                        &x^2 & x^2 +1\\\cline{3-3} 
+                        - & \underline{x^2 + 1\phantom{l}} & 1\\
+                        &-1& 1 \\
+                    \end{array}
+                    \]
+                    y es $-1 = 2$
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.4\textwidth}
+                    \vspace{0.1em}
+                    \centering
+                    Por ejemplo, $x^2 =  2x + 1$, pues es\vspace{-0.2em}            
+                    \[
+                    \begin{array}{rl|l}
+                        &x^2 & x^2 +x + 2\\\cline{3-3} 
+                        - & \underline{x^2 + x+ 2\phantom{l}} & 1\\
+                        &-x-2& 1 \\
+                    \end{array}
+                    \]
+                    y es $-x-2 = 2x + 1$
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+        
+        Se aprecia que $x$ multiplicado consigo mismo da $2$ en $\Z_3[x]/(x^2 + 1)$, propiedad que también cumple $2x + 1$ en $\Z_3[x]/(x^2 +x + 2)$. De esta forma, como es $\phi([2]) =\phi([x^2]) =\phi([x]) \cdot \phi([x]) = [2]$, se puede establecer $\phi([x]) = [2x+1]$. A partir de aquí, el resto de elementos se identifican operando:
+        \vspace{-0.5em}
+        \begin{align*}
+            &&&&\phi([x + 1]) &&&= [2x+1] + [1] &&= [2x+2]&& &&&&   \\
+            &&&&\phi([x + 2]) &&&= [2x+1] + [2] &&= [2x]&&  &&&&    \\
+            &&&&\phi([2x]) &&&= [2x+1] \cdot [2] &&= [x+2]&& &&&&   \\
+            &&&&\phi([2x + 1]) &&&= [x+2] + [1] &&= [x]&&    &&&&   \\
+           && &&\phi([2x + 2]) &&&= [x+2] + [2] &&= [x+1]&& &&&&
+        \end{align*}
+        Expresando los polinomios como vectores: $p = ax + b$ se escribe como $p = ab$, se puede expresar el isomorfismo $\phi$ a través de la siguiente tabla:        
+        \[
+            \begin{array}{rl|ccccccccc}
+            ab \in &      \Z_3[x]/(x^2 + 1)    & 00&01&02&10&11&12&20&21&22 \\
+            \hline
+            \phi(ab) \in &  \Z_3[x]/(x^2 +x + 2) & 00&01&02&21&22&20&12&10&11
+            \end{array}
+        \]    
+
+        Para cerciorarnos de que ambas estructuras son la misma, se tomará como ejemplo el cálculo del inverso de un elemento. Sea $11 = x + 1 \in \Z_3[x]/(x^2 + 1)$, que se identifica con  $22 = 2x + 2 \in \Z_3[x]/(x^2 + x + 2)$. Se calcularán los inversos de ambos elementos y se comprobará que también están identificados, es decir: $\phi( (x + 1)^{-1}) = (\phi(x + 1))^{-1}$.
+
+        
+        \begin{center}\vspace{-0.3em}
+            \begin{tabular}{cc}
+                % --- FILA 1: Títulos proceso
+                \begin{minipage}[t]{0.42\textwidth}
+                    \centering
+                    Algoritmo de Euclides para $x +1 \in \Z_3[x]/(x^2 + 1)$
+                   \[
+                        \begin{array}{|c|c|c|c|}
+                        \hline
+                        q_i     &  -          & x + 2     & 2x + 2\\
+                        \hline
+                        r_i    &  x^2 + 1 & x +1& 2  \\
+                        \hline
+                        r_{i+1} &  x +1  & 2           &  0     \\
+                        \hline
+                        a_i     &0            &  1          &  2x + 1       \\
+                        \hline
+                    \end{array}
+                    \]
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.45\textwidth}
+                    \centering
+                    Algoritmo de Euclides para $2x + 2 \in \Z_3[x]/(x^2 + x + 2)$
+                    \[
+                    \begin{array}{|c|c|c|c|}
+                        \hline
+                        q_i     &  -          & 2x      & x + 1\\
+                        \hline
+                        r_i    &  x^2 + x + 2 & 2x + 2& 2\\
+                        \hline
+                        r_{i+1} &  2x + 2      & 2           &  0     \\
+                        \hline
+                        a_i     &0            &  1          &  x     \\
+                        \hline
+                    \end{array}
+                    \]
+                \end{minipage}\\
+                % --- FILA 2: Algunas divisiones
+                \begin{minipage}[t]{0.4\textwidth}
+                    \vspace{0.1em}
+                    \centering
+                    \hspace{-1.5em}
+                    Las divisiones son:\\
+                    \begin{tabular}{cc}
+                    \hspace{-6.5em}
+                        \begin{minipage}[l]{0.52\textwidth}
+                            \[
+                                \begin{array}{rl|l}
+                                    &x^2 +1& x +1\\\cline{3-3} 
+                                    - & \underline{x^2 + x\phantom{ }} & x\\
+                                    &2x +1& \\
+                                    - & \underline{2x + 2\phantom{ }} & 2\\
+                                    &2& x + 2 
+                                \end{array}
+                            \]
+                        \end{minipage}
+                        &
+                        \begin{minipage}[r]{0.2\textwidth}
+                            \[
+                                \begin{array}{rl|l}
+                                    &x + 1 & 2\\\cline{3-3} 
+                                    - & \underline{x\phantom{m,k}} & 2x\\
+                                    &1&  \\
+                                    - & \underline{1\phantom{m,k}} & 2\\
+                                    &0& 2x +2
+                                \end{array}
+                            \]
+                        \end{minipage}
+                    \end{tabular}\\
+                    \vspace{1.5em}
+                    $ a_2 = 0 - (x+2) = 2x + 1$
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.4\textwidth}
+                    \vspace{0.1em}
+                    \centering
+                    Las divisiones son:\\
+                    \vspace{-0.5em}
+                    \hspace{-4.7em}
+                    \begin{tabular}{cc}
+                        \begin{minipage}[t]{0.52\textwidth}
+                            \[
+                                \begin{array}{rl|l}
+                                    &x^2 +x + 2& 2x +2\\\cline{3-3} 
+                                    - & \underline{x^2 + x\phantom{ m...}} & 2x\\
+                                    &2& 2x
+                                \end{array}
+                            \]
+                        \end{minipage}
+                        &\hspace{1em}
+                        \begin{minipage}[t]{0.22\textwidth}
+                            \[
+                                \begin{array}{rl|l}
+                                    &2x +2& 2\\\cline{3-3} 
+                                    - & \underline{2x\phantom{ m...}} & x\\
+                                    &2& \\
+                                    - & \underline{2\phantom{ m.....}} & 1\\
+                                    &0& x + 1 
+                                \end{array}
+                            \]
+                        \end{minipage}
+                    \end{tabular}\\
+                    \vspace{1.5em}
+                    $a_2 = 0 - 2x = x $
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+        En ambos casos se ha obtenido que el último resto no nulo es $2$, y por lo tanto, el algoritmo de Euclides produce las identidades de Bézout
+        \begin{align*}
+            (2x+1)\cdot (x + 1) + b(x^2 + 1) = 2 && \text{y} && x\cdot (2x+2) + b(x^2+x+2) = 2.
+        \end{align*}
+         Sin embargo, esto no supone un problema, pues $2$ es una unidad del anillo $\Z_3[x]$ (véase \ref{unidades_de_A_y_A[X]}), cuyo inverso es el propio $2$, por lo que multiplicando por $2$ en ambos lados para ambas ecuaciones se obtienen las identidades
+         \begin{align*}
+            (x+2)\cdot (x + 1) + 2b(x^2 + 1) = 1 && \text{y} && 2x\cdot (2x+2) + 2b(x^2+x+2) = 1.
+        \end{align*}
+         Es decir, el inverso de $x + 1 \in \Z_3[x]/(x^2 + 1)$ es $x + 2 $, y el inverso de $2x + 2 \in \Z_3[x]/(x^2 + x + 2) $ es $2x$. Respectivamente, se corresponden con $12$ y $20$ en notación vectorial, y se puede apreciar en la tabla que, efectivamente, $\phi(12) = 20$.
+    
+    \item Sea GF($2^8$) el cuerpo finito de $2^8 = 256$ elementos, formado mediante el polinomio irreducible $x^8 + x^4 + x^3 + x + 1$, es decir, $\Z_2[x]/(x^8 + x^4 + x^3 + x + 1)$. En la tabla \ref{tab:invGF256} se muestran todos los inversos de los elementos de este cuerpo en notación hexadecimal. Veamos cómo interpretarla mediante un ejemplo:
+    
+    Supongamos que se quiere obtener el inverso de $x^5 + x^3 +x^2+ 1$. Para ello, primero se expresa en notación vectorial: $00101101$, cuyo valor hexadecimal es \texttt{2d} $(0010\to 2_{10} \to\texttt{2} \text{, y } 1101\to 13_{10} \to\texttt{d})$. Así, buscamos el elemento en la tabla que se corresponda con la fila \texttt{2} y la columna \texttt{d}, obteniendo \texttt{44}, que se corresponde con $01000100$ $(\texttt{4}\to 4_{10} \to 0100\text{, y } \texttt{4}\to 4_{10} \to 0100)$, por lo que el inverso de $x^5 + x^3 +x^2+ 1$ es el polinomio $x^6 + x^2$.
+
+    Para comprobarlo de manera explícita, se usa el algoritmo extendido de Euclides para resolver la identidad de Bézout \[
+        a(x^5 + x^3 +x^2+ 1) + b(x^8 + x^4 + x^3 + x + 1) = 1, 
+    \]
+    obteniendo la tabla
+        \[
+            \begin{array}{|c|c|c|c|c|c|}
+                \hline
+                q_i     &  -          & x^3 + x + 1       & x^3 + x + 1 & x^2\\
+                \hline
+                r_i     & x^8 + x^4 + x^3 + x + 1 & x^5 + x^3 + x^2 + 1 & x^2   & 1       \\
+                \hline
+                r_{i+1} & x^5 + x^3 + x^2 + 1            & x^2           &  1   & 0     \\
+                \hline
+                a_i     &0            &  1          &  x^3 + x + 1 & x^6 + x^2  \\
+                \hline
+            \end{array}
+        \] 
+    donde se ha calculado:
+        \begin{center}\vspace{-1em}
+            \begin{tabular}{cc}
+                % --- FILA 1: Títulos y Divisiones ---
+                \hspace{-3em}
+                \begin{minipage}[t]{0.45\textwidth}
+                    \centering
+                    Primer paso:
+                   \[
+                    \begin{array}{rl|l}
+                        &x^8 + x^4 + x^3 + x + 1 & x^5 + x^3 + x^2 + 1 \\\cline{3-3} 
+                        +&\underline{x^8 + x^6 + x^5 + x^3 \phantom{{}+x^2 + 1}} & x^3\\
+                         &x^6 + x^5 + x^4 + x + 1 &  \\
+                        +&\underline{x^6 + x^4  + x^3 + x\phantom{{ }+ 1}} & x\\
+                        &x^5 + x^3 + 1 &  \\
+                        +&\underline{x^5 + x^3 + x^2 + 1\phantom{{ }^2 + 1}} & 1\\
+                        &x^2 & x^3 + x + 1
+                    \end{array}
+                    \]
+                \end{minipage}
+                \hspace{-0.5em}
+                &
+                \begin{minipage}[t]{0.48\textwidth}
+                    \centering
+                    Segundo paso:
+                    \[
+                        \begin{array}{rl|l}
+                            &x^5 + x^3 + x^2 + 1 & x^2  \\\cline{3-3} 
+                            +& \underline{x^5\phantom{{ mmmmm}+ 1}} & x^3\\
+                            &x^3 + x^2 + 1 &  \\
+                            +&\underline{x^3\phantom{{ mmmmm}+ 1}} & x\\
+                            &x^2 + 1 &  \\
+                            +&\underline{x^2\phantom{{ mmmmm} + 1}} & 1\\
+                            &1 &  x^3 + x + 1
+                        \end{array}
+                    \]
+                \end{minipage}\\
+                % --- FILA 2: Textos alineados ---
+                \hspace{-3em}
+                \begin{minipage}[t]{0.45\textwidth}
+                    \vspace{0.5em}
+                    \centering
+                    $a_2 =  0 - (x^3 + x + 1) = x^3 + x + 1$
+                \end{minipage}
+                \hspace{-0.5em}
+                &
+                \begin{minipage}[t]{0.48\textwidth}
+                    \vspace{0.35em}
+                    \centering
+                    $a_3 = 1 - (x^3 + x + 1)^2= x^6 + x^2$
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+        Y efectivamente, se ha obtenido como inverso de $x^5 + x^3 + x^2 + 1$ el elemento $x^6 + x^2$.
+\begin{table}[H]
+\centering
+\vspace{-1em}
+\[
+\begin{array}{c|*{16}{c}}
+  & \texttt{0} & \texttt{1} & \texttt{2} & \texttt{3} & \texttt{4} & \texttt{5} & \texttt{6} & \texttt{7} & \texttt{8} & \texttt{9} & \texttt{a} & \texttt{b} & \texttt{c} & \texttt{d} & \texttt{e} & \texttt{f} \\ \hline
+\texttt{0} & - & \texttt{01} & \texttt{8d} & \texttt{f6} & \texttt{cb} & \texttt{52} & \texttt{7b} & \texttt{d1} & \texttt{e8} & \texttt{4f} & \texttt{29} & \texttt{c0} & \texttt{b0} & \texttt{e1} & \texttt{e5} & \texttt{c7} \\
+\texttt{1} & \texttt{74} & \texttt{b4} & \texttt{aa} & \texttt{4b} & \texttt{99} & \texttt{2b} & \texttt{60} & \texttt{5f} & \texttt{58} & \texttt{3f} & \texttt{fd} & \texttt{cc} & \texttt{ff} & \texttt{40} & \texttt{ee} & \texttt{b2} \\
+\texttt{2} & \texttt{3a} & \texttt{6e} & \texttt{5a} & \texttt{f1} & \texttt{55} & \texttt{4d} & \texttt{a8} & \texttt{c9} & \texttt{c1} & \texttt{0a} & \texttt{98} & \texttt{15} & \texttt{30} & \texttt{44} & \texttt{a2} & \texttt{c2} \\
+\texttt{3} & \texttt{2c} & \texttt{45} & \texttt{92} & \texttt{6c} & \texttt{f3} & \texttt{39} & \texttt{66} & \texttt{42} & \texttt{f2} & \texttt{35} & \texttt{20} & \texttt{6f} & \texttt{77} & \texttt{bb} & \texttt{59} & \texttt{19} \\
+\texttt{4} & \texttt{1d} & \texttt{fe} & \texttt{37} & \texttt{67} & \texttt{2d} & \texttt{31} & \texttt{f5} & \texttt{69} & \texttt{a7} & \texttt{64} & \texttt{ab} & \texttt{13} & \texttt{54} & \texttt{25} & \texttt{e9} & \texttt{09} \\
+\texttt{5} & \texttt{ed} & \texttt{5c} & \texttt{05} & \texttt{ca} & \texttt{4c} & \texttt{24} & \texttt{87} & \texttt{bf} & \texttt{18} & \texttt{3e} & \texttt{22} & \texttt{f0} & \texttt{51} & \texttt{ec} & \texttt{61} & \texttt{17} \\
+\texttt{6} & \texttt{16} & \texttt{5e} & \texttt{af} & \texttt{d3} & \texttt{49} & \texttt{a6} & \texttt{36} & \texttt{43} & \texttt{f4} & \texttt{47} & \texttt{91} & \texttt{df} & \texttt{33} & \texttt{93} & \texttt{21} & \texttt{3b} \\
+\texttt{7} & \texttt{79} & \texttt{b7} & \texttt{97} & \texttt{85} & \texttt{10} & \texttt{b5} & \texttt{ba} & \texttt{3c} & \texttt{b6} & \texttt{70} & \texttt{d0} & \texttt{06} & \texttt{a1} & \texttt{fa} & \texttt{81} & \texttt{82} \\
+\texttt{8} & \texttt{83} & \texttt{7e} & \texttt{7f} & \texttt{80} & \texttt{96} & \texttt{73} & \texttt{be} & \texttt{56} & \texttt{9b} & \texttt{9e} & \texttt{95} & \texttt{d9} & \texttt{f7} & \texttt{02} & \texttt{b9} & \texttt{a4} \\
+\texttt{9} & \texttt{de} & \texttt{6a} & \texttt{32} & \texttt{6d} & \texttt{d8} & \texttt{8a} & \texttt{84} & \texttt{72} & \texttt{2a} & \texttt{14} & \texttt{9f} & \texttt{88} & \texttt{f9} & \texttt{dc} & \texttt{89} & \texttt{9a} \\
+\texttt{a} & \texttt{fb} & \texttt{7c} & \texttt{2e} & \texttt{c3} & \texttt{8f} & \texttt{b8} & \texttt{65} & \texttt{48} & \texttt{26} & \texttt{c8} & \texttt{12} & \texttt{4a} & \texttt{ce} & \texttt{e7} & \texttt{d2} & \texttt{62} \\
+\texttt{b} & \texttt{0c} & \texttt{e0} & \texttt{1f} & \texttt{ef} & \texttt{11} & \texttt{75} & \texttt{78} & \texttt{71} & \texttt{a5} & \texttt{8e} & \texttt{76} & \texttt{3d} & \texttt{bd} & \texttt{bc} & \texttt{86} & \texttt{57} \\
+\texttt{c} & \texttt{0b} & \texttt{28} & \texttt{2f} & \texttt{a3} & \texttt{da} & \texttt{d4} & \texttt{e4} & \texttt{0f} & \texttt{a9} & \texttt{27} & \texttt{53} & \texttt{04} & \texttt{1b} & \texttt{fc} & \texttt{ac} & \texttt{e6} \\
+\texttt{d} & \texttt{7a} & \texttt{07} & \texttt{ae} & \texttt{63} & \texttt{c5} & \texttt{db} & \texttt{e2} & \texttt{ea} & \texttt{94} & \texttt{8b} & \texttt{c4} & \texttt{d5} & \texttt{9d} & \texttt{f8} & \texttt{90} & \texttt{6b} \\
+\texttt{e} & \texttt{b1} & \texttt{0d} & \texttt{d6} & \texttt{eb} & \texttt{c6} & \texttt{0e} & \texttt{cf} & \texttt{ad} & \texttt{08} & \texttt{4e} & \texttt{d7} & \texttt{e3} & \texttt{5d} & \texttt{50} & \texttt{1e} & \texttt{b3} \\
+\texttt{f} & \texttt{5b} & \texttt{23} & \texttt{38} & \texttt{34} & \texttt{68} & \texttt{46} & \texttt{03} & \texttt{8c} & \texttt{dd} & \texttt{9c} & \texttt{7d} & \texttt{a0} & \texttt{cd} & \texttt{1a} & \texttt{41} & \texttt{1c} \\
+\end{array}
+\]
+\vspace{-1.2em}
+\caption{Inversos en $\Z_2[x]/(x^8 + x^4 + x^3 + x + 1)$ expresados en hexadecimal.}
+\label{tab:invGF256}
+\end{table}
+\vspace{-0.3em}
+
+
+\end{ejs}
+\end{Revision}
+
+
+    

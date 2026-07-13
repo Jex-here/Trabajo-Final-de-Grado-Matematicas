@@ -1,0 +1,75 @@
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\F}{\mathbb{F}}
+
+
+
+\newcommand{\tn}[1]{\normalfont{#1}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\titbf}[1]{\textit{\textbf{#1}}}
+\newcommand{\tbfn}[1]{{\normalfont\textbf{#1}}}
+\newcommand{\gr}[1]{\text{gr}(#1)}
+\newcommand{\mcm}[1]{\text{mcm}(#1)}
+\newcommand{\mcd}[1]{\text{mcd}(#1)}
+\newcommand{\eqmod}[3]{#1 \equiv #2 \text{ (mod }#3)}
+\newcommand{\neqmod}[3]{#1 \not\equiv #2 \text{ (mod }#3)}
+\newcommand{\modulo}[2]{#1 \text{ mod } #2}
+\newcommand{\im}[1]{\text{im}(#1)}
+\newcommand{\evb}{\operatorname{ev}_\beta}
+\newcommand{\gen}[1]{\langle#1\rangle}
+
+
+\newcommand{\norm}[1]{\|#1\|}
+\newcommand{\inv}[1]{#1^{-1}}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\newcommand{\wpar}[1]{\left(#1\right)}
+\newcommand{\wbrac}[1]{\left\{#1\right\}}
+\newcommand{\wcor}[1]{{\left[#1\right]}}
+
+
+\newenvironment{Revision}{%    % Define un nuevo entorno llamado "Revision"
+  \ifRevision                  % Si la variable \ifRevision es verdadera...
+    %\leavevmode                %   Fuerza a iniciar un párrafo/modo horizontal
+    %\begingroup                %   Abre un grupo (para limitar el alcance del color)
+    \color{RawSienna}%         %   Cambia el color actual a Turquesa
+    %\ignorespaces              %   Ignora los espacios en blanco que sigan
+  \else                        % Si la variable \ifRevision es falsa...
+    %\leavevmode                %   Fuerza a iniciar un párrafo/modo horizontal
+    %\begingroup                %   Abre un grupo (aunque no se use color)
+    %\ignorespaces              %   Ignora los espacios en blanco que sigan
+  \fi                          % Fin de la condición
+}{%                            % Parte de cierre del entorno
+    %\endgroup                  %   Cierra el grupo abierto en la apertura
+}
+
+\newenvironment{segRevision}{%    % Define un nuevo entorno llamado "Revision"
+  \ifsegRevision                  % Si la variable \ifRevision es verdadera...
+    %\leavevmode                %   Fuerza a iniciar un párrafo/modo horizontal
+    %\begingroup                %   Abre un grupo (para limitar el alcance del color)
+    \color{green}%         %   Cambia el color actual a verde
+    %\ignorespaces              %   Ignora los espacios en blanco que sigan
+  \else                        % Si la variable \ifRevision es falsa...
+    %\leavevmode                %   Fuerza a iniciar un párrafo/modo horizontal
+    %\begingroup                %   Abre un grupo (aunque no se use color)
+    %\ignorespaces              %   Ignora los espacios en blanco que sigan
+  \fi                          % Fin de la condición
+}{%                            % Parte de cierre del entorno
+    %\endgroup                  %   Cierra el grupo abierto en la apertura
+}
+
+
+%Para recordarme mis comentarios
+\newcommand{\warning}{%
+  \PackageWarning{autor}{***** WARNING: REVISAR *****}%
+}
+
+
+
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}

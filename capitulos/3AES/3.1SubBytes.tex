@@ -1,0 +1,101 @@
+La función $SubBytes$ es \begin{Revision}la transformación\end{Revision} que compone la capa de confusión, cuyo propósito es ocultar la relación entre texto claro y texto cifrado. En criptografía, esto se suele conseguir aplicando una función no lineal llamada S-box (Substitution box). En AES, esta función interpreta \begin{Revision}cada byte del \textit{estado} como un elemento del cuerpo finito $\F_{2^8} = \Z_2[x]/(f)$, con $f = x^8 + x^4 + x^3 + x + 1$, y opera individualmente cada byte de la siguiente forma:\end{Revision}
+\begin{enumerate}[label={--}]
+    \item Inv: $\F_{2^8} \to \F_{2^8} \colon a \mapsto b = a^{-1}$, que transforma $a$ en su inverso en $\Z_2[x]/(f)$, extendiendo la operación al elemento $0$, de forma que $ 0 \mapsto 0$.
+    \item Aff: $\F_{2^8} \to \F_{2^8} \colon b \mapsto c$, realizando una transformación afín sobre $b$ de la siguiente manera:
+\[
+    \begin{bmatrix} 
+    c_7 \\ c_6 \\ c_5 \\ c_4 \\ c_3 \\ c_2 \\ c_1 \\ c_0 
+    \end{bmatrix} 
+= 
+    \begin{bmatrix} 
+    1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 \\ 
+    0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 \\ 
+    0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 \\ 
+    0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 \\
+    1 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\ 
+    1 & 1 & 0 & 0 & 0 & 1 & 1 & 1 \\ 
+    1 & 1 & 1 & 0 & 0 & 0 & 1 & 1 \\ 
+    1 & 1 & 1 & 1 & 0 & 0 & 0 & 1     
+    \end{bmatrix} 
+\times 
+    \begin{bmatrix} 
+    b_7 \\ b_6 \\ b_5 \\ b_4 \\ b_3 \\ b_2 \\ b_1 \\ b_0 
+    \end{bmatrix} 
++ 
+    \begin{bmatrix} 
+    0 \\ 1 \\ 1 \\ 0 \\ 0 \\ 0 \\ 1 \\ 1 
+    \end{bmatrix},
+\]
+donde $b = b_7\ldots b_0$ y $c =  c_7\ldots c_0$ se han expresado en notación vectorial.
+\end{enumerate}
+Por lo tanto, $SubBytes$ transforma cada byte $a$ en $c =$ Aff(Inv($a$)). Expresando $a$ y $c$ en hexadecimal, se puede obtener cada posible transformación mediante la siguiente tabla:
+
+\begin{table}[H]
+\centering
+\vspace{-1em}
+\[
+\begin{array}{c|*{16}{c}}
+  & \texttt{0} & \texttt{1} & \texttt{2} & \texttt{3} & \texttt{4} & \texttt{5} & \texttt{6} & \texttt{7} & \texttt{8} & \texttt{9} & \texttt{a} & \texttt{b} & \texttt{c} & \texttt{d} & \texttt{e} & \texttt{f} \\ \hline
+\texttt{0} & \texttt{63} & \texttt{7c} & \texttt{77} & \texttt{7b} & \texttt{f2} & \texttt{6b} & \texttt{6f} & \texttt{c5} & \texttt{30} & \texttt{01} & \texttt{67} & \texttt{2b} & \texttt{fe} & \texttt{d7} & \texttt{ab} & \texttt{76} \\
+\texttt{1} & \texttt{ca} & \texttt{82} & \texttt{c9} & \texttt{7d} & \texttt{fa} & \texttt{59} & \texttt{47} & \texttt{f0} & \texttt{ad} & \texttt{d4} & \texttt{a2} & \texttt{af} & \texttt{9c} & \texttt{a4} & \texttt{72} & \texttt{c0} \\
+\texttt{2} & \texttt{b7} & \texttt{fd} & \texttt{93} & \texttt{26} & \texttt{36} & \texttt{3f} & \texttt{f7} & \texttt{cc} & \texttt{34} & \texttt{a5} & \texttt{e5} & \texttt{f1} & \texttt{71} & \texttt{d8} & \texttt{31} & \texttt{15} \\
+\texttt{3} & \texttt{04} & \texttt{c7} & \texttt{23} & \texttt{c3} & \texttt{18} & \texttt{96} & \texttt{05} & \texttt{9a} & \texttt{07} & \texttt{12} & \texttt{80} & \texttt{e2} & \texttt{eb} & \texttt{27} & \texttt{b2} & \texttt{75} \\
+\texttt{4} & \texttt{09} & \texttt{83} & \texttt{2c} & \texttt{1a} & \texttt{1b} & \texttt{6e} & \texttt{5a} & \texttt{a0} & \texttt{52} & \texttt{3b} & \texttt{d6} & \texttt{b3} & \texttt{29} & \texttt{e3} & \texttt{2f} & \texttt{84} \\
+\texttt{5} & \texttt{53} & \texttt{d1} & \texttt{00} & \texttt{ed} & \texttt{20} & \texttt{fc} & \texttt{b1} & \texttt{5b} & \texttt{6a} & \texttt{cb} & \texttt{be} & \texttt{39} & \texttt{4a} & \texttt{4c} & \texttt{58} & \texttt{cf} \\
+\texttt{6} & \texttt{d0} & \texttt{ef} & \texttt{aa} & \texttt{fb} & \texttt{43} & \texttt{4d} & \texttt{33} & \texttt{85} & \texttt{45} & \texttt{f9} & \texttt{02} & \texttt{7f} & \texttt{50} & \texttt{3c} & \texttt{9f} & \texttt{a8} \\
+\texttt{7} & \texttt{51} & \texttt{a3} & \texttt{40} & \texttt{8f} & \texttt{92} & \texttt{9d} & \texttt{38} & \texttt{f5} & \texttt{bc} & \texttt{b6} & \texttt{da} & \texttt{21} & \texttt{10} & \texttt{ff} & \texttt{f3} & \texttt{d2} \\
+\texttt{8} & \texttt{cd} & \texttt{0c} & \texttt{13} & \texttt{ec} & \texttt{5f} & \texttt{97} & \texttt{44} & \texttt{17} & \texttt{c4} & \texttt{a7} & \texttt{7e} & \texttt{3d} & \texttt{64} & \texttt{5d} & \texttt{19} & \texttt{73} \\
+\texttt{9} & \texttt{60} & \texttt{81} & \texttt{4f} & \texttt{dc} & \texttt{22} & \texttt{2a} & \texttt{90} & \texttt{88} & \texttt{46} & \texttt{ee} & \texttt{b8} & \texttt{14} & \texttt{de} & \texttt{5e} & \texttt{0b} & \texttt{db} \\
+\texttt{a} & \texttt{e0} & \texttt{32} & \texttt{3a} & \texttt{0a} & \texttt{49} & \texttt{06} & \texttt{24} & \texttt{5c} & \texttt{c2} & \texttt{d3} & \texttt{ac} & \texttt{62} & \texttt{91} & \texttt{95} & \texttt{e4} & \texttt{79} \\
+\texttt{b} & \texttt{e7} & \texttt{c8} & \texttt{37} & \texttt{6d} & \texttt{8d} & \texttt{d5} & \texttt{4e} & \texttt{a9} & \texttt{6c} & \texttt{56} & \texttt{f4} & \texttt{ea} & \texttt{65} & \texttt{7a} & \texttt{ae} & \texttt{08} \\
+\texttt{c} & \texttt{ba} & \texttt{78} & \texttt{25} & \texttt{2e} & \texttt{1c} & \texttt{a6} & \texttt{b4} & \texttt{c6} & \texttt{e8} & \texttt{dd} & \texttt{74} & \texttt{1f} & \texttt{4b} & \texttt{bd} & \texttt{8b} & \texttt{8a} \\
+\texttt{d} & \texttt{70} & \texttt{3e} & \texttt{b5} & \texttt{66} & \texttt{48} & \texttt{03} & \texttt{f6} & \texttt{0e} & \texttt{61} & \texttt{35} & \texttt{57} & \texttt{b9} & \texttt{86} & \texttt{c1} & \texttt{1d} & \texttt{9e} \\
+\texttt{e} & \texttt{e1} & \texttt{f8} & \texttt{98} & \texttt{11} & \texttt{69} & \texttt{d9} & \texttt{8e} & \texttt{94} & \texttt{9b} & \texttt{1e} & \texttt{87} & \texttt{e9} & \texttt{ce} & \texttt{55} & \texttt{28} & \texttt{df} \\
+\texttt{f} & \texttt{8c} & \texttt{a1} & \texttt{89} & \texttt{0d} & \texttt{bf} & \texttt{e6} & \texttt{42} & \texttt{68} & \texttt{41} & \texttt{99} & \texttt{2d} & \texttt{0f} & \texttt{b0} & \texttt{54} & \texttt{bb} & \texttt{16} \\
+\end{array}
+\]
+\vspace{-1em}
+\caption{S-box de AES}
+\label{tab:sbox}
+\end{table}
+
+\begin{Revision}
+    Por ejemplo, sea una celda del \textit{estado} con valor $a = 10000011$. Para ver en qué elemento se transforma tras aplicar $SubBytes$, se expresa $a$ en hexadecimal: $a = 10000011 =\texttt{83}$. Luego, se busca en la fila \texttt{8} y en la columna \texttt{3} de la tabla, obteniendo $\texttt{ec}$. Por último, se vuelve a expresar en binario, resultando en $\texttt{ec} = 11101100$.
+    
+    Podemos comprobar que efectivamente se obtiene dicho resultado realizando las operaciones explícitamente: el byte $a = 10000011$ se corresponde con el polinomio $x^7 + x + 1$. En el Ejemplo \ref{Ejemplo:inversoEuclides} se obtuvo que el inverso de $x^7 + x + 1$ es $x^7$, por lo tanto, se tiene que Inv$(10000011) = 10000000$. Luego, se aplica Aff, obteniendo Aff$(10000000) = 10001111 + 01100011 = 11101100$, obteniendo el mismo resultado.
+    \end{Revision}
+
+\medskip
+Para descifrar se utiliza la operación $InvSubBytes$, la cual consiste en primero aplicar la inversa de la transformación afín y luego el inverso en $\Z_2[x]/(f)$:
+\vspace{-0.3em}
+\begin{enumerate}[label={--}]
+    \item Aff$^{-1}$: $\F_{2^8} \to \F_{2^8} \colon c \mapsto b$, tal que
+    \vspace{-0.5em}
+        \[
+            \begin{bmatrix} 
+            b_7 \\ b_6 \\ b_5 \\ b_4 \\ b_3 \\ b_2 \\ b_1 \\ b_0 
+            \end{bmatrix} 
+        = 
+            \begin{bmatrix} 
+            0 & 1 & 0 & 1 & 0 & 0 & 1 & 0 \\ 
+            0 & 0 & 1 & 0 & 1 & 0 & 0 & 1 \\ 
+            1 & 0 & 0 & 1 & 0 & 1 & 0 & 0 \\ 
+            0 & 1 & 0 & 0 & 1 & 0 & 1 & 0 \\ 
+            0 & 0 & 1 & 0 & 0 & 1 & 0 & 1 \\ 
+            1 & 0 & 0 & 1 & 0 & 0 & 1 & 0 \\ 
+            0 & 1 & 0 & 0 & 1 & 0 & 0 & 1 \\ 
+            1 & 0 & 1 & 0 & 0 & 1 & 0 & 0 
+            \end{bmatrix} 
+        \times 
+            \begin{bmatrix} 
+            c_7 \\ c_6 \\ c_5 \\ c_4 \\ c_3 \\ c_2 \\ c_1 \\ c_0 
+            \end{bmatrix} 
+        + 
+            \begin{bmatrix} 
+            0 \\ 0 \\ 0 \\ 0 \\ 0 \\ 1 \\ 0 \\ 1 
+            \end{bmatrix},
+        \]
+    \vspace{-0.3em}
+    \item Inv: $\F_{2^8} \to \F_{2^8} \colon b \mapsto a = b^{-1}$, de nuevo el inverso en $\Z_2[x]/(f)$, extendido al elemento 0.
+\end{enumerate}
+\vspace{-1.1em}

@@ -1,0 +1,62 @@
+\vspace{-0.3em}
+\textit{ShiftRows} es \begin{Revision}la primera transformación que se efectúa dentro de la capa de difusión\end{Revision}, cuyo objetivo es propagar redundancias en el texto claro a través del texto cifrado, de manera que no se puedan apreciar dichas redundancias en el texto cifrado. El algoritmo de \textit{ShiftRows} consiste en tomar cada fila $i$ del \textit{estado} y desplazar sus bytes $i$ unidades a la izquierda, tal y como se muestra en la Figura \ref{fig:ShiftRows}. A dicho desplazamiento se le denomina rotación cíclica hacia la izquierda/derecha en $i$ unidades, pues los elementos situados en los extremos se desplazan al extremo opuesto (de forma cíclica).
+\vspace{-0.2em}
+\begin{figure}[H] 
+  \centering 
+  
+  \begin{tikzpicture}[baseline=(current bounding box.center), >=Stealth]
+    
+    % 1. Definición de colores pastel sutiles para cada fila
+    \definecolor{filaAzul}{RGB}{235, 243, 250}
+    \definecolor{filaVerde}{RGB}{236, 248, 236}
+    \definecolor{filaAmarilla}{RGB}{254, 249, 231}
+    \definecolor{filaRoja}{RGB}{253, 235, 235}
+
+    % 2. Matriz de la izquierda (Estado Inicial)
+    \matrix (A) [
+      matrix of math nodes,
+      nodes={draw, minimum size=0.9cm, anchor=center},
+      column sep=-\pgflinewidth,
+      row sep=-\pgflinewidth
+    ] at (0,0) {
+      |[fill=filaAzul]| a_0     & |[fill=filaAzul]| a_4     & |[fill=filaAzul]| a_8     & |[fill=filaAzul]| a_{12} \\
+      |[fill=filaVerde]| a_1    & |[fill=filaVerde]| a_5    & |[fill=filaVerde]| a_9    & |[fill=filaVerde]| a_{13} \\
+      |[fill=filaAmarilla]| a_2 & |[fill=filaAmarilla]| a_6 & |[fill=filaAmarilla]| a_{10} & |[fill=filaAmarilla]| a_{14} \\
+      |[fill=filaRoja]| a_3     & |[fill=filaRoja]| a_7     & |[fill=filaRoja]| a_{11}  & |[fill=filaRoja]| a_{15} \\
+    };
+
+    % 3. Matriz de la derecha (Estado Final - ShiftRows)
+    \matrix (B) [
+      matrix of math nodes,
+      nodes={draw, minimum size=0.9cm, anchor=center},
+      column sep=-\pgflinewidth,
+      row sep=-\pgflinewidth
+    ] at (6,0) {
+      |[fill=filaAzul]| a_0      & |[fill=filaAzul]| a_4      & |[fill=filaAzul]| a_8     & |[fill=filaAzul]| a_{12} \\
+      |[fill=filaVerde]| a_5     & |[fill=filaVerde]| a_9     & |[fill=filaVerde]| a_{13}  & |[fill=filaVerde]| a_1 \\
+      |[fill=filaAmarilla]| a_{10} & |[fill=filaAmarilla]| a_{14} & |[fill=filaAmarilla]| a_2  & |[fill=filaAmarilla]| a_6 \\
+      |[fill=filaRoja]| a_{15}   & |[fill=filaRoja]| a_3      & |[fill=filaRoja]| a_7     & |[fill=filaRoja]| a_{11} \\
+    };
+
+    % 4. Dibujo de las 4 flechas independientes con sus etiquetas de desplazamiento
+    \draw[->, thick] (A-1-4.east) -- (B-1-1.west) 
+      node[midway, above, font=\scriptsize\sffamily] {Despl. 0 izq.};
+      
+    \draw[->, thick] (A-2-4.east) -- (B-2-1.west) 
+      node[midway, above, font=\scriptsize\sffamily] {Despl. 1 izq.};
+      
+    \draw[->, thick] (A-3-4.east) -- (B-3-1.west) 
+      node[midway, above, font=\scriptsize\sffamily] {Despl. 2 izq.};
+      
+    \draw[->, thick] (A-4-4.east) -- (B-4-1.west) 
+      node[midway, above, font=\scriptsize\sffamily] {Despl. 3 izq.};
+
+  \end{tikzpicture}
+
+  % CAPTION Y ETIQUETA 
+  \vspace{-0.2em}
+  \caption{Algoritmo \textit{ShiftRows}}
+  \label{fig:ShiftRows} % Sirve para citar la imagen en el texto usando \ref{fig:shift_rows_aes}
+\end{figure}
+\vspace{-0.3em}
+Para descifrar se utiliza la operación inversa \textit{InvShiftRows}, que consiste en una rotación cíclica hacia la derecha en $i$ unidades, según se corresponda con la fila $i$.

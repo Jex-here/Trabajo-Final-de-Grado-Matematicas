@@ -1,0 +1,131 @@
+% ==============================================================================
+% CONFIGURACIÓN IDIOMA, FUENTES Y TEXTO
+% ==============================================================================
+\usepackage[spanish,es-lcroman]{babel}   %espanish lowcase roman (si no, fuerza siempre I,II,III...
+\renewcommand{\spanishtablename}{Tabla}
+
+\usepackage[T1]{fontenc}       % Codificación de salida: permite copiar/pegar acentos y eñes en el PDF
+\usepackage[utf8]{inputenc}    % Codificación de entrada: permite escribir acentos y eñes directo desde el teclado
+
+\usepackage{CJKutf8}           % Para japonés porque soy un friki
+
+\usepackage{textcomp}          % Soporte para símbolos especiales en texto plano (euro, grados, etc.)
+
+% ==============================================================================
+% ENTORNOS MATEMÁTICOS Y SÍMBOLOS
+% ==============================================================================
+\usepackage{amsmath} % Para comandos de estructura matemática como \align y demás
+\usepackage{amssymb} % Para símbolos matemáticos: \mathbb
+\usepackage{bbm}     % Para más símbolos matemáticos: \mathbbm
+
+\usepackage{amsthm}  %Para gestionar las definiciones y teoremas
+
+% ==============================================================================
+% Estilo de los teoremas
+% ==============================================================================
+\input{estilo}
+
+% ==============================================================================
+% DISEÑO DE PÁGINA, MARGENES Y ESTILOS
+% ==============================================================================
+\usepackage[dvipsnames, table]{xcolor}     %Para colores
+\usepackage{geometry}    % Dimensiones de página y margen de encuadernación (añadir 6mm si eso al terminar)
+\geometry{top=25mm, bottom=25mm, left=20mm, right=20mm, bindingoffset=0mm}
+\setlength{\headsep}{20pt}      % Distancia encabezadoi al texto
+
+\usepackage{fancyhdr}           % Personalización avanzada de encabezados y pies de página
+\setlength{\headheight}{15pt}   %El error del encabezado pequeño
+
+% Para poner el interlineado que quiera
+\usepackage{setspace}
+\setstretch{1.1} 
+
+% Para modificar arrays y tablas
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+%Enumeración (como el itemize)
+\usepackage{enumitem}
+
+%Revisión, subrayado
+\usepackage{soul}
+\setulcolor{red}
+
+% ==============================================================================
+% IMÁGENES, TABLAS Y LEYENDAS
+% ==============================================================================
+\usepackage{graphicx}         % Permite insertar imágenes (\includegraphics) y manipular su escala o rotación
+\usepackage{float}            % Añade el modificador [H] para fijar la posición exacta de las imágenes
+\usepackage{caption}          % Control personalizado de los títulos (leyendas) de figuras y tablas
+\usepackage{subcaption}       % Permite subfiguras (ej. Figura 1a, 1b) dentro de un entorno figure
+\graphicspath{ {imagenes/} }  %para decirle a graphics que busque a en la carptea imagenes
+
+% ==============================================================================
+% TIKZ PARA PINTAR
+% ==============================================================================
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows}
+\usetikzlibrary{positioning}
+\usetikzlibrary {arrows.meta}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{hobby}
+\usepackage{tikz-cd}
+\usetikzlibrary{babel}
+\usetikzlibrary{positioning, calc, fit, decorations.pathreplacing, arrows.meta}
+
+% ==============================================================================
+% BIBLATEX PARA REFERENCIAR
+% ==============================================================================
+\usepackage{csquotes}
+\usepackage{biblatex}
+\addbibresource{referencias/ref0intro.bib}
+\addbibresource{referencias/ref1cripto.bib}
+\addbibresource{referencias/ref2algebra.bib}
+\addbibresource{referencias/ref3AES.bib}
+
+% ==============================================================================
+% MICROTYPE
+% ==============================================================================
+\usepackage{microtype} % Para mejorar estéticamente la composición (bastante)
+
+% ==============================================================================
+% GESTIÓN DE ENLACES Y METADATOS DEL PDF
+% ==============================================================================
+\usepackage[pdftex,     
+                unicode,        % Para poder escribir en japonés           
+                pdfauthor={     % Autor en los metadatos del archivo PDF
+                    Jesús Berdonces Encinas
+                    },          
+                pdftitle={      % Título en los metadatos del archivo PDF
+                    Aritmética en cuerpos finitos y su aplicación al algoritmo AES
+                    },          
+                pdfsubject={
+                    Trabajo Fin de Grado de Matemáticas
+                    },          
+                pdfkeywords={
+                    Álgebra, Criptografía, Matemáticas, TFG, AES
+                    }
+            ]{hyperref} % Tema en los metadatos del archivo PDF
+
+% ==============================================================================
+% Comandos personalizados
+% ==============================================================================
+\input{comandos.tex}
+
+% 猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬
+% 抽象代数学抽象代数学抽象代数学      CONTROL DEL DOCUMENTO      抽象代数学抽象代数学抽象代数学
+% 蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蜘蛛
+
+% Para comentar secciones utilizo condicionales. 
+\newif\ifRevision     % Usar entorno \begin{Revision} \end{Revision} para comentar
+\newif\ifsegRevision     % Usar entorno \begin{segRevision} \end{segRevision} para comentar
+
+\newif\ifPreliminares
+\newif\ifDedicatoriaAgradecimientos
+\newif\ifIntro
+\newif\ifCripto
+\newif\ifAlgebra
+\newif\ifAES
+\newif\ifConclusiones

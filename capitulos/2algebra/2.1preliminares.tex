@@ -1,0 +1,375 @@
+Informalmente, una estructura algebraica no es más que un conjunto de elementos junto con una o varias operaciones internas definidas sobre estos, las cuales deben cumplir ciertas reglas llamadas axiomas \cite[p.~1]{Rosenberger}. Con operación interna se refiere a que al operar cualesquiera elementos de un conjunto, el resultado debe estar de nuevo en el mismo conjunto. Los conjuntos se denotarán con una letra mayúscula como G,A o K, mientras que sus elementos se escribirán en minúscula: a, b, c, d, etc.
+\footnote{Se recuerda que la representación de los elementos del conjunto dependerá de la naturaleza del propio conjunto: si es un conjunto de números, estos se representan con números; si son funciones, con letras como \textit{f} y \textit{g}; si son elementos generales, con letras del abecedario u otros símbolos. Lo importante no es cómo están representados, sino cómo se relacionan entre ellos mediante las operaciones definidas.}.
+Por otro lado, las operaciones definidas sobre el conjunto se denotarán con símbolos como $+,\ -,\ \cdot,\ \times,\ \ast, \ \circ$, y lo que hace cada una se explicitará al definir la estructura. Generalmente, las operaciones son binarias, es decir, \textit{dos} elementos se operan para dar uno nuevo. Por ejemplo, dado un conjunto $A = \{a,b, c\}$, se puede definir una operación binaria $\ast$ que satisfaga $a \ast b = c$. Se aprecia que si se definiera esa operación en $B = \{a,b\}$, $\ast$ no sería operación interna en B, pues dos elementos de B producen uno fuera de B. De forma general, no habrá que hacer esta comprobación, pues las operaciones estarán bien definidas sobre el conjunto.\bigskip
+
+Ya se dispone de la información necesaria para introducir las dos estructuras más importantes de este texto: los grupos y los anillos.
+
+\begin{deff}[Grupo]{\cite[p.~17]{GruposBujalance}}
+     Un grupo es una estructura algebraica formada por un conjunto y una operación binaria: $(G,\ast)$, donde se satisfacen los siguientes 3 axiomas:
+     
+    \begin{enumerate}[label=\roman*)]
+        \item \textit{Asociatividad}: se cumple que $ (a \ast b) \ast c = a \ast (b \ast c)$, para todo $a,b,c\in G$.
+        \item \textit{Existencia de elemento neutro}: existe un elemento neutro $e \in G$ que cumple $a \ast e = a = e \ast a $ para todo $a \in G$.
+        \item \textit{Existencia de elemento inverso}: para cada elemento $a \in G$ existe un elemento inverso $b \in G$ que cumple $ a \ast b  = e = b \ast a$.
+    \end{enumerate}
+    Si además se cumple la propiedad de \textit{conmutatividad}:
+    \begin{enumerate}[label=iv)]
+        \item $ a \ast b  = b \ast a$ para todo  $a,b \in G$,
+    \end{enumerate}
+    se dice que el grupo es un \textit{grupo abeliano} o conmutativo.
+\end{deff}
+
+\begin{obss}
+    \item La noción de grupo generaliza a los números enteros con la suma usual: $(\Z,+)$. 
+    La suma es asociativa en $\Z$ por definición, su elemento neutro es el $0$, y para cada elemento $x \in \Z$, su elemento inverso es $-x$. Por ejemplo, el inverso de $8$ es $-8$, pues $ 8 + (-8) = 8 - 8 = 0$. Además, $(\Z,+)$ es abeliano, pues $x + y = y + x$, para cualesquiera $x,y \in \Z$. Se observa también que la resta usual no es más que la suma del elemento inverso.
+\end{obss}
+
+
+
+
+\begin{deff}[Anillo]{\cite[p.~19]{GamboaAnillos}}
+     Un anillo es una estructura algebraica formada por un conjunto y dos operaciones binarias: $(A, +, \cdot)$. Las operaciones se denotan como suma y producto. Deben satisfacerse los siguientes axiomas:
+     
+    \begin{enumerate}[label=\roman*)]
+        \item \textit{$(A, +)$ es un grupo abeliano}: la suma es asociativa, existe elemento neutro, para cada elemento existe su inverso y es conmutativa.
+        \item \textit{Asociatividad para el producto}: se cumple que $ (a \cdot b) \cdot c = a \cdot (b \cdot c)$, para todo $a,b,c\in A$.
+        \item \textit{Propiedad distributiva}: para todo $a,b,c\in A$ se cumple 
+        \begin{align*}
+            (a + b) \cdot c &= (a \cdot c) + (b \cdot c) \\
+            c \cdot (a + b) &= (c \cdot a) + (c \cdot b) 
+        \end{align*}
+    \end{enumerate}
+
+    \begin{itemize}
+        \item Si el producto tiene elemento neutro, $A$ se llamará \textit{anillo unitario}.
+        \item Si el producto es conmutativo, $A$ se llamará \textit{anillo conmutativo}.
+        \item Si satisface ambas propiedades, $A$ será un \textit{anillo unitario conmutativo}.
+    \end{itemize}
+    
+\end{deff}
+
+\begin{nott} 
+        \item Cuando no haya riesgo de confusión, el producto $a \cdot b$ se denotará simplemente yuxtaponiendo $a$ y $b$: $ab$.
+        \item El elemento neutro de la suma se denotará por 0, mientras que el elemento neutro del producto por 1. Se referenciarán como ``el cero de $A$'' y ``el uno de $A$'', respectivamente.
+        \item Sumar $a$ consigo mismo $n$ veces se designa con $na$, mientras que el producto de $a$ consigo mismo $n$ veces se designa con $a^n$. Si $n = 0$, será $0\cdot a = 0$ y $a^0 = 1$.
+        \item Un asterisco sobre el nombre de un conjunto significa que se toman todos los elementos del conjunto excepto su 0: $A^* = A - \{0\}$.
+        \item Cuando las operaciones no sean importantes y no haya confusión, se hará el abuso de notación $A = (A, +, \cdot)$, identificando el nombre del conjunto con la estructura de anillo.
+  \end{nott}
+
+\begin{obs}
+    De nuevo, es claro que la noción de anillo generaliza a los números enteros junto con la suma y producto habituales: $(\Z,+, \cdot)$. La notación ``0'' y ``1'' como elementos neutros para la suma y el producto de un anillo arbitrario provienen también de los neutros de este anillo.
+\end{obs}
+    
+\begin{ejs}
+    \item$(\Q,+, \cdot)$ y $(\R,+, \cdot)$, al igual que $(\Z,+, \cdot)$, son anillos unitarios conmutativos. De igual forma, $(\C,+, \cdot)$ con la suma y el producto usuales en $\C$ es un anillo unitario conmutativo. El conjunto de las funciones reales $\mathcal{F}(\R, \R)$ con la suma y producto habituales de funciones es también un anillo unitario conmutativo. Su cero es la función idénticamente nula, $f(x) \equiv 0$, mientras que su uno es $f(x) \equiv 1$.
+
+    \item En cualquier anillo $A$, el 0 es absorbente con el producto, es decir, $x\cdot0 = 0,\ \forall x\in A$, pues $x\cdot 0 = x \cdot (0 + 0) = (x\cdot0) + (x\cdot 0)$, y sumando a ambos lados el inverso para la suma de $x\cdot 0$, se obtiene $0 = x \cdot 0$.
+    
+    \item Sea $A$ un anillo en el que 0 = 1, es decir, los elementos neutros para la suma y el producto coinciden. Se puede afirmar entonces que $A$ solo tiene un elemento: $A = \{0\}$, pues si $x\in A$, se tiene $x = x\cdot 1 = x\cdot0 = 0$. A este anillo se le llama anillo trivial.   
+\end{ejs}
+
+
+Se aprecia que la única propiedad que le falta a un anillo unitario $(A, +, \cdot)$ para que $(A^*, \cdot)$ sea grupo es que para cada elemento no nulo exista su inverso. Sin embargo, esto no significa que no haya elementos con inverso. Por ejemplo, en $(\Z^*,\cdot)$ hay dos elementos con inverso: $-1$ y 1, pues $(-1) \cdot (-1) = 1 $ y $1 \cdot 1 = 1$. A estos elementos destacados se les llamará unidades.
+
+\begin{deff}[Unidades de un anillo]{\cite[p.~20]{GamboaAnillos}}
+    Sea $A$ un anillo unitario. Una \textit{unidad} de $A$ es un elemento que tiene inverso respecto del producto, es decir, $x\in A$ es unidad si existe $y\in A$ con $xy = yx = 1$. Al conjunto de todas las unidades de $A$ se le denota $U(A)$.
+\end{deff}
+
+\begin{deff}[Cuerpo]{\cite[p.~20]{GamboaAnillos}}
+    Un cuerpo es un anillo unitario no trivial $(A,+,\cdot)$ satisfaciendo que $(A^*,\cdot)$ es un grupo. Es decir, todo elemento distinto de cero tiene inverso.
+    \item Si además $(A^*,\cdot)$ es conmutativo, entonces $A$ es un \textit{cuerpo conmutativo}.
+    
+\end{deff}
+
+\begin{nott}
+        \item Para diferenciar el elemento inverso de la suma y del producto, se denotará ``opuesto'' al inverso de la suma, mientras que para el producto se mantiene el término ``inverso''. El opuesto de $a$ se denota $-a$ y al inverso de $a$, $\inv{a}$.
+        \item Para designar a un anillo general que sea cuerpo se suele utilizar la letra K (Körper, que significa cuerpo en alemán). Los cuerpos que tengan un número finito de elementos se representarán por $\F$ (Field, en inglés) o GF (Galois Field).
+        \item Solo se estudiarán en este texto los cuerpos conmutativos, por lo que se hará abuso de notación, llamándolos simplemente cuerpos.
+  \end{nott}
+
+\begin{obs}
+    El 0 no tiene elemento inverso en un anillo no trivial, pues $x\cdot 0 = 0 \neq 1$. Se obtiene por lo tanto que las unidades de un cuerpo, $U(K)$, son todos los elementos del cuerpo sin el 0: $U(K) = K^*$.
+\end{obs}
+
+
+
+\begin{deff}[Subanillo]{\cite[p.~33]{GamboaAnillos}}
+    Sea $(A,+,\cdot)$ un anillo, y $B$ un subconjunto de $A$. Si $(B,+,\cdot)$ es un anillo con las operaciones inducidas por $A$, entonces se dirá que $B$ es subanillo de $A$.\footnote{Que una operación esté inducida por las operaciones de otro anillo significa que se comporta de la misma manera, excepto que solo se define sobre los elementos del nuevo conjunto. Es decir, si $B$ es subanillo de $A$, la suma y el producto en $B$ se definen respectivamente: $a + b$ y $a \cdot b$, con $a,b\in B$ y $+,\cdot$ las operaciones definidas en $A$.}
+\end{deff}
+
+
+
+\begin{deff}[Anillo de polinomios]{\cite[p.~51]{Rosenberger}}\label{definion:polinomios}
+    Sean $A$ y $B$ anillos unitarios conmutativos tal que $A$ es subanillo de $B$; sea $X$ un elemento de $B$. Se construye un nuevo anillo, $(A[X], +,\cdot)$, de la siguiente manera:
+
+    \begin{itemize}
+        \item Se define $A[X]$ como el conjunto de elementos de la forma  
+        \[ p = a_0 + a_1X + a_2X^2 + \ldots + a_nX^n , \text{ con }  a_i \in A  \text{ y }  n \in \N.\]
+        
+        \item Dos elementos $p,q \in A[X]$ son iguales cuando sus coeficientes coinciden, es decir,
+        \[
+        \text{Si } p = \left(\sum\limits_{i=0}^{n} a_i X^i\right) \text{ y }q = \left(\sum\limits_{i=0}^{m} c_i X^i\right), \text{ entonces } p = q \iff a_i = c_i \ \text{ para todo $i$.}  
+        \]
+        
+        \item
+            \begin{Revision}
+                La suma en $A[X]$ se define como 
+                \[
+                    p + q = \left(\sum\limits_{i=0}^n a_i X^i\right) + \left(\sum\limits_{i=0}^m c_i X^i\right) = \sum\limits_{i=0}^{\text{max}(n,m)} (a_i + c_i)X^i.
+                    \text{\footnotemark}
+                \]
+                \footnotetext{
+                \begin{Revision}
+                    Se ha realizado un abuso de notación en las sumatorias: cuando el índice \textit{i} excede $n$ o $m$, se asume $ a_i = 0 $ o $ c_i = 0 $ respectivamente.
+                \end{Revision}
+                }
+            \end{Revision}\vspace{-1em}
+        
+        \item El producto en $A[X]$ se define como
+        \[p \ \cdot \ q = \left(\sum\limits_{i=0}^n a_i X^i\right) \cdot \left(\sum\limits_{j=0}^m c_j X^j\right) = \sum\limits_{i=0}^{n} \sum\limits_{j = 0}^m a_i c_jX^{i+j}
+        \]
+    \end{itemize}
+    
+    \item $(A[X], +,\cdot)$ es el \textit{anillo de polinomios en una indeterminada con coeficientes en A} y sus elementos se denominan polinomios en una indeterminada con coeficientes en $A$, o simplemente polinomios cuando no haya confusión.
+\end{deff}
+
+\begin{nott}
+    \item El término ``$X$'' se denomina \textit{indeterminada} y se suele representar de diferentes formas: $T,X,Y, t, x, y$.
+    \begin{Revision}%
+        En los resultados teóricos predominará el uso de ``$X$'' como indeterminada, pues también se usa ``$x$'' para denotar los elementos de anillos. En los ejemplos y ejercicios se usarán ambas formas, de manera que su uso no genere confusión.
+    \end{Revision}A pesar de que la indeterminada sea un elemento de $B$ con el que se opera, es conveniente pensar en esta como nada más que un símbolo.
+    
+    \item Los elementos $a_i$ se denominan \textit{coeficientes}, al $a_0$ se le llama \textit{término independiente} y al $a_i$ no nulo con mayor índice, $i$, se le llama \textit{coeficiente director}. Cuando un polinomio $p$ tenga coeficiente director $a = 1$, se dirá que $p$ es mónico.
+\end{nott}
+
+
+
+\begin{deff}[Grado de un polinomio]{\cite[p~51]{Rosenberger}}
+    El \textit{grado de un polinomio} no nulo $p = \sum\limits_{i=0}^{n} a_i X^i$ es el índice \textit{i} de su coeficiente director.
+\end{deff}
+
+    Se satisfacen las siguientes propiedades acerca del grado:
+\begin{lema}{}\label{lema:grado_polinomios}
+    Sean $p$ y $q$ polinomios no nulos de grado $n$ y $m$. Entonces:
+    \begin{enumerate}[label=\roman*)]
+        \item $\gr{pq} \leq \gr{p} + \gr{q}$.
+        \item $\gr{p+q} \leq \max(\gr{p},\gr{q})$.
+    \end{enumerate}
+\end{lema}
+
+\begin{dem}{\cite[p.~116]{GamboaAnillos}}
+    \begin{enumerate}[label=\roman*)]
+        \item El coeficiente director de $pq$ es $a_nc_m$. Si $a_nc_m = 0$, se tiene $\gr{pq} < n + m =\gr{p} + \gr{q}$. Si $a_nc_m \neq 0$, se tiene $\gr{pq} = n + m =\gr{p} + \gr{q}$. 
+
+        \item Si $n\neq m$, es $\gr{p+q} = \max(\gr{p},\gr{q})$, pues el coeficiente director del de mayor grado se corresponde con un cero del otro. Si $n = m$, el coeficiente director es $a_n + c_n$. Si $a_n + c_n = 0$, es $\gr{p+q} < n$, y si $a_n + c_n \neq 0$, es $\gr{p+q} = n$
+    \end{enumerate}
+\end{dem}
+
+\begin{deff}[Derivada de un polinomio]{\cite[p~122]{GamboaAnillos}\label{definicion:derivada}}
+    La derivada de un polinomio $p = a_0 + a_1X + a_2X^2 + \ldots + a_nX^n$ se define como el polinomio $d(p) = a_1 + 2\cdot a_2X + \ldots +n\cdot a_nX^{n-1}$. A este se le suele denotar como $d(p)$, $p'$ o $\frac{\partial p}{\partial X}$, para señalar que es respecto a $X$.
+\end{deff}
+
+\begin{lema}(\cite[p.~122]{GamboaAnillos}). \label{lema:resultado_derivadas} Se satisfacen las siguientes propiedades:
+    \begin{enumerate}[label=\roman*)]
+        \item $d(p+q) = d(p) + d(q)$, pues
+            \begin{align*}
+                d(p+q)  &= d\left(\sum\limits_{i=0}^{\text{max}(n,m)} (a_i + c_i)X^i\right)= \sum\limits_{i=1}^{\text{max}(n,m)} i(a_i + c_i)X^{i-1}\\
+                        &= \sum\limits_{i=1}^{n} ia_iX^{i-1} + \sum\limits_{i=1}^{m} ic_iX^{i-1} = d(p) + d(q).
+            \end{align*}
+        \item $d(pq) = d(p)\cdot q + p\cdot d(q)$, pues 
+            \begin{align*}
+            d(pq)   &= 
+            d\left(\sum\limits_{i=0}^{n} \sum\limits_{j = 0}^m a_i c_jX^{i+j}\right)
+            = \sum\limits_{i=0}^{n}\sum\limits_{\substack{j=0 \\ i+j\geq1}}^m (i+j)a_i c_jX^{i+j-1} \displaybreak\\
+                    &=\left(\sum\limits_{i=1}^{n}\sum\limits_{j=0}^{m} ia_ic_jX^{i-1} X^j\right) +
+            \left(\sum\limits_{i=0}^{n}\sum\limits_{j=1}^{m} ja_ic_jX^i X^{j-1}\right) \\
+                    &=\left(\sum\limits_{i=1}^{n}ia_iX^{i-1}\sum\limits_{j=0}^{m}  c_jX^j\right) +
+            \left(\sum\limits_{i=0}^{n}a_iX^i\sum\limits_{j=1}^{m}  jc_jX^{j-1}\right) =
+            d(p)\cdot q + p\cdot d(q).
+            \end{align*}
+    \end{enumerate}
+\end{lema}
+
+\begin{deff}[Divisor de cero]{\cite[p.~23]{GamboaAnillos}}
+    Sea $A$ un anillo y $x\in A^*$. $x$ es \textit{divisor de cero} si existe $y \in A^*$ tal que $xy = 0$.
+\end{deff}
+
+
+
+\begin{deff}[Dominio de integridad]{\cite[p.~23]{GamboaAnillos}}
+    Un \textit{dominio de integridad} (DI) es un anillo unitario conmutativo no trivial donde no hay divisores de cero.
+\end{deff}
+
+\begin{obss}
+    \item En un dominio de integridad se pueden cancelar términos no nulos:
+    
+    Dados $x,y\in A^*$, con $A$ dominio de integridad, $xy=x$ implica $y=1$, pues $xy =x \iff xy - x = 0 \iff x(y-1) = 0 \iff x = 0 \ \lor\ y-1 = 0$, pues $A$ es dominio de integridad y no tiene divisores de 0. Como $x\neq0$, se tiene que debe ser $y-1 = 0$, es decir, $y = 1$.
+
+    \item Los cuerpos son dominio de integridad:
+
+    Sean $x,y\in K$ cuerpo tales que $xy = 0$ y sea $x$ no nulo. Por ser $K$ cuerpo $x$ tiene inverso, $\inv{x}$, y multiplicando a ambos lados se tiene $\inv{x}xy = \inv{x}0 \iff y = 0$. Se concluye que la única forma de obtener el 0 mediante el producto es multiplicando por 0.
+    
+    El recíproco no es cierto, pues los enteros $\Z$ son un dominio de integridad, pero no son un cuerpo.
+\end{obss}
+
+\begin{deff}[Característica de un dominio de integridad]{\cite[p.~39]{GamboaAnillos}}\label{caracteristica}
+    La \textit{característica de un dominio de integridad} $A$ es el menor entero positivo $k$ tal que \[\underbrace{1 +  \cdots + 1}_{k} = 0.\]
+    Si dicho $k$ no existiera, la característica de $A$ es $0$.
+\end{deff}
+
+\begin{prop}[{\textit{A}[\textit{X}]} es DI si y solo si A es DI.]
+\end{prop}
+
+\begin{dem}{\cite[p.~118]{GamboaAnillos}}
+Como $A$ es subanillo de $A[X]$, si $A[X]$ es dominio de integridad, también lo es $A$. Supóngase entonces $A$ dominio de integridad y $p$, $q$ polinomios no nulos. Entonces, el coeficiente director del producto $pq$ será distinto de 0, pues es producto de elementos no nulos de un dominio de integridad, y en consecuencia se tiene que $pq \neq 0$. 
+\end{dem}
+
+\begin{prop}[En un DI las unidades de \textit{A} y {\textit{A}[\textit{X}]} coinciden.]\label{unidades_de_A_y_A[X]}
+\end{prop}
+
+\begin{dem}{\cite[p.~119]{GamboaAnillos}}
+Si $a\in U(A)$, $\inv{a}$ es un elemento de $A$ que pertenece también a $A[X]$, por lo que $a \in U(A[X])$. Por otra parte, si $p,q \in A[X]$ unidades, se tiene que $pq = 1$. Por ser $A$ dominio de integridad se satisface $\gr{pq} = \gr{p} + \gr{q}$, y se tiene $0 = \gr{1} = \gr{pq} = \gr{p} + \gr{q}$, por lo que han de ser $p,q \in A$ y son unidades de $A$.
+\end{dem}
+
+
+
+
+\begin{deff}[Ideal]{\cite[p.~25]{GamboaAnillos}}
+    Sea $(A,+,\cdot)$ un anillo unitario conmutativo. Un ideal $I$ es un subconjunto de $A$ que satisface las siguientes propiedades:
+    \begin{enumerate}[label=\roman*)]
+        \item $I$ es subgrupo de (A,+).
+        \item Los elementos de $I$ son absorbentes en $A$ para el producto, es decir, para todo $i \in I, a\in A$ se cumple $i\cdot a \in I$
+    \end{enumerate}
+\end{deff}
+
+\begin{obs}
+    Todo anillo tiene al menos dos ideales: $\{0\}$ y $A$, que satisfacen las propiedades trivialmente. Al ideal $\{0\}$ se le llama ideal trivial, mientras que a $A$ ideal impropio.
+\end{obs}
+
+\begin{ejs}
+    \item Los ideales de $\Z$ son de la forma \begin{Revision}$n\Z:= \{ n \cdot x\mid x\in\Z, \ n\geq 0\}$.\end{Revision}
+
+    \item Sea $K$ un cuerpo, $I$ un ideal no trivial de $K$, e $i\in I^*$. Se tiene $\inv{i}\in K$ por ser cuerpo, e $i \cdot \inv{i}  = 1\in I$, por ser $I$ ideal. Si $x \in K$, $1\cdot x = x \in I$, de nuevo, por ser $I$ ideal. Se afirma entonces que  $I = K$, y que un cuerpo solo tiene el ideal trivial y el impropio.
+
+    
+\end{ejs}
+
+
+
+\begin{deff}[Anillo cociente]{\cite[pp.~25-26]{GamboaAnillos}}
+    Sea $A$ un anillo unitario conmutativo e $I$ un ideal \begin{Revision}propio\end{Revision} de $A$. Se define en $A$ la relación de equivalencia $x \sim y$ si y solo si $x - y \in I$. El conjunto cociente es $A/I$, formado por las clases de equivalencia $[x] = \{x + i\mid i\in I\}$, con $x\in A$. A las clases de equivalencia también se las denota por $x + I$. Si dos elementos $x,y$ pertenecen a la misma clase, se denota por $\eqmod{x}{y}{I}$.
+    \item Se definen la suma y el producto en $A/I$ vía representantes:
+    \[[x] + [y] = [x + y]\]
+    \[[x] \cdot [y] = [x \cdot y]\]
+\end{deff}
+
+\begin{prop}[
+    El conjunto cociente $A/I$ junto con las operaciones suma y producto definidas forman un anillo unitario conmutativo. Se denomina \textit{anillo de clases de restos módulo} $I$, o simplemente, \textit{anillo cociente}.]
+\end{prop}
+\begin{dem}{\cite[pp.~25-26]{GamboaAnillos}}
+    Lo primero es comprobar que las operaciones estén bien definidas, es decir, son independientes del representante elegido: \vspace{-0.5em}
+    \begin{enumerate}[label={--}, leftmargin=12pt]
+        \item Para la suma, hay que comprobar que si $x'\in [x]$ e $y'\in [y]$, entonces $[x + y] = [x' + y']$. Esto último es equivalente a que $(x + y) - (x' + y') \in I \iff (x-x') + (y-y') \in I$. Como $x \sim x'$, $y \sim y'$ e $I$ es grupo para la suma, se cumple la condición, y la suma no depende del representante elegido.
+        \item Para el producto, hay que comprobar que si $x'\in [x]$ e $y'\in [y]$, entonces $[xy] = [x'y']$. Esto último es equivalente a que $(xy) - (x'y') \in I$. Operando, se tiene que $(xy) - (x'y') = (xy) - (xy') + (xy') - (x'y') = x(y-y') + (x-x')y'$. De nuevo, como $x \sim x'$ e $y \sim y'$, se tiene que $(x-x'),(y-y') \in I$. Además, por ser $I$ ideal, es absorbente para el producto, obteniendo $x(y-y')\in I$ y $(x-x')y'\in I$, y su suma también pertenece a $I$. Se concluye entonces que el producto tampoco depende del representante elegido.
+    \end{enumerate}
+    Que $(A/I, +)$ es grupo conmutativo se deriva directamente de serlo $A$ y de la suma en $A/I$. De igual forma, se derivan de $A$ y el producto en $A/I$ las propiedades de asociatividad, distributividad, conmutatividad y existencia de neutro para el producto. Se concluye entonces que $(A/I, + , \cdot )$ es anillo unitario conmutativo.
+\end{dem}
+
+\begin{obs}
+    El 0 de  $A/I$ es la clase de equivalencia formada por los elementos de $I$:
+        Sean $x\in A, j\in I$. Se tiene $[x] + [j] = [x + j] = \{(x + j) + i \mid i\in I\} = \{x + i' \mid i' = (j + i)\in I\} = [x]$, por lo que $[j] =  I$ es el 0 de $A/I$.
+           
+\end{obs}
+
+
+\begin{deff}[Imagen de un homomorfismo]{\cite[p.~31]{GamboaAnillos}}
+    Sean $A$ y $B$ anillos unitarios conmutativos y $f: A \longrightarrow B$ un homomorfismo. La imagen de $f$ es el conjunto  \[\im{f} = \{y\in B \mid \text{existe }x \in A \text{ con } y = f(x)\}\] Este conjunto, $\im{f}$, junto con las operaciones heredadas de $B$ forman un anillo (subanillo de $B$).
+\end{deff}
+\begin{deff}[Núcleo de un homomorfismo]{\cite[p.~31]{GamboaAnillos}} \label{definicion:nucleo_homomorfismo}
+    Sean $A$ y $B$ anillos unitarios conmutativos y $f: A \longrightarrow B$ un homomorfismo. El núcleo de $f$ es el conjunto  \[\ker(f) = \{x\in A \mid f(x) = 0\}\] Este conjunto, $\ker{f}$, es un ideal de $A$. Las clases de equivalencia del anillo cociente $A/\ker(f)$ están formadas por los elementos cuya imagen por $f$ es la misma, es decir, dos elementos pertenecen a la misma clase si y solo si tienen la misma imagen por $f$.
+\end{deff}
+
+\begin{deff}[Teorema de isomorfía]{\cite[p.~32]{GamboaAnillos}\label{teorema_isomorfia}}
+    Sean $A$ y $B$ anillos unitarios conmutativos y $f: A \longrightarrow B$ un homomorfismo. Se consideran: la proyección $p$; la aplicación inducida por $f$, $\bar{f}$; y la inclusión $i$; como en el siguiente diagrama:
+    \[
+        \begin{tikzcd}
+        A \arrow[r,"f"] \arrow[d,"p"']
+        & B \\
+        A/\ker(f) \arrow[r,"\bar{f}"']
+        & \im{f} \arrow[u,"i"']
+        \end{tikzcd}
+    \]
+    definidas de la forma:
+\begin{align*}
+&&& p:        &&\; A \longrightarrow A/\ker(f):         && x \longmapsto x+\ker(f),     &&\\[1ex]
+&&& \bar{f}:  &&\; A/\ker(f) \longrightarrow \im{f}:    && x+\ker(f) \longmapsto f(x),  &&\\[1ex]
+&&& i:        &&\; \im{f} \longrightarrow B:            && y \longmapsto y.             &&
+\end{align*}
+
+Estas tres aplicaciones son homomorfismos de anillos y se cumple que $p$ es sobreyectiva, $\bar f$ es biyectiva, e $i$ es inyectiva.     
+\end{deff}
+
+\begin{obss}
+    \item Si la aplicación $f$ fuera una aplicación inyectiva, el único elemento de $\ker (f)$ sería el $0$ (pues es $f(0) = 0$ por ser homomorfismo, y no hay otro elemento distinto cuya imagen sea $0$ por ser inyectiva), y las clases de equivalencia del cociente $A/\ker(f)$ constan de un solo elemento. Resulta entonces que la proyección $p$ sería inyectiva, y en consecuencia biyectiva, obteniendo $A\cong A/\ker(f)$. Pero ya es $A/\ker(f) \cong \im{f}$ por ser $\bar f$ biyectiva, por lo que se obtiene $A\cong \im{f}$. Como $\im{f}$ es subanillo de $B$, se dirá de esta forma que $A$ es subanillo de $B$ (Aunque estrictamente no lo sea, por ser isomorfo a un subconjunto suyo lo trataremos como tal). 
+    \item Por otro lado, si $f$ fuera sobreyectiva, entonces la inclusión $i$ sería biyectiva, y se obtendría que $A/\ker (f) \cong B$. 
+     
+    Se ha obtenido por lo tanto que si $f$ es inyectiva, entonces $A\cong \im{f}$; y si $f$ es sobreyectiva, entonces $A/\ker (f) \cong B$.
+    
+\end{obss}
+
+\begin{deff}[Ideal generado por un subconjunto]{\cite[p.~27]{GamboaAnillos}}
+    Sea $A$ un anillo unitario conmutativo y $L$ un subconjunto suyo cualquiera. El conjunto $I \subset A$, construido mediante la combinación finita de elementos de $A$ y $L$: 
+    \[
+        I = \{a_1l_1 + \ldots + a_nl_n\mid a_i\in A, l_i \in L, n\in\N\}
+    \]
+    es un ideal de $A$. $I$ es además el menor ideal que contiene a $L$, es decir, si $J$ es otro ideal que contiene a $L$, entonces $I \subset J$. Se dice que $I$ está generado por $L$, y se denota por $ I = (l_1, \ldots, l_n)$.
+    \item Cuando $L$ conste de un único elemento: $L =(l)$, se dirá que es un \textit{ideal principal}.
+\end{deff}
+
+\begin{ejs}\label{ej:idealGenerado}
+    \item En $\Z$, los ideales de la forma $(n)$ se corresponden con los conjuntos $n\Z$. Los anillos cocientes generados por estos ideales son de la forma $\Z/(n) = \{[0],[1], \ \ldots \ , [n-2], [n-1]\}$. Frecuentemente se denota $\Z/(n)$ como $\Z_n$.
+    
+    \item 
+    \begin{Revision}
+        Sea $\Z_2[X]$ el anillo de polinomios en una indeterminada con coeficientes en $\Z_2$ y sea $(X^2+1)$ el ideal generado por $X^2+1\in \Z_2[X]$, es decir, $(X^2+1) = \{q\cdot(X^2+1) \mid q\in \Z_2[X]\}$. Se tiene que el anillo cociente $\Z_2[X]/(X^2+1)$ está formado por las clases $\{[0],[1],[X],[X+1]\}$, pues todo elemento $p$ de $\Z_2[X]$ se puede expresar de la forma $p = q\cdot(X^2+1) + a$, con $q\in \Z_2[X]$ y $a = 0,1,X \text{ o } X+1$. Por ejemplo, $p = X^3 + X + 1$ pertenece a la clase $[1]$, pues es $X^3 + X + 1 = X\cdot (X^2+1) + 1$.
+    \end{Revision}
+\end{ejs}
+
+
+\begin{deff}[Ideal maximal]{\cite[p.~29]{GamboaAnillos}}
+    Sea $A$ un anillo unitario conmutativo e $I$ un ideal propio de $A$. Se dice que $I$ es un ideal maximal si no existe otro ideal propio que lo contenga estrictamente. 
+\end{deff}
+    
+\begin{deff}[Ideal primo]{\cite[p.~29]{GamboaAnillos}}
+    Sea $A$ un anillo unitario conmutativo e $I$ un ideal propio de $A$. Se dice que $I$ es un ideal primo cuando satisface que para todo par de elementos de $A$ no pertenecientes a $I$, su producto tampoco pertenece a $I$.
+\end{deff}
+
+\begin{obs}
+    Que un ideal $I$ sea maximal significa que los únicos ideales que contienen a $I$ son él mismo y $A$. Por otra parte, que un ideal sea primo significa que la única manera de obtener elementos de $I$ mediante el producto es que uno de sus factores esté en $I$: $xy \in I \Longrightarrow x\in I $ o $y \in I$, con $x,y\in A$.    
+\end{obs}
+
+\begin{prop}\leavevmode \vspace{-0.4\baselineskip}\label{prop:IdealmaximalCuerpo}
+    \begin{enumerate}
+        \item Un ideal propio $I$ es maximal si y solo si $A/I$ es un cuerpo.
+        \item Un ideal propio $I$ es primo si y solo si $A/I$ es dominio de integridad.
+    \end{enumerate}
+\end{prop}
+
+\begin{dem}{\cite[pp.~29-30]{GamboaAnillos}}
+    \begin{enumerate}[label=\roman*)]
+        \item Un ideal propio $I$ es maximal si y solo si los únicos ideales que lo contienen son él mismo y $A$, que se corresponden con los únicos ideales de $A/I$: el ideal trivial y el impropio, lo cual sucede si y solo si $A/I$ es cuerpo.
+        \item Un ideal propio $I$ es primo si y solo si todo par de elementos $x,y\not\in I$ tienen producto $xy\not\in I$. En el anillo cociente esto equivale a que si $[x],[y] \neq [0]$, entonces $[xy] \neq [0]$. Como $A/I$ es conmutativo por serlo $A$, $A/I$ es dominio de integridad.
+    \end{enumerate}
+\end{dem}
+
+\begin{Revision}
+    \begin{ejs}
+        \item El anillo cociente $\Z_2[X]/(X^2+1)$ estudiado en el Ejemplo \ref{ej:idealGenerado} no es un dominio de integridad, pues el ideal $(X^2+1)$ no es primo: $(X+1)$ no pertenece al ideal, pero se tiene que $(X+1)^2 = X^2 + 2X + 1 = X^2 + 1$, por ser $[2] = [0]$ en $\Z_2$.
+    \end{ejs}
+\end{Revision}
+
+
+
+
+
+

@@ -1,0 +1,120 @@
+\documentclass[12pt, a4paper]{report}
+
+% ============== Configuración del documento ==============
+\input{cabecera}
+%==========================================================
+
+% 猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬猫犬
+% 抽象代数学抽象代数学抽象代数学      CONTROL DEL DOCUMENTO      抽象代数学抽象代数学抽象代数学
+% 蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蜘蛛
+
+% \Revisiontrue       % Sin comentar: aparecen revisiones; comentado, se eliminan
+% \segRevisiontrue       % Sin comentar: aparecen revisiones; comentado, se eliminan
+
+\Preliminarestrue   % comentar para ocultar preliminares
+% \DedicatoriaAgradecimientostrue
+\Introtrue          % comentar para ocultar introducción
+\Criptotrue         % comentar para ocultar capítulo 1:   criptografia
+\Algebratrue        % comentar para ocultar capítulo 2:   algebra
+\AEStrue            % comentar para ocultar capítulo 3:   AES
+\Conclusionestrue   % comentar para ocultar conclusones
+
+
+% 鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫鮫
+% 燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕燕
+% 暗号理論暗号理論暗号理論暗号理論 (: COMIENZO DEL DOCUMENTO :) 暗号理論暗号理論暗号理論暗号理論
+% 数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学数学
+% 鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽鷽
+
+\begin{document}
+
+%------------Preliminares--------------------------
+    \ifPreliminares
+        \pagenumbering{roman}
+        
+        \input{preludio/portada}
+
+        \chapter*{Abstract}
+        \input{preludio/abstract}
+
+        \ifDedicatoriaAgradecimientos
+        
+            \chapter*{Dedicatoria}
+            \input{preludio/dedicatoria}
+        
+            \chapter*{Agradecimientos}
+            \input{preludio/agradecimientos}
+        \fi    
+        
+        \tableofcontents
+        \newpage
+    \fi
+
+%------------Introducción--------------------------
+
+    \pagenumbering{arabic}
+        
+    \ifIntro
+        
+            \pagestyle{fancy}
+            \fancyhead{}
+            \fancyfoot{}
+            \fancyfoot[L]{Introducción}        
+            \fancyfoot[R]{\thepage}
+            \fancyfoot[C]{Jesús Berdonces Encinas}
+        
+        \chapter*{Introducción}
+        \addcontentsline{toc}{chapter}{Introducción}  % añade "Introducción" al TOC formato "chapter"
+        \input{capitulos/introduccion.tex}
+        \clearpage
+    \fi
+
+%---------------Capitulo 1--------------------------
+
+        \pagestyle{fancy}
+        \fancyhead{}
+        \fancyfoot{}
+        \fancyhead[R]{\nouppercase{\rightmark}}
+        \fancyfoot[L]{Capítulo \thechapter}
+        \fancyfoot[R]{\thepage}
+        \fancyfoot[C]{Jesús Berdonces Encinas}
+
+    \ifCripto
+        \chapter{Sistemas criptográficos}       
+        \input{capitulos/1cripto/1_main}
+    \fi
+
+%---------------Capitulo 2--------------------------
+
+    \ifAlgebra
+        \chapter{Fundamentos algebraicos}    
+        \input{capitulos/2algebra/2_main}
+    \fi
+
+%---------------Capitulo 3--------------------------
+
+    \ifAES
+        \chapter{AES}    
+        \input{capitulos/3AES/3_main}
+    \fi
+
+%---------------Conclusiones--------------------------
+
+	\ifConclusiones
+        \chapter*{Conclusiones}
+        \addcontentsline{toc}{chapter}{Conclusiones}
+        \input{capitulos/conclusiones}
+    \fi
+
+%---------------Bibliografia--------------------------
+
+        \pagestyle{fancy}
+        \fancyhead{}
+        \fancyfoot{}
+        \fancyfoot[L]{Bibliografía}
+        \fancyfoot[R]{\thepage}
+        \fancyfoot[C]{Jesús Berdonces Encinas}
+        
+    \printbibliography[heading=bibintoc,title=Bibliografía]
+	
+\end{document}

@@ -1,0 +1,45 @@
+El proceso de intercambio de información  a la hora de establecer comunicaciones se puede simplificar al siguiente proceso: A envía un mensaje a B a través de cierto canal. A y B hacen referencia a cualquier entidad, ya sean personas, organizaciones, ordenadores, etc. Sin embargo, para dar una idea menos abstracta, en la literatura se suele hacer referencia a A como ``Alice'', y a B como ``Bob''. Se dice entonces que Alice es el emisor y Bob es el receptor de la información. Si el canal es seguro, por ejemplo, una habitación aislada donde Alice y Bob se comuniquen, no hacen falta herramientas criptográficas. Se supone por lo tanto que el canal es inseguro, donde habrá adversarios que puedan acceder y/o manipular la información, como puede ser en Internet. A estos adversarios se les suele denominar con la letra E o ``Eve'' de ``Eavesdropper''. De esta manera, Alice quiere enviar un mensaje a Bob en presencia de Eve, asegurándose de que se satisfaga algún objetivo de seguridad:
+
+\begin{enumerate}[label={--}]
+    \item \textbf{Confidencialidad}: si Alice no quiere que Eve sea capaz de obtener información del mensaje que desea enviar, esta encriptará el mensaje y luego lo enviará, de tal manera que aunque caiga en manos de Eve, este no pueda obtener información acerca del mensaje original. Por otro lado, Bob, que sí conoce cómo descifrar el mensaje enviado, sí puede obtener el mensaje original.
+    \item \textbf{Integridad y Autenticación}: si Alice quiere que Bob pueda cerciorarse de que el mensaje obtenido no haya sido modificado por Eve durante la transmisión, esta enviará junto con el mensaje un código (único para cada mensaje), de tal forma que computar el mensaje y el código dé un resultado válido si y solo si ambos no han sido manipulados; si el resultado no es válido, Bob rechazaría el mensaje. Sin embargo, dicho razonamiento no considera el caso en el que sea Eve quien envíe el mensaje junto con el código, en cuyo caso Bob aceptaría un mensaje legítimo pero no emitido por Alice. Para evitar dicha situación, el cómputo del mensaje y del código debe realizarse junto con una clave que solo conozcan Alice y Bob, de manera que Eve no pueda manipular el mensaje sin que Bob lo sepa, y de manera que tampoco pueda suplantar la identidad de Alice, pues el código enviado no sería válido. A dicho código se le denomina MAC (Código de autenticación de mensaje).
+    \item \textbf{No repudio}: para que Bob pueda asegurar ante un tercero que Alice es quien escribió el mensaje, esta deberá enviar el mensaje junto con una firma que solo pueda generar ella, de tal forma que el mensaje quede ligado a Alice.
+\end{enumerate}
+
+Los sistemas criptográficos que permiten cumplir estos objetivos se \begin{Revision}pueden clasificar de varias formas, siendo la más habitual según el tipo de clave que utilizan sus algoritmos. De esta forma, se pueden agrupar en sistemas de cifrado simétrico y de cifrado asimétrico.\end{Revision} En los sistemas de cifrado simétrico, tanto Alice como Bob usan la misma clave para encriptar/cifrar mensajes, o para crear/verificar los códigos de integridad/autenticación; por otro lado, en los sistemas de cifrado asimétrico el receptor posee dos claves: una pública y una privada, de tal forma que Alice envía a Bob un mensaje encriptado usando la clave pública de Bob (es conocida por todo el mundo), y solo él, que tiene la clave privada, puede descifrarlo y obtener el mensaje original.
+
+Por otro lado, los mensajes transmitidos están escritos en cierto alfabeto, como puede ser el alfabeto español o el alfabeto chino. \begin{Revision}Sin embargo, a lo largo de este texto, se trabajará principalmente con el alfabeto binario\end{Revision}, es decir, mediante bits (ceros y unos), pues este es el lenguaje utilizado en la computación, y es por lo tanto el más utilizado a la hora de implementar algoritmos criptográficos. Para transformar los símbolos de cualquier alfabeto a bits se utiliza un codificador de caracteres, siendo el estándar UTF-8 (8-bit Unicode Transformation Format)\cite{utf8_unicode}. Este convierte cualquier información escrita digitalmente en bloques de 1, 2, 3 o 4 bytes. Un byte son 8 bits, por lo que serían cadenas de 8, 16, 24 o 32 bits. \begin{Revision}A pesar de que los ordenadores utilizan bits, para ser visualizados por personas de manera más ordenada es usual expresarlos en el alfabeto hexadecimal, es decir, base 16:
+$\{\texttt{0},\texttt{1},\texttt{2},\texttt{3},\texttt{4},\texttt{5},
+\texttt{6},\texttt{7},\texttt{8},\texttt{9},\texttt{a},
+\texttt{b},\texttt{c},\texttt{d},\texttt{e},\texttt{f}\}$.
+Este alfabeto se corresponde con el alfabeto decimal (números del 0 al 9), y además, los números 10, 11, 12, 13, 14 y 15 del decimal se corresponden con \texttt{a}, \texttt{b}, \texttt{c}, \texttt{d}, \texttt{e} y \texttt{f} del hexadecimal. De esta forma, los alfabetos binario, decimal y hexadecimal se basan en representar elementos a  través de potencias de 2, 10 y 16, respectivamente. Por ejemplo, 27 escrito en decimal significa $2\cdot 10^1 + 7\cdot 10^0$, y al yuxtaponer 2 y 7, se obtiene el 27. Así, 27 se corresponde con \begin{segRevision}11011\end{segRevision} en binario y con \texttt{1b} en hexadecimal, pues es:
+\begin{align*}
+    \text{Binario: } & 27_{10} = 1\cdot 2^4 + 1\cdot 2^3 +0\cdot 2^2+ 1\cdot 2^1+ 1\cdot 2^0 = 11011_2.    \\
+    \text{Hexadecimal: } & 27_{10} = 1\cdot 16^1 + 11\cdot 16^0 = \texttt{1}\cdot 16^1 + \texttt{b}\cdot 16^0 = \texttt{1b}_{16}.
+\end{align*}
+A la hora de expresar en binario, las computadoras utilizan bloques de 8 bits, por lo que 1 byte puede representar $256 = 2^8 = 16^2$ elementos distintos (se usarán 8 elementos yuxtapuestos en el alfabeto binario y 2 elementos yuxtapuestos del hexadecimal). Además, siempre se utilizarán los 8 bits, así que el número 12 en decimal se corresponderá con 00001100 en binario, pues es $0\cdot 2^7+0\cdot 2^6+0\cdot 2^5+0\cdot 2^4 + 1\cdot 2^3 +1\cdot 2^2+ 0\cdot 2^1+ 0\cdot 2^0$, y con \texttt{0c} en hexadecimal, pues es $\texttt{0}\cdot 16^1 + \texttt{c}\cdot16^0$.
+
+Veamos entonces cómo interpreta un ordenador la oración ``Hola mundo''. Este asigna a cada carácter un byte, tal y como se muestra en la Tabla \ref{HolaMundo_bin_hex}, resultando en la cadena binaria \\[0.3ex] ``01001000011011110110110001100001001000000110110101110101011011100110010001101111'',\\[0.3ex]
+cuyo hexadecimal es ``\texttt{486f6c61206d756e646f}''. Para una lista completa de la conversión de símbolos a hexadecimal y binario, véase \cite{symbl_unicode}.
+
+\end{Revision}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc}
+\hline
+\textbf{Carácter} & \textbf{Hexadecimal} & \textbf{Binario} \\ \hline
+H & \texttt{48} & 01001000 \\
+o & \texttt{6f} & 01101111 \\
+l & \texttt{6c} & 01101100 \\
+a & \texttt{61} & 01100001 \\
+\textit{espacio} & \texttt{20} & 00100000 \\
+m & \texttt{6d} & 01101101 \\
+u & \texttt{75} & 01110101 \\
+n & \texttt{6e} & 01101110 \\
+d & \texttt{64} & 01100100 \\
+o & \texttt{6f} & 01101111 \\ \hline
+\end{tabular}
+\caption{Conversión ``Hola mundo'' a hexadecimal y binario.}
+\label{HolaMundo_bin_hex}
+\end{table}

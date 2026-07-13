@@ -1,0 +1,563 @@
+
+ 
+\begin{deff}[Divisor]{\cite[p.~35]{GamboaAnillos}}
+    Sea $A$ un dominio de integridad y $x\in A^*$, $y\in A$. Se dice que $x$ es un \textit{divisor} de $y$ si existe $a\in A$ tal que $y = ax$.
+\end{deff}
+
+\begin{nott}
+    \item En las condiciones de la definición, también se dice que $x$ \textit{divide} a $y$, que $y$ es \textit{múltiplo} de $x$, o que $y$ es \textit{divisible} por $x$.
+    \item Se denota por $x\mid y$ si $x$ es divisor de $y$, o por $x\nmid y$ si no lo es.
+    \item El conjunto de todos los divisores de $y$ se denota div$(y)$.
+\end{nott}
+
+\begin{obss}
+    \item Si $x\mid y$, es $y = ax$, es decir, $y \in (x)$, lo que equivale a $(y) \subset (x)$. Si además, $y\mid x$, se tiene $x = by$, es decir, $(x) \subset (y)$, obteniéndose $(x) = (y)$. Esto equivale a que $x$ e $y$ difieran en unidades, pues al ser $A$ dominio de integridad, no hay divisores de 0, y se tiene $y = ax = aby \iff 1 = ab \iff$ $a$ y $b$ son unidades. Se dice entonces que $x$ e $y$ son \textit{asociados}. \cite[p. ~37]{Rosenberger}
+    \item Se tiene que $U(A)\subset \text{ div } (y)$, pues si $x\in U(A)$, es $y = (y\inv{x})x$; y de igual forma, los asociados de $y: \ y\cdot U(A) = \{yx\mid x \in U(A)\} \subset \text{ div } (y)$.           
+\end{obss}
+
+\begin{deff}[Elemento irreducible]{\cite[p.~36]{GamboaAnillos}}
+    Sea $A$ un dominio de integridad y $x\in A^*$ tal que $x$ no es unidad. $x$ es \textit{irreducible} si y solo si sus únicos divisores son las unidades y sus asociados.
+\end{deff}
+
+\begin{deff}[Elemento primo]{\cite[p.~36]{GamboaAnillos}}
+    Sea $A$ un dominio de integridad y $x\in A^*$ tal que $x$ no es unidad. $x$ es \textit{primo} si y solo si genera un ideal primo.
+\end{deff}
+
+\begin{obss}
+        \item En $\Z$, los elementos primos son los números primos usuales.
+        \item Si un elemento es primo, entonces es irreducible. Sea $p = xy$ primo en $A$. Como $xy = p \in (p)$, es $x\in (p)$ o $y\in (p)$. En el primer caso, es $x = ap$, y se tiene $p = apy$. Por ser $A$ dominio de integridad es $1 = ay$, por lo que $y$ es unidad $x$ es el producto de $p$ por una unidad. En el segundo caso se obtiene de igual manera que $p$ es producto de unidades y $p$ por unidades, y se concluye que $p$ es irreducible.
+        \item En general, el recíproco no es cierto. Sea el anillo cociente $ A = \Z[X]/(X^2 + 5)$. $A$ es dominio de integridad por ser $X^2 + 5$ primo. Se tiene que $[2]\in A$ es un elemento irreducible, pero se tiene que $([2])\ni [2]\cdot[3] =[6] = [1-X^2] = [1 + X]\cdot [1-X]$, por lo que el ideal $([2])$ contiene un elemento que es producto de dos elementos que no pertenecen a él, por lo que no es primo. Se observa además que la factorización de $[6]$ no es única.
+\end{obss}
+
+    A pesar de que los elementos irreducibles no sean primos en general, hay un cierto tipo de anillos donde sí lo son, es decir, en él se cumple que un elemento es primo si y solo si es irreducible. Tal como se mostró en el ejemplo anterior, esta cuestión está relacionada con la factorización de los elementos del anillo.
+
+\begin{deff}[Dominio de factorización única]{\cite[p.~37]{Rosenberger}}
+    Sea $A$ un dominio de integridad. $A$ es un \textit{dominio de factorización única} (DFU) si para todo elemento $x\in A^*$ tal que $x\not\in U(A)$, $x$ se puede factorizar de manera única (salvo producto por unidades) como el producto finito de elementos irreducibles.
+\end{deff}
+
+\begin{obs}
+    Como en un dominio de integridad el producto es conmutativo, la permutación de elementos en la factorización no influye en su unicidad.
+\end{obs}
+
+\begin{prop}[En un DFU todo irreducible es primo.]\end{prop}
+\begin{dem}{\cite[p.~38]{Rosenberger}}
+    Sean $A$ un dominio de factorización única, $p\in A$ un elemento irreducible de $A$ y $x,y\in A$ tales que $xy \in (p)$. Entonces, $p$ será primo si es $x \in (p)$ o $y \in (p)$. Veamos: 
+
+    \item Si $x$ o $y$ es 0, se satisface trivialmente por ser $A$ dominio de integridad. Si $x$ es unidad, $p$ divide a $y$, y recíprocamente, si $y$ es unidad, $p$ divide a $x$. Supóngase entonces que $x,y\not\in U(A)$ no nulos. Como $xy \in (p)$, $p$ divide a $xy$ y se puede expresar como $xy = pq$ con $q\in A$. Por otro lado, al ser dominio de factorización única, tanto $x$ como $y$ se pueden factorizar de manera única en elementos irreducibles 
+    \[x = \alpha_1 \ldots \alpha_n \ \text{ y }\ y = \beta_1 \ldots \beta_m ,\]
+
+    por lo que el producto $xy$ se puede expresar como 
+    \[xy = \alpha_1 \ldots \alpha_n\beta_1 \ldots \beta_m = pq.\]
+
+    \item Como $p$ es irreducible y la factorización es única salvo por unidades, se tiene que $p = \alpha_i\cdot u_i$ o $p = \beta_j\cdot u_j$, con $u_i,u_j$ unidades. Por lo tanto, $x = px'$ o $y = py'$, donde $x',y'$ son, respectivamente, el producto del resto de elementos irreducibles y unidades. Por lo tanto, $p$ divide a $x$ o a $y$, es decir $x \in (p)$ o $y \in (p)$, y $p$ es primo.
+\end{dem}
+    
+
+
+\begin{obs}
+    En algunos textos como \cite{GamboaAnillos}, se define un dominio de factorización única como aquel dominio de integridad en el que todo irreducible es primo, y en el que todo elemento no nulo no unidad se puede factorizar en irreducibles. Ambas definiciones son idénticas en el sentido de que una se puede derivar de la otra. Una demostración de esta afirmación se puede encontrar en \cite[pp.~37-38]{Rosenberger}
+\end{obs}
+
+\begin{deff}[Dominio de ideales principales]{\cite[p.~39]{GamboaAnillos}}
+    Sea $A$ un dominio de integridad. $A$ es \textit{dominio de ideales principales} (DIP) si todo ideal $I$ de $A$ es principal.
+\end{deff}
+
+\begin{prop}[En un DIP todo ideal primo \begin{segRevision}no nulo \end{segRevision}es maximal.]\end{prop}
+
+\begin{dem}{\cite[p.~39]{GamboaAnillos}}
+    Sean $A$ un dominio de ideales principales, $a\in A$ primo, e $I$ un ideal de $A$ que contiene al ideal generado por $a$: $(a) \subset I$. Por ser $A$ un dominio de ideales principales existe $b\in A$ tal que $I$ es generado por $b$, $I = (b)$, por lo que es $b\mid a$. Al ser $a$ primo, es irreducible, y $b$ deberá ser una unidad o un asociado de $a$. En el primer caso, es $I = A$, mientras que en el segundo es $I = (a)$. En conclusión, los únicos ideales que contienen a $(a)$ son el $(a)$ y $A$.
+\end{dem}
+
+Se tiene además que un dominio de ideales principales es un dominio de factorización única. \cite[p.~40]{Rosenberger}
+
+\begin{Revision}
+    \begin{ejs}
+        \item $\Z$ es un dominio de ideales principales, pues todos sus ideales son de la forma $n\Z = (n)$. Así, los números primos, $p$, generan ideales maximales $(p)$, y mediante la Proposición \ref{prop:IdealmaximalCuerpo}, se deduce que los anillos cocientes $\Z_p$ son cuerpos.
+    \end{ejs}
+\end{Revision}
+
+
+
+\begin{deff}[Dominio euclídeo]{\cite[p.~43]{Rosenberger}}
+    Sea $A$ un dominio de integridad. $A$ es \textit{dominio euclídeo} (DE) si existe una función $\norm{\cdot} \colon A^* \to \N$, llamada norma euclídea, satisfaciendo los siguientes axiomas:
+    \begin{enumerate}
+        \item Para todo $x,y\in A^*$ \[\norm{x} \leq\norm{xy}\]
+        \item (\textit{Algoritmo de la división}) Para todo $y\in A, x \in A^*$, existen $q,r \in A$, tales que \[y =qx + r,\] donde $r = 0 \text{ o bien } \norm{r} < \norm{x}$.
+    \end{enumerate}
+\end{deff}
+
+\begin{obss}
+        \item El primer axioma se basa en que el producto de elementos nunca debe hacer decrecer la norma: solo la aumenta o la iguala.
+        \item El segundo axioma \begin{Revision}es una generalización de\end{Revision} la división usual de los números enteros, donde $y$ es el dividendo, $x$ el divisor, $q$ el cociente, y $r$ el resto.
+        \item Para evitar complicaciones, se suele evitar definir una norma para el cero del anillo.
+        \item En $\Z$, la función $\norm{x} = |x|$ es una norma.
+\end{obss}
+
+    \noindent A raíz de la definición se pueden deducir las siguientes propiedades de la norma euclídea:{\cite[p.~44]{Rosenberger}}
+        \begin{enumerate}[label=\roman*)]
+            \item La norma del uno es mínima.
+            
+            \item $\norm{u} = \norm{1} \iff u$ es unidad.
+                
+            \item Si $x$ e $y$ son asociados, entonces $\norm{x} = \norm{y}$.
+        
+            \item Si $y$ no es unidad, entonces $\norm{x} < \norm{xy}$.
+        \end{enumerate}
+
+        
+
+\begin{prop}[Un DE es un DIP.]\label{resultado:op_cocientes}\end{prop}
+
+\begin{dem}{\cite[p.~38]{GamboaAnillos}, \cite[p.~45]{Rosenberger}}
+      Sea $A$ dominio euclídeo e $I$ un ideal suyo. Si $I$ es trivial, es $I = (0)$ principal. Supóngase entonces $I$ no trivial y $x\in I^*$ un elemento minimal de $I$: $\norm{x}\leq \norm{y},\forall y\in I^*$, que existe por estar $\N$ bien ordenado \cite[p.~89]{LenguajePineda}. Por ser $A$ dominio euclídeo, cualquier elemento $y\in I$ se puede expresar de la forma $y = qx + r$ con $\norm{r} < \norm{x}$ o $r = 0$. En el primer caso se tiene $y-qx = r$, y por ser $x,y\in I$, es $r\in I$, llegando a una contradicción, pues debe ser $\norm{r} < \norm{x}$, pero se ha tomado $x$ minimal en $I^*$. Será entonces $r = 0$, y se tiene $y=qx$, es decir, todo elemento $y$ de $I$ se puede expresar como múltiplo de $x$, y se tiene $I = (x)$.
+\end{dem}
+
+\begin{obs}
+    Se ha obtenido que si $A$ es un dominio euclídeo, entonces $A$ es un dominio de ideales principales, por lo que a su vez es también un dominio de factorización única. En consecuencia, todo elemento de $A$ no nulo no unidad se puede factorizar de forma única en elementos irreducibles. Además, por ser $A$ un DIP, todo elemento irreducible $x\in A$ genera un ideal maximal $I = (x)$. Se tiene entonces que el anillo cociente $A/I$ es un cuerpo \begin{Revision}por la Proposición \ref{prop:IdealmaximalCuerpo}\end{Revision}. Por otro lado, $A$ es dominio euclídeo, por lo que todo elemento de $A$ se puede expresar de la forma $y = qx + r$ con $r = 0 $ o $\norm{r} < \norm{x}$. Si $r = 0$, se tiene $y = qx \in (x)$, es decir, $y$ pertenece a la clase $[0]$ en $A/I$. Si $\norm{r} < \norm{x}$, se tiene $y = qx + r \iff y - r = qx \in (x)$, es decir, $y$ pertenece a la clase $[r]$ en $A/I$. En consecuencia, los representantes de las clases de equivalencia de $A/I$ se pueden elegir de tal forma que: o es 0, o su norma euclídea es menor que la de $x$.
+    
+    \item El resultado fundamental de lo explicado es el siguiente: en un anillo cociente $A/I$, la suma y el producto se hacen vía representantes: $[a] + [b] = [a + b]$ y $[a][b] = [ab]$, y dicha suma o producto en $A$ puede resultar en un elemento cuya clase a la que pertenece se desconozca. Si se tiene un elemento $y\in A$ y no se sabe a qué clase pertenece, solo hay que dividirlo por $x$ y tomar el resto $r$ como su representante. 
+    
+
+\end{obs}
+
+
+
+
+
+
+\begin{prop}[Si \tit{K} es un cuerpo, {\tit{K}[\tit{X}]} es DE.]\label{prop:K_cuerpo_K[X]_DE}\end{prop}
+
+\begin{dem}{\cite[p.~53]{Rosenberger}}
+    Sea $K$ un cuerpo, $f,g$ polinomios no nulos de $K[X]$ y la función $\gr{}$, grado de polinomios. El grado de un polinomio no nulo es un entero no negativo, pues los índices de los coeficientes empiezan desde el 0, y hay una cantidad finita de ellos. Por lo tanto, se tiene que $\gr{f} \leq \gr{f} + \gr{g} = \gr{fg}$ por \ref{lema:grado_polinomios} y no tener $K$ divisores de 0.
+    \item El segundo axioma se demuestra construyendo un \textit{algoritmo de división} para \textit{$K[X]$}:
+    \begin{itemize}
+        \item Si $\gr{g} < \gr{f}$, se tiene $g = qf + r$ con $q = 0$ y $r = g$.
+        \item Sea $\gr{g}  = m\geq n =\gr{f}$. Se pueden representar $g$ y $f$ como
+        \vspace{-0.2em}
+            \[ g = b_mX^m + b_{m-1}X^{m-1} +\ldots + b_0 \quad \text{ con } b_m \neq 0.\]
+            \[ f = a_nX^n + a_{n-1}X^{n-1} +\ldots + a_0 \quad \text{ con } a_n \neq 0.\]
+            Sea $q_1 = \frac{b_m}{a_n}X^{m-n}$, que pertenece a $K[X]$ por ser $K$ cuerpo y $m\geq n$ \footnote{La notación $\frac{b_m}{a_n}$ significa $b_m\inv{a_n}$}. Se tiene entonces que 
+            \vspace{-1em}
+            \begin{align*}
+             \hspace{-2.6pt}g_1 = g - q_1f &= (b_mX^m + b_{m-1}X^{m-1} +\ldots + b_0) -\frac{b_m}{a_n}X^{m-n}(a_nX^n + a_{n-1}X^{n-1} +\ldots + a_0)\\
+             &= 0X^m + (b_{m-1}-\frac{b_m}{a_n}a_{n-1})X^{m-1} + \ldots + (b_{m-n}-\frac{b_{m}}{a_n}a_{0})X^{m-n} + \ldots + b_0,
+        \end{align*}
+        con $\gr{g} > \gr{g_1}$. Inductivamente se llega a $r = g_n = g - qf$, con $q = (q_1 + \ldots + q_n)$, y es $r = 0$ o $\gr{r} < \gr{f}$.
+
+        Además, se puede afirmar que los $q$ y $r$ obtenidos son únicos. Sean $q \neq q'$ y $r\neq r'$ los cocientes y los restos de dividir $g$ por $f$:
+        \vspace{-1em}
+            \begin{align*}
+             g &= qf + r\\
+                &= q'f + r'
+            \end{align*}
+        
+        con $\gr{r}, \gr {r'} < \gr {f}$. Se tiene entonces $r - r' = (q'-q)f$. Pero $\gr{r-r'} < \gr{f}$, por \ref{lema:grado_polinomios} ii), y $\gr{(q'-q)f} = \gr{q'-q} + \gr{f} \geq \gr{f}$, por \ref{lema:grado_polinomios} i) y no tener divisores de cero, llegando a una contradicción: $\gr{r-r'}  = \gr{(q'-q)f} \geq \gr{f}$. Se concluye por tanto que $q$ y $r$ son únicos.
+    \end{itemize}
+\end{dem}
+
+\begin{Revision}
+    \begin{ejs}\label{ej:algoritmo_division_polinomio}
+        \item Sean $g = 4X^4 + 2X^2 + 3$ y $f = 2X^2 + X$ en $\Q[X]$. Entonces su división es
+        \[
+            \begin{array}{rl|l}
+                &4X^4 + 2X^2 + 3 & 2X^2 + X \\\cline{3-3} 
+                - & \underline{4X^4 + 2X^3\phantom{X+ 1x.}} & q_1 = 2X^2\\
+                g_1 =&-2X^3 + 2X^2 + 3 &  \\
+                -&\underline{-2X^3 - X^2\phantom{X+ 1x}} & q_2 = -X\\
+                g_2 =&3X^2 + 3&  \\
+                -&\underline{3X^2 + \frac{3}{2}X\phantom{{ X.....} + 1}} & q_3= \frac{3}{2}\\
+                r =&-\frac{3}{2}X + 3 &  q = 2X^2 -X + \frac{3}{2}
+            \end{array}
+        \]
+        De manera que \(g_1 = g - q_1f;\ g_2 = g_1 - q_2f;\ r = g_2 - q_3f;\) y se puede expresar $g = qf+ r$ como $$ 4X^4 + 2X^2 + 3 = (2X^2 -X + \frac{3}{2})\cdot (2X^2 + X) + (-\frac{3}{2}X + 3).$$
+
+        \item Sean $g = X^6 + X^3 + 1$ y $f = X^4 + X^2 + 1$ en $\Z_2[X]$. Entonces 
+        
+        \[
+            \begin{array}{rl|l}
+                &X^6 + X^3 + 1 & X^4 + X^2 + 1 \\\cline{3-3} 
+                + & \underline{X^6 + X^4 + X^2\phantom{Xlll}} & q_1 = X^2\\
+                 g_1 =&X^4 + X^3 + X^2 + 1 &  \\
+                + &\underline{X^4 + X^2 + 1\phantom{{ X} + 1}} &q_2 =1\\
+                 r =&X^3 &  q = X^2 +1
+            \end{array}
+        \]
+        
+        Y es $$X^6 + X^3 + 1 = (X^2 + 1)\cdot (X^4 +X^2 + 1) + X^3.$$En este ejemplo se ha optado por expresar cada paso sumando, es decir, $g_1 = g + q_1f$ y $r = g_1 + q_2f$, pues en $\Z_2[X]$ cada elemento es su propio opuesto, y por lo tanto sumar y restar es la misma operación.
+    \end{ejs}
+\end{Revision}
+
+\begin{obss} \label{resultado:inv_cuerpos}
+    \item El algoritmo de división para polinomios con coeficientes en un cuerpo se basa en la existencia de elemento inverso para el coeficiente director de $f$. Si este fuera el $1$ ($f$ mónico), la condición de cuerpo podría relajarse a dominio de integridad. De forma más general, si se tiene $f,g'$ con $\gr{g'} \geq \gr{f}$, y el coeficiente director de $f$ es $a$, el polinomio $g'$ debe estar multiplicado por $a^k$, con $k = \gr{g'} -\gr{f} + 1$ el número máximo de pasos del algoritmo, para así poder aplicar el algoritmo con $g = a^kg'$ y $f$, asegurándose de que en cada paso $i$, $a$ pueda dividir al coeficiente director de $g_i, \ i = 0,1,\ldots k-1$. \begin{Revision}Se aprecia que en el Ejemplo \ref{ej:algoritmo_division_polinomio}, si se hubieran definido $f$ y $g$ sobre $\Z[X]$, no se podría haber efectuado la división, pues el último paso necesita del cálculo del inverso de 2 en $\Z$ ($\frac{1}{2}$ en $\Q$), el cual no está definido.\end{Revision}
+        
+    \item Continuando con la observación de la Proposición \ref{resultado:op_cocientes}, dado un cuerpo $K$, su anillo de polinomios $K[X]$ es dominio euclídeo y se pueden identificar las clases de $K[X]/(f)$, con $f$ polinomio no nulo, con los restos al dividir por $f$ en $K[X]$. Para realizar esta división se necesita encontrar el elemento inverso del coeficiente director de $f$, $a$, en el cuerpo $K$. En la práctica se suele multiplicar $f$ por $\inv{a}$, pues $(f) = (\inv{a}f)$ por ser $a$ unidad, y se divide por $f' = \inv{a}f $, que es mónico. Queda entonces por resolver el problema de obtención del inverso en un cuerpo. Específicamente, en este texto se tratará la obtención del inverso en un cuerpo finito. El problema consiste en el siguiente: dado $x\in \F^*$, encontrar $y\in \F^*$ tal que $xy = 1$. Si $\F$ fuera un cuerpo de la forma $\F = A/I$, $A$ dominio euclídeo e $I = (p)$ ideal maximal, la ecuación podría reformularse de la siguiente forma $[x][y] = [1]\iff \eqmod{xy}{1}{p}\iff xy - 1 = pk' \iff xy + pk = 1$, con $k'\in A$ y $k = -k'$. Se tiene entonces que el problema es equivalente a resolver la ecuación $xy + pk = 1$ para $y$ y $k$, con $x$ y $p$ dados. Aunque parezca que añadir una nueva incógnita puede complicar la resolución, se ha pasado de operar con elementos de $A/I$, a operar con elementos de $A$, que es más simple. Además, en ciertos anillos se puede resolver dicha ecuación de manera explícita, siempre que se satisfagan ciertas condiciones. En el resto de esta sección se verá que, efectivamente, se puede resolver dicha ecuación y, por lo tanto, calcular inversos de elementos en $\F = A/I$.
+
+    \item Por ejemplo, el inverso de $[X^2 + X + 1]$ en $\Z_2[X]/(X^4 + X + 1)$ es $[X^2 + X]$, pues se verifica $[X^2 + X + 1]\cdot [X^2 + X] = [X^4 + X] = [1]$. Para obtener $[X^2 + X]$, se expresa el problema de la forma $a\cdot(X^2 + X + 1) + b\cdot(X^4 + X + 1) = 1$ y se resuelve dicha ecuación. Una solución es $a = X^2 + X$, $b = 1$, pues es $(X^2 + X)\cdot(X^2 + X + 1) + 1\cdot(X^4 + X + 1) = 1$. El cómo se han obtenido $a$ y $b$ se \begin{Revision}estudiará\end{Revision} más adelante, tras la explicación del algoritmo de Euclides.
+\end{obss}
+
+\medskip
+
+\begin{deff}[Máximo común divisor]{\cite[p.~40]{GamboaAnillos}}
+    \item Sea $A$ un anillo y $x,y\in A^*$. $z\in A$ es un máximo común divisor de $x$ y de $y$ si divide a ambos y es a su vez múltiplo de cualquier otro divisor de $x$ y de $y$. Es decir, $z\mid x,\ z\mid y$, y para todo $d\in A$ con $d\mid x, \ d\mid y$, se tiene $d\mid z$. Se denota como mcd$(x,y)$.
+\end{deff}
+
+\begin{deff}[Mínimo común múltiplo]{\cite[p.~40]{GamboaAnillos}}
+    \item Sea $A$ un anillo y $x,y\in A^*$. $z\in A$ es un mínimo común múltiplo de $x$ y de $y$ si es múltiplo de ambos y es a su vez divisor de cualquier otro múltiplo de $x$ e $y$. Es decir, $x\mid z,\ y\mid z$, y para todo $m\in A$ con $x\mid m, \ y\mid m$, se tiene $z\mid m$. Se denota como mcm$(x,y)$.
+\end{deff}
+
+
+
+\begin{prop}[En un DIP siempre existen mcd y mcm.]\end{prop}
+
+\begin{dem}{\cite[p.~41]{GamboaAnillos}}
+    Sean $x,y \in A^*$, $A$ dominio de ideales principales.
+        \item Sea $ (x) + (y) =(x,y)$ el ideal generado por $x$ e $y$. Como $A$ es DIP será $(z) = (x,y)$ para cierto $z\in A$. Se tiene que $z\mid x$ y $z\mid y$. Además, si $d$ divide a $x$ e $y$, es $(z) = (x) + (y)  \subset (d)$, por lo que $d\mid z$ y $z$ cumple con los axiomas del máximo común divisor.
+
+        \item Por otro lado, sea el ideal generado por $(x) \cap (y)$. Al ser $A$ DIP, existe $z\in A$ tal que $(z) = (x) \cap (y)$. Por la observación anterior, se tiene que $z$ es el mínimo común múltiplo de $x$ e $y$. 
+\end{dem}
+
+\begin{prop}[Identidad de Bézout.]
+\item Sean $x,y\in A^*$ con $(x,y)$ generando un ideal principal. Entonces existe $z = \mcd{x,y}$ y $a,b\in A$ tales que \[z = ax + by\]
+\end{prop}
+
+\begin{dem}{\cite[p.~42]{GamboaAnillos}}
+    Sea $z\in A$ con $(z) = (x) + (y)$. Entonces, se tiene que $(x) \subset (z)$ e $(y) \subset (z)$, es decir, $z\mid x$ y $z\mid y$, por lo que $z$ es divisor común de $x,y$. Además, por ser $z$ un elemento de $(x) + (y)$, se podrá expresar de la forma $z = ax + by$ para algún $a,b\in A$. Por ser $z$ generador de $(x) + (y)$, si $t$ es otro divisor de $x,y$, entonces deberá ser $t$ divisor de $z$, y se concluye que $z = \mcd{x,y}$.
+\end{dem}
+
+\begin{obss}
+    \item Evidentemente, si $A$ fuera dominio de ideales principales, se tiene que todo $x,y\in A^*$ cumplen una identidad de Bézout $z = ax + by$, con $a,b\in A$ y $z = \mcd{x,y}$.
+
+    \item A una ecuación de la forma $c = ax + by$, con $c\in A$, se le llama ecuación diofántica lineal con dos incógnitas \cite[p.~50]{GamboaAnillos}. Para su resolución, $x$ e $y$ deberán satisfacer una identidad de Bézout $\mcd{x,y} = z = \alpha x + \beta y$ y $z$ deberá dividir a $c$, es decir $c = dz$, obteniéndose así $dz = d\alpha x + d\beta y$ y será $c = ax + by$, con $a = d\alpha$ y $b = d\beta$.
+
+    \item Cuando sea $z = 1 = \mcd{x,y}$ se dirá que $x$ e $y$ son \textit{primos entre sí}. 
+    
+\end{obss}
+
+\begin{prop}[Algoritmo de Euclides para el máximo común divisor.]
+    \item Sea $A$ un dominio euclídeo y sean $x,y\in A^*$ tales que $\norm{y} \geq \norm{x}$. Se inicializan los valores $r_0 = y$ y $r_1 = x$. Por ser $A$ dominio euclídeo se puede obtener la siguiente expresión: 
+    \[
+    r_0 = q_1r_1 + r_2
+    \]
+    con $r_2 = 0$, en cuyo caso se termina el algoritmo; o \begin{Revision}$\norm{r_1}> \norm{r_2}$\end{Revision}, en cuyo caso se continúa el algoritmo:    \vspace{-0.5em}
+        \begin{align*}
+            r_1 &= q_2r_2 + r_3 \\
+            &\quad \quad\vdots\\
+            r_{n-2} &= q_{n-1}r_{n-1} + r_n\\
+            r_{n-1} &= q_nr_n
+        \end{align*} 
+    El algoritmo es finito, pues se tiene una sucesión descendiente \begin{Revision}$\norm{r_1} > \norm{r_2}> \norm{r_3}\ldots$\end{Revision} en $\N$, por lo que deberá ser 0 el último resto. Este algoritmo se denomina \textit{algoritmo de Euclides}, y se afirma que el último resto no nulo es el máximo común divisor de $x$ e $y$.    
+\end{prop}
+
+\begin{dem}{\cite[p.~51]{GamboaAnillos}}
+\begin{itemize}[label=--]
+    \item Si $r_n$ divide a $r_0 = y$ y a $r_1 = x$:
+    
+    Empezando por la última ecuación se tiene $r_n \mid r_{n-1}$. Por lo tanto, en la penúltima ecuación se tiene $r_n\mid (q_{n-1}r_{n-1} + r_n)$, y $r_n\mid r_{n-2}$. Procediendo de esta manera se llega a $r_n \mid r_1$ y $r_n \mid r_0$.
+    \item Si $z\mid x$ y $z\mid y$, entonces $z\mid r_n$:
+
+    Reformulando las ecuaciones se tiene:\vspace{-0.3em}
+    \begin{equation}
+        \begin{aligned}
+            r_0 - q_1r_1 \quad&=  r_2\\
+            r_1 - q_2r_2\quad &=  r_3 \\
+            \vdots\quad\quad\\
+            r_{n-2}- q_{n-1}r_{n-1} &=  r_n
+        \end{aligned}
+    \tag{*}
+    \label{ecEuclides_restos}
+    \end{equation}
+        En la primera ecuación se aprecia que si $z\mid r_0$ y $z\mid r_1$, se tiene $z\mid r_2$. De la misma manera, en la segunda ecuación $z\mid r_3$. Sucesivamente se llega a que $z\mid r_n$.
+\end{itemize}
+    \item Por ser $r_n$ divisor de $x$ e $y$, y ser $r_n$ múltiplo de cualquier divisor $z$ de $x,y$, se concluye que $\mcd{x,y} = r_n$.        
+\end{dem}
+
+\begin{prop}[El algoritmo de Euclides extendido permite calcular los coeficientes de la identidad de Bézout.]\end{prop}
+
+\begin{dem}{\cite[p.~53]{GamboaAnillos}}
+    Sea la identidad de Bézout $ax + by = 1$ con $x,y\in A^*$ dominio euclídeo y $a,b$ a determinar. Para resolver la identidad se utilizará el algoritmo de Euclides escrito como en (\ref{ecEuclides_restos}). Si $x$ e $y$ son primos entre sí se tiene $\mcd{x,y}$ = 1, y expresando $r_0 = y$ y $r_1 = x$ en función del resto de elementos al sustituir en los $r_i, i\geq2$, se tiene:
+    
+    \begin{Revision}%
+        \begin{equation}
+            \begin{aligned}
+                r_2 &= r_0 - q_1r_1 \\
+                r_3 &= r_1 - q_2r_2 = r_1 -q_2(r_0 - q_1r_1) \\
+                &=-q_2r_0 + (1+q_1q_2)r_1\\
+                r_4 &= r_2 - q_3r_3 = (r_0 - q_1r_1) - q_3(-q_2r_0 + (1+q_1q_2)r_1) \\
+                &=(1+q_2q_3)r_0 +(-q_1-q_3(1+q_1q_2))r_1 \\
+                &\ \ \vdots \\
+                1 &= r_{n-2}- q_{n-1}r_{n-1} = b r_0 + a r_1 = by + ax,
+            \end{aligned}
+            \tag{**}
+            \label{ec:EuclidesExtendidoBezout}
+        \end{equation} 
+    \end{Revision}%
+        obteniéndose explícitamente $a$ y $b$. Si se ha utilizado Bézout para calcular el inverso de $x$ módulo $y$, se tiene que dicho inverso es $a$, es decir, $\eqmod{xa}{1}{y}$.
+\end{dem}
+
+\begin{obs}
+    Aunque parezca que la obtención de $a$ y $b$ pueda llegar a ser muy tediosa, se demuestra a continuación que se pueden definir de manera recurrente:
+    
+    \begin{Revision}%
+        Sean $b_i$ los coeficientes de $r_0$  y $a_i$ los coeficientes de $r_1$ en (\ref{ec:EuclidesExtendidoBezout}), es decir, de la primera ecuación se obtiene $b_2 = 1$ y $a_2 = -q_1$; en la segunda ecuación es $b_3 = -q_2$ y $a_3 = (1+q_1q_2)$; y así sucesivamente hasta llegar a $b = b_n$ y $a = a_n$.
+    \end{Revision}%
+    Definiendo las dos primeras ecuaciones como
+       
+    \begin{equation}
+        \begin{aligned}
+            r_0 &= (1)r_0 + (0)r_1 \quad  && b_0 = 1; && a_0 = 0\\
+            r_1 &= (0)r_0 + (1)r_1 \quad  && b_1 = 0; && a_1 = 1       
+        \end{aligned}
+        \tag{***}
+        \label{inicializacion_coef_bezout}
+    \end{equation}
+        y suponiendo que los elementos $r_{i-2}$ y $r_{i-1}$ se pueden expresar en función de $r_0$ y $r_1$:
+    \begin{align*}
+        r_{i-2} &= b_{i-2}r_0 + a_{i-2}r_1  \\
+        r_{i-1} &= b_{i-1}r_0 + a_{i-1}r_1  
+    \end{align*}
+        Entonces, el término $r_i$ se puede expresar en función de $r_0$ y $r_1$:
+    \begin{align*}
+        r_i = r_{i-2} - q_{i-1}r_{i-1} &= (b_{i-2}r_0 + a_{i-2}r_1) -q_{i-1}(b_{i-1}r_0 + a_{i-1}r_1)  \\
+        &= (b_{i-2} -q_{i-1}b_{i-1})r_0 + (a_{i-2}-q_{i-1}a_{i-1})r_1\\
+        &= b_i r_0 + a_i r_1,
+    \end{align*}
+    donde $b_i = (b_{i-2} -q_{i-1}b_{i-1})$ y $a_i = (a_{i-2}-q_{i-1}a_{i-1})$.
+    
+    \item De forma general se utilizan tablas para expresarlo todo de forma compacta. Además, si solo fuera necesario calcular $a$ como inverso de $x$, no es necesario el cálculo de $b$, pues se pueden aplicar las recurrencias solamente en los $a_i$ para obtener $a$.
+\end{obs}
+
+\begin{ejs}\renewcommand{\arraystretch}{1.2}\label{Ejemplo:inversoEuclides}
+    \definecolor{miAzul}{RGB}{235, 243, 250}
+    \definecolor{miVerde}{RGB}{236, 248, 236}
+    \definecolor{miAmarillo}{RGB}{254, 249, 231}
+    \definecolor{miNaranja}{RGB}{252, 225, 208}
+    \definecolor{miRojo}{RGB}{253, 235, 235}
+
+    \begin{Revision}%
+    \item Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo $\Z_2[x]/(x^4 + x + 1)$.\\[1ex]
+    Se tiene $a\cdot(x^2 + x + 1) + b\cdot (x^4 + x + 1) = 1$, por lo que se inicializan $r_0 = (x^4 + x + 1)$ y $r_1 = (x^2 + x + 1)$. Mediante el algoritmo de Euclides se obtiene
+        \begin{center}
+               \[
+                \begin{array}{rl|l}
+                    &x^4 + x + 1 & x^2 + x + 1 \\\cline{3-3} 
+                    +&\underline{x^4 + x^3 + x^2 \phantom{{}+x^2 + 1}} & x^2\\
+                    &x^3 + x^2 + x + 1 &  \\
+                    +&\underline{x^3 + x^2 + x\phantom{{ }+ 1}} & x\\
+                    r_2 =& 1 &  q_1 = x^2 + x 
+                \end{array}
+                \]
+        \end{center}
+        Y se ha terminado el algoritmo en un paso. Para el cálculo de $a$, se inicializan $a_0 = 0$ y $a_1 = 1$ tal y como en (\ref{inicializacion_coef_bezout}). El siguiente término, $a_2$, se calcula haciendo $a_2 = a_0 - q_1a_1 = 0 - (x^2 + x)\cdot 1 = x^2 + x$. Como no hay más pasos, se concluye que $a = a_2 = x^2 + x$, y el inverso de $[x^2 + x + 1]$ en $\Z_2[x]/(x^4 + x + 1)$ es $[x^2 + x]$.
+        
+        En la siguiente tabla se expresan los términos de manera compacta:
+         \[
+                \begin{array}{|c|c|c|c|}
+                    \hline
+                    q_i     &  -          & \cellcolor{miNaranja}x^2 + x     & x^2 + x + 1 \\
+                    \hline
+                    r_i    &  \cellcolor{miRojo}x^4 + x + 1 & \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1  \\
+                    \hline
+                    r_{i+1} &  \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1           &  0        \\
+                    \hline
+                    a_i     &\cellcolor{miRojo}0            &  \cellcolor{miRojo}1          &  \cellcolor{miAzul}x^2 + x       \\
+                    \hline
+                \end{array}
+        \]
+         Donde los colores representan cada paso del algoritmo:%
+        \begin{center}
+        \vspace{-0.5em}
+            \textcolor{red}{Inicialización} $\to$ \textcolor{orange}{Primer paso} y \textcolor{blue}{Solución}.
+        \end{center} %
+        \vspace{-0.5em}
+    
+        \smallskip
+        
+        \item Calcular el inverso de $[x^7 + x + 1]$ en el cuerpo $\Z_2[x]/(x^8 + x^4 + x^3 + x + 1)$.\\[1ex]
+        Se tiene $a\cdot(x^7 + x + 1) + b\cdot (x^8 + x^4 + x^3 + x + 1) = 1$. Se inicializan $r_0 = x^8 + x^4 + x^3 + x + 1$, $r_1 = x^7 + x + 1$, $a_0 = 0$ y $a_1 = 1$.
+      
+        Los dos primeros pasos del algoritmo son:
+        \begin{center}\vspace{-1em}
+            \begin{tabular}{cc}
+                % --- FILA 1: Títulos y Divisiones ---
+                \hspace{-3em}
+                \begin{minipage}[t]{0.45\textwidth}
+                    \centering
+                    Primer paso:
+                   \[
+                    \begin{array}{rl|l}
+                        &x^8 + x^4 + x^3 + x + 1 & x^7 + x + 1 \\\cline{3-3} 
+                        +&\underline{x^8 + x^2 + x \phantom{{}+x^2 + 1}} & x\\
+                        &x^4 + x^3 + x^2 + 1 &  q_1 = x
+                    \end{array}
+                    \]
+                \end{minipage}
+                \hspace{-0.5em}
+                &
+                \begin{minipage}[t]{0.48\textwidth}
+                    \centering
+                    Segundo paso:
+                    \[
+                        \begin{array}{rl|l}
+                            &x^7 + x + 1 & x^4 + x^3 + x^2 + 1 \\\cline{3-3} 
+                            +& \underline{x^7 + x^6 + x^5 + x^3\phantom{{ }+ 1}} & x^3\\
+                            &x^6 + x^5 + x^3 + x + 1 &  \\
+                            +&\underline{x^6 + x^5 + x^4 + x^2\phantom{{ }+ 1}} & x^2\\
+                            &x^4 + x^3 + x^2 + x + 1 &  \\
+                            +&\underline{x^4 + x^3 + x^2 + 1\phantom{{ }^2 + 1}} & 1\\
+                            &x &  q_2 = x^3 + x^2 + 1
+                        \end{array}
+                    \]
+                \end{minipage}\\
+                % --- FILA 2: Textos alineados ---
+                \hspace{-3em}
+                \begin{minipage}[t]{0.45\textwidth}
+                    \vspace{0.5em}
+                    \centering
+                    $a_2 =  0 - x\cdot 1 = x$
+                \end{minipage}
+                \hspace{-0.5em}
+                &
+                \begin{minipage}[t]{0.48\textwidth}
+                    \vspace{0.35em}
+                    \centering
+                    $a_3 = 1 - (x^3 + x^2 + 1)\cdot x = x^4 + x^3 + x + 1$
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+        
+        En la tabla siguiente se expresa el algoritmo completo, obteniendo $[x^7]$ como el inverso de $[x^7 + x + 1]$ en $\Z_2[x]/(x^8 + x^4 + x^3 + x + 1)$.
+      
+            \[
+                    \begin{array}{|c|c|c|c|c|c|}
+                        \hline
+                        q_i     &  -          & \cellcolor{miNaranja}x       & \cellcolor{miAmarillo}x^3 + x^2 + 1 & \cellcolor{miVerde}x^3 + x^2 + x & x\\
+                        \hline
+                        r_i     & \cellcolor{miRojo}x^8 + x^4 + x^3 + x + 1 & \cellcolor{miRojo}x^7 + x + 1 & \cellcolor{miNaranja}x^4 + x^3 + x^2 + 1   & \cellcolor{miAmarillo}x & \cellcolor{miVerde}1       \\
+                        \hline
+                        r_{i+1} & \cellcolor{miRojo}x^7 + x + 1            & \cellcolor{miNaranja}x^4 + x^3 + x^2 + 1           & \cellcolor{miAmarillo} x   & \cellcolor{miVerde}1 & 0     \\
+                        \hline
+                        a_i     &\cellcolor{miRojo}0            & \cellcolor{miRojo} 1          & \cellcolor{miNaranja} x & \cellcolor{miAmarillo}x^4 + x^3 + x + 1& \cellcolor{miAzul}    x^7   \\
+                        \hline
+                    \end{array}
+            \] 
+            De nuevo, los colores representan los pasos:
+            \begin{center}
+            \vspace{-0.5em}
+                \textcolor{red}{Inicialización} $\to$ \textcolor{orange}{Primer paso}$\to$ \textcolor{yellow}{Segundo paso}$\to$ \textcolor{green}{Tercer paso} y \textcolor{blue}{Solución}.
+            \end{center} %
+            \vspace{-0.5em}
+    \end{Revision}
+\end{ejs}
+
+
+\bigskip
+En el resto de esta sección se introducirán resultados preliminares con el objetivo de fundamentar las demostraciones de los teoremas de la última sección. Se comenzará generalizando la definición de polinomio: en la \begin{segRevision}Definición\end{segRevision} \ref{definion:polinomios} vimos que se toman los anillos unitarios conmutativos $A$ y $B$, con $A$ subanillo de $B$ y $X$ como indeterminada en $B$, formando así el anillo de polinomios $A[X]$. Sin embargo, no se hizo mención alguna al anillo $B$. Solo que es un anillo más general que $A$ donde viven ciertos elementos, representados por la indeterminada $X$, que hace posible la definición de polinomio. Definamos de nuevo los polinomios sin apoyarnos en la existencia de tal anillo.
+
+\begin{deff}[Anillo de polinomios]{\cite[p.~149]{Hungerford}}\label{definicion:gen_polinomios}
+    Sea $A$ un anillo unitario conmutativo. Se define $A[X]$ como el conjunto de sucesiones de elementos de $A$: $(a_0, a_1, a_2, \ldots)$ tales que $a_i = 0$ para todo índice $i\geq 0 $ excepto para un número finito de índices. Se tiene entonces que $A[X]$ es un anillo unitario conmutativo, con la suma y producto definidos como:
+    \begin{align*}
+        (a_0, a_1, \ldots) + (b_0, b_1, \ldots) &= (a_0 + b_0, a_1 + b_1, \ldots)\\[1ex]
+        (a_0, a_1, \ldots) \cdot (b_0, b_1, \ldots) &= (c_0, c_1, \ldots)
+    \end{align*}
+    con $c_i = \sum\limits_{n=0}^i a_{i-n}b_n = a_ib_0 + a_{i-1}b_1 + \ldots + a_1b_{i-1} + a_0b_i = \sum\limits_{j + k=i} a_jb_k$.
+\end{deff}
+
+\begin{obs}
+    Se aprecia que dicha definición es análoga a la presentada en \ref{definion:polinomios}, donde el coeficiente de índice $i$ se corresponde con el coeficiente de $X^i$. Ahora no hace falta exigir la igualdad de cada elemento explícitamente, pues dos sucesiones en $A$ son iguales si y solo si todos sus coeficientes coinciden. 
+\end{obs}
+
+De esta forma, se pueden definir los polinomios sin necesidad de un anillo más general, aún desconocido. Por lo tanto, ¿cuál es la necesidad de definir el anillo de polinomios $A[X]$ como subanillo de un anillo $B$? Pues que el uso de la indeterminada $X$ es más cercano e intuitivo que la de sucesiones, y permite definir la función \textit{evaluación} de manera natural:
+
+\begin{deff}[Evaluación de polinomios]{\cite[p.~112]{GamboaAnillos}}
+    Sean $A$ y $B$ anillos unitarios conmutativos con $A$ subanillo de $B$, $A[X]$ el anillo de polinomios en $A$ con $X\in B$ indeterminada, y sea $\beta \in B$. Se define la evaluación en $\beta$ como la aplicación:
+    
+    \[
+    \begin{array}{rcl}
+    \evb : A[X] & \longrightarrow & B \\[1ex]
+    p = a_0 + a_1X + \ldots + a_nX^n & \longmapsto & a_0 + a_1\beta + \ldots + a_n\beta^n
+    \end{array}
+    \]
+\end{deff}
+
+\begin{obs}
+    La aplicación $\evb$ transforma polinomios de $A[X]$ en elementos de $B$ al sustituir la indeterminada $X$ por $\beta$. Esta función es un homomorfismo y se pueden estudiar por tanto su imagen y su núcleo. Su imagen, $\im{\evb}$, se suele denotar por $A[\beta]$, pues surge de \textit{evaluar} $\beta$ en $X$. De igual forma, la imagen de un polinomio $p$ se denota como $p(\beta)$. Por otro lado, su núcleo $\ker (\evb)$ está formado por los polinomios $p\in A[X]$ con $\evb(p) = 0$. Se recuerda de \ref{definicion:nucleo_homomorfismo}, que en el anillo cociente $A[X]/\ker (\evb)$ cada clase está formada por los elementos que tienen misma imagen, y que por el Teorema de isomorfía (\ref{teorema_isomorfia}) es $A[X]/\ker (\evb) \cong \im{\evb}$. Si $\evb$ fuera inyectiva, sería $A[X] \cong \im{\evb}$, mientras que si $\evb$ fuera sobreyectiva, sería $A[X]/\ker (\evb) \cong B$.
+\end{obs}
+
+
+\begin{deff}[Raíz de un polinomio]{\cite[p.~113]{GamboaAnillos}}
+    Sea $\beta \in B$ y $p\in A[X]$ un polinomio no nulo. Se dice que $\beta$ es raíz de $p$ si $p(\beta) = 0$. 
+\end{deff}
+
+\begin{lema}{}\label{lema:rufini}
+    Sea $A[X]$ dominio euclídeo, $p\in A[X]$ un polinomio no nulo y $\alpha\in A$ una raíz de $p$. Se tiene entonces que $p$ se puede expresar como \[p = (X-\alpha)q\] donde $q\in A[X]$ y $\gr{q} < \gr{p}$.
+\end{lema}
+
+\begin{dem}{\cite[pp.~54-55]{Rosenberger}}
+    Por ser $A[X]$ dominio euclídeo se tiene que \[p = (X-\alpha)q + r\] con $\gr{r} < \gr{X-\alpha}$ o $r = 0$. En el primer caso se tiene que $\gr{r} = 0$, pues es $\gr{X-\alpha} = 1$, por lo que $r$ es un elemento de $A$ no nulo. Sin embargo, $\alpha$ es una raíz de $p$, por lo que debe ser $p(\alpha) = 0q + r = 0$, y \begin{Revision}es\end{Revision} $r = 0$, en contra de la elección $\gr{r} < \gr{X-\alpha}$. Por lo tanto, debe ser $r = 0$, y se tiene $p = (X-\alpha)q$.
+\end{dem}
+
+\begin{obss}
+        \item Se tiene que $\alpha$ es raíz de $p$ si y solo si $(X-\alpha)\mid p$, pues si $(X-\alpha)\mid p$ es $p = (X-\alpha)q$, y es $p(\alpha) = 0q  = 0$, y $\alpha$ es raíz de $p$.  De aquí se deduce que si un polinomio $p$ es irreducible en $A[X]$, entonces no tiene raíces en $A$.
+        \item Si $p$ es un polinomio de grado $n$, entonces el número máximo de raíces de $p$ es $n$: si $\alpha_1$ es raíz de $p$, se tiene  $p = (X-\alpha_1)q_1$ con $\gr{q_1} < \gr{p} = n$. Si $\alpha_2$ es una raíz diferente, $(X-\alpha_2)$ deberá dividir a $q_1$, pues $(X-\alpha_2)\nmid (X-\alpha_1)$ por no ser $\alpha_2$ raíz  de $(X-\alpha_1)$. Por lo tanto, se tiene $p = (X-\alpha_1)(X-\alpha_2)q_2$ con $\gr{q_2} <\gr{q_1} < \gr{p} = n$. Continuando de forma sucesiva, la cadena más larga posible se da al haber $n$ raíces distintas, pues se tendrá $p =  (X-\alpha_1)\ldots(X-\alpha_n)q_n$ con $n = \gr{p}>\gr{q_1} \ldots> \gr{q_n} = 0$, y $q_n$ no tiene raíces por ser un elemento de $A$ no nulo.  
+\end{obss}
+
+\bigskip
+
+\begin{deff}[Multiplicidad de una raíz]{\cite[p.~185]{GamboaAnillos}}
+    Sea $p\in A[X]$ un polinomio y $\alpha \in A$ una raíz de $p$. Se denomina \textit{multiplicidad} de $\alpha$ al entero $\mu\geq1$ tal que \[ (X-\alpha)^\mu\mid p \quad \land \quad  (X-\alpha)^{\mu + 1}\nmid p\]
+    Cuando $\mu = 1$ se dirá que la raíz $\alpha$ es simple, mientras que si $\mu>1$, se dirá que $\alpha$ es múltiple.
+\end{deff}
+
+\begin{prop}[Identificación de una raíz simple.](\cite[p.~185]{GamboaAnillos})\label{proposicion:raiz simple-derivada}
+     \item En las condiciones del Lema \ref{lema:rufini} se tiene que $p = (X-\alpha)q_1$. Usando la derivada (\ref{definicion:derivada}) y las propiedades de la derivada del producto (\ref{lema:resultado_derivadas}) se tiene \[p' = (X-\alpha)'q_1 + (X-\alpha)q_1' = q_1 + (X-\alpha)q_1'\]Evaluando en $\alpha$ se tiene $p' (\alpha) = q_1(\alpha)$. Si $q_1 (\alpha) = 0$ se tiene que $\alpha$ es raíz de $q_1$, por lo que $(X-\alpha)\mid q_1$, y se puede expresar como $q_1 = (X-\alpha)q_2$, obteniendo que $p = (X-\alpha)^2q_2$, es decir $(X-\alpha)^2\mid p$, y $\alpha$ tiene multiplicidad $\geq2$. Si $q_1 (\alpha) \neq 0$, entonces $\alpha$ no es raíz de $q_1$ y $(X-\alpha)$ no divide a $q_1$, por lo que $(X-\alpha)^2\nmid p$ obteniéndose que $\alpha$ es una raíz simple de $p$ si y solo si $p'(\alpha) \neq 0$.
+\end{prop}
+
+\begin{obss}
+    \item En $\Q$ se tiene que el polinomio $p = X^2 - 2 \in \Q[X]$ es irreducible, y tiene como raíces tanto a $\sqrt{2}$ como a $-\sqrt{2}$. De esta forma, se ha tenido que definir $B$ como un anillo que contenga estos elementos, como puede serlo $\R$. Sin embargo, tomando $B = \R$, el polinomio $q = X^2 + 2$, también irreducible en $\Q[X]$, no tendría raíces en $B$, pues $\sqrt{-2}$ no es un elemento de $\R$.
+
+    \item Sean ahora $A=\Q$, $B= \R$ y la función evaluación $\operatorname{ev}_{\sqrt{2}}: \Q[X] \to \R$. El núcleo de ${ev}_{\sqrt{2}}$ está formado por los polinomios de $\Q[X]$ cuya imagen por $\operatorname{ev}_{\sqrt{2}}$ es $0$, es decir, todo polinomio producto de $p = X^2-2$, pues $\operatorname{ev}_{\sqrt{2}} (X^2-2) = 0$, y es $\ker(\operatorname{ev}_{\sqrt{2}}) = (p)$, el ideal generado por $X^2-2$. Además, por el Teorema de isomorfía se tiene que $Q[X]/\ker(\operatorname{ev}_{\sqrt{2}})$ es isomorfo a $\Q[\sqrt{2}]$, que es un cuerpo por ser $X^2-2$ irreducible.
+    
+    Se ha obtenido que dado un polinomio $p = X^2 - 2$, gracias a que $\sqrt{2}\in \R$, se ha podido aplicar el Teorema de isomorfía sin problemas. Sin embargo, tomando $q = X^2 + 2$, ahora no se puede definir $\operatorname{ev}_{\sqrt{-2}}: \Q[X] \to \R$, pues $\sqrt{-2}$ no es un elemento de $\R$.
+\end{obss}
+
+De la observación anterior, prima conocer si existe algún anillo $B$ donde existan todas las raíces de cualquier polinomio de $A[X]$, pues por el Lema \ref{lema:rufini}, si se toma $p\in A[X] \subset B[X]$, $p$ se puede expresar como producto de polinomios de $B[X]$ de la forma $p = c(X-\beta_1)^{\mu_1}(X-\beta_2)^{\mu_2}\ldots(X-\beta_n)^{\mu_n}$, donde $\mu_i$ es la multiplicidad de cada raíz $\beta_i$, y $c$ es el último polinomio (y por tanto, de grado 0) obtenido al aplicar reiteradamente \ref{lema:rufini} para obtener dicha factorización.
+
+\begin{deff}[Cuerpo algebraicamente cerrado]{\cite[p.~91]{Rosenberger}}
+Sea $K$ un cuerpo. Se dice que $K$ es \textit{algebraicamente cerrado} si todo polinomio no constante $p \in K[X]$ tiene al menos una raíz en $K$. Como consecuencia del Lema \ref{lema:rufini}, esto implica que todo polinomio en $K[X]$ se puede factorizar como producto de polinomios de grado 1.
+\end{deff}
+
+\begin{deff}[Clausura algebraica]{\cite[p.~92]{Rosenberger}}
+Sea $K$ un cuerpo. Una clausura algebraica de $K$, denotada como $\overline{K}$, es un cuerpo algebraicamente cerrado con $\overline{K} \supset K$ tal que no existe otro cuerpo contenido estrictamente en $\overline{K}$ que contenga a $K$ y que sea algebraicamente cerrado. Se tiene que $\overline{K}$ es el cuerpo formado por todas las raíces de polinomios de $K[X]$.\cite[VII.1.9.]{GamboaAnillos}
+
+\item Dado un cuerpo $K$, la existencia de su clausura algebraica $\overline{K}$ está garantizada. Además, es única salvo isomorfismo. La demostración de la existencia puede encontrarse en los teoremas 7.2.6 y 7.2.7 de \cite{Rosenberger}, mientras que la unicidad en los teoremas 7.2.8, 7.2.10 y 7.2.11. También se puede encontrar en VII.1.12. de \cite{GamboaAnillos}.
+\end{deff}
+
+\begin{prop}[La característica de un cuerpo finito es un número primo.]\label{caracteristica_primo}
+\end{prop}
+
+\begin{dem}{\cite[p.~411]{GamboaAnillos}}
+    Sea $\F$ un cuerpo finito y $\phi$ la aplicación
+    \[
+    \begin{array}{rcl}
+    \phi : \N^* & \longrightarrow & \F \\[1ex]
+            n & \longmapsto & \underbrace{1 +  \cdots + 1}_{n}
+    \end{array}
+    \]
+    Al ser $\F$ finito, $\phi$ no es inyectiva, por lo que existirán elementos distintos $a<b$ con $\phi(a) = \phi (b)$, y existe $k = b-a$ con $\phi(k) = \phi(b-a) = \phi (b) - \phi (a) = 0$. Sea $p$ el menor elemento de $\N^*$ con $\phi(p) = 0$. Entonces $p$ es primo, pues si no lo fuera, se podría factorizar como $p = qr$, con $0<q,r<p$ y se tendría $0 = \phi(p) = \phi(qr) = \phi(q)\phi(r)$, y por ser $\F$ dominio de integridad, deberá ser $\phi(q) = 0$ o $\phi(r) = 0$, en contra de la elección de $p$ como mínimo elemento con dicha propiedad. Tomando dicho elemento $p$ se define la aplicación 
+    \[
+    \begin{array}{rcl}
+    \overline{\phi} : \Z_p & \longrightarrow & \F \\[1ex]
+            n & \longmapsto & \phi(n)
+    \end{array}
+    \]
+    $\overline{\phi}$ es un homomorfismo inyectivo, por lo que por el Teorema de isomorfía se tiene que $\Z_p \cong \im{\overline{\phi}}$. Tal y como se ha definido $p$, este es la característica de $\F$ según la definición \ref{caracteristica}.
+    
+    A $\Z_p$ se le denomina el subcuerpo primo de $\F$. 
+    
+\end{dem}
+
+\begin{prop}[Sea p un número primo. Entonces la característica de $\overline{\Z_p}$ es $p$.] \leavevmode
+        \item \textit{Demostración}: $\overline{\Z_p}$ contiene todas las raíces de todos los polinomios de $\Z_p[X]$, por lo que en particular se tiene $\overline{\Z_p} \supset\Z_p$, cuya característica es $p$, por lo que $\overline{\Z_p}$ deberá tener también característica $p$.
+\end{prop}
+
+

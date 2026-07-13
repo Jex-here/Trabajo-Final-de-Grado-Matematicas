@@ -1,0 +1,135 @@
+\begin{Revision}
+    Para descifrar, simplemente se invierte el orden de las rondas y se aplican las transformaciones inversas, tal y como se muestra en la Figura \ref{Estructura_AES_Descifrado}.
+\end{Revision}
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[
+        >=latex,
+        box/.style={draw, rectangle, minimum width=4cm, minimum height=0.65cm, align=center},
+        sbox/.style={draw, rectangle, minimum width=3.4cm, minimum height=0.65cm, align=center},
+        kbox/.style={draw, rectangle, minimum width=2.8cm, minimum height=0.65cm, align=center}
+    ]
+
+    % ----------------------------------------------------
+    % Nodos iniciales
+    % ----------------------------------------------------
+    \node[box] (cifrado) {Texto cifrado $c = c_1c_2\ldots$};
+    \node[box, below=0.5cm of cifrado] (bloqueCif) {Bloque $c_i$ de texto cifrado};
+    
+    \draw[->] (cifrado) -- (bloqueCif);
+    % ----------------------------------------------------
+    % Inversa de Ronda n_r
+    % ----------------------------------------------------
+
+    \node[box, below=0.5cm of bloqueCif] (addRK_nr) {AddRoundKey};
+    \node[box, below=0.5cm of addRK_nr] (InvSR_nr) {InvShiftRows};
+    \node[box, below=0.5cm of InvSR_nr] (InvSB_nr) {InvSubBytes};
+
+    \draw[decorate, decoration={brace, amplitude=6pt, mirror}]
+        ($(addRK_nr.north west)+(-0.5,0)$) -- ($(InvSB_nr.south west)+(-0.5,0)$)
+        node[midway, left=0.3cm] {Inversa ronda $n_r$};
+    
+
+    
+    \draw[->] (bloqueCif) -- (addRK_nr);
+    
+    \draw[->] (addRK_nr) -- (InvSR_nr);
+    \draw[->] (InvSR_nr) -- (InvSB_nr);
+
+    % ----------------------------------------------------
+    % Inversa de Ronda n_r-1
+    % ----------------------------------------------------
+    
+    \node[box, below=0.5cm of InvSB_nr] (addRK_nr_1) {AddRoundKey};
+    \node[box, below=0.5cm of addRK_nr_1] (InvMC_nr_1) {InvMixColumns};
+    \node[box, below=0.5cm of InvMC_nr_1] (InvSR_nr_1) {InvShiftRows};
+    \node[box, below=0.5cm of InvSR_nr_1] (InvSB_nr_1) {InvSubBytes};
+
+    \draw[decorate, decoration={brace, amplitude=6pt, mirror}]
+        ($(addRK_nr_1.north west)+(-0.5,0)$) -- ($(InvSB_nr_1.south west)+(-0.5,0)$)
+        node[midway, left=0.3cm] {Inversa ronda $n_{r-1}$};
+    
+
+    \draw[->] (InvSB_nr) -- (addRK_nr_1);
+    \draw[->] (addRK_nr_1) -- (InvMC_nr_1);
+    \draw[->] (InvMC_nr_1) -- (InvSR_nr_1);
+    \draw[->] (InvSR_nr_1) -- (InvSB_nr_1);
+
+
+
+
+    % ----------------------------------------------------
+    % Inversa Ronda 1
+    % ----------------------------------------------------
+    
+    \node[box, below=2cm of InvSB_nr_1] (addRK_1) {AddRoundKey};
+    \node[box, below=0.5cm of addRK_1] (InvMC_1) {InvMixColumns};
+    \node[box, below=0.5cm of InvMC_1] (InvSR_1) {InvShiftRows};
+    \node[box, below=0.5cm of InvSR_1] (InvSB_1) {InvSubBytes};
+
+    \draw[decorate, decoration={brace, amplitude=6pt, mirror}]
+        ($(addRK_1.north west)+(-0.5,0)$) -- ($(InvSB_1.south west)+(-0.5,0)$)
+        node[midway, left=0.3cm] {Inversa ronda $1$};
+    
+
+    \draw[->] (addRK_1) -- (InvMC_1);
+    \draw[->] (InvMC_1) -- (InvSR_1);
+    \draw[->] (InvSR_1) -- (InvSB_1);        
+
+
+    % ----------------------------------------------------
+    % Puntos suspensivos
+    % ----------------------------------------------------
+
+    \draw[-] (InvSB_nr_1.south) -- ++(0,-0.6) coordinate (d1);
+    \draw[<-] (addRK_1.north) -- ++(0,0.6) coordinate (d2);
+    \draw[dotted, thick] (d1) -- (d2);
+    
+    % ----------------------------------------------------
+    % Inversa Ronda 0
+    % ----------------------------------------------------
+
+    \node[box, below=0.5cm of InvSB_1] (addRK_0) {AddRoundKey};
+    \draw[->] (InvSB_1) -- (addRK_0);
+
+    % ----------------------------------------------------
+    % Pintar la parte de las claves
+    % ----------------------------------------------------
+
+    \node[kbox, right=4cm of addRK_0] (k_0) {Clave $k_0$};
+    \node[kbox, below=1cm of k_0] (k) {Clave $k$};
+    \node[kbox] (k_1) at (k_0 |- addRK_1) {Clave $k_1$};
+    \node[kbox] (k_nr_1) at (k_0 |- addRK_nr_1) {Clave $k_{n_r-1}$};
+    \node[kbox] (k_nr) at (k_0 |- addRK_nr) {Clave $k_{n_r}$};
+
+    \draw[->] (k) -- (k_0);
+    \draw[->] (k_0) -- (k_1);
+    \draw[-] (k_1.north) -- ++(0,0.6) coordinate (e1);  
+    \draw[<-] (k_nr_1.south) -- ++(0,-0.6) coordinate (e2);
+    \draw[dotted, thick] (e1) -- (e2);
+    \draw[->] (k_nr_1) -- (k_nr);
+
+    \draw[->] (k_0) -- (addRK_0) node[midway, above] {$k_0$};
+    \draw[->] (k_1) -- (addRK_1) node[midway, above] {$k_1$};
+    \draw[->] (k_nr_1) -- (addRK_nr_1) node[midway, above] {$k_{n_r-1}$};
+    \draw[->] (k_nr) -- (addRK_nr) node[midway, above] {$k_{n_r}$};
+
+    % Llave KeyExpansion
+        \draw[decorate, decoration={brace, amplitude=6pt}]
+        ($(k_nr.north east)+(0.5,0)$) -- ($(k_0.south east)+(0.5,0)$)
+        node[midway, right=0.3cm, ] {\rotatebox{-90}{KeyExpansion}};
+
+    
+    % ----------------------------------------------------
+    % Texto claro final
+    % ----------------------------------------------------
+    \node[box, below=0.5cm of addRK_0] (bloqueClaro) {Bloque $m_i$ de texto claro};
+    \draw[->] (addRK_0) -- (bloqueClaro);
+
+    \node[box, below=0.5cm of bloqueClaro] (m) {Texto claro $m = m_1m_2\ldots$};
+    \draw[->] (bloqueClaro) -- (m);
+
+    \end{tikzpicture}
+    \caption{Algoritmo de descifrado de AES \cite[p.~111]{Understanding_Crypto}}
+    \label{Estructura_AES_Descifrado}
+\end{figure}

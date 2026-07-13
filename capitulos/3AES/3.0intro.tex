@@ -1,0 +1,235 @@
+Rijndael es un algoritmo de clave simétrica por bloques. Fue desarrollado en 1997 para dar solución a la propuesta del NIST (National Institute of Standards and Technology) sobre la creación de un nuevo estándar de seguridad, AES (Advanced Encryption Standard). El algoritmo Rijndael fue el ganador del concurso organizado, estableciéndose oficialmente en 2001 como el nuevo AES \cite{fips197up}. El documento oficial sobre el diseño de Rijndael se mantiene actualizado, y se puede encontrar en \cite{Rijndael}. Para conocer acerca de su funcionamiento también se puede consultar el documento publicado por el NIST \cite{fips197up}.
+
+AES cifra texto claro expresado en alfabeto binario: $\{0,1\}$, y devuelve texto cifrado también en binario. Cada bloque de AES está formado por una cadena de 128 bits, mientras que las claves pueden estar formadas por 128, 192 o 256 bits, dependiendo del grado de seguridad que se requiera. A la hora de transformar cada bloque de 128 bits de texto claro a texto cifrado, se realizan 10, 12 o 14 rondas, según si el tamaño de la clave es 128, 192 o 256, respectivamente. Todas las rondas realizan los mismos 4 algoritmos: \mbox{\textit{SubBytes}}, \mbox{\textit{ShiftRows}}, \mbox{\textit{MixColumns}} y \mbox{\textit{AddRoundKey}}; con la excepción de la última ronda, donde no se utiliza \mbox{\textit{MixColumns}}. En cada ronda se necesita una clave para cifrar, la cual se deriva de la clave proporcionada inicialmente mediante un algoritmo llamado \mbox{\textit{KeyExpansion}}.
+
+El algoritmo AES opera de la siguiente manera: los 128 bits de entrada se distribuyen en una matriz de $4 \times 4$, asignando a cada celda 1 byte (8 bits). Entonces, si los 128 bits se expresan como la cadena $a = a_0a_1\ldots a_{14}a_{15}$, con cada $a_i$ representando 1 byte, se tiene la matriz:
+\begin{center}
+\begin{tikzpicture}
+  \matrix [
+    matrix of math nodes,
+    % Aquí definimos que todas las celdas sean cuadrados exactos de 1.2cm
+    nodes={draw, minimum size=0.8cm, anchor=center},
+    % Esto solapa las líneas para que no salgan bordes dobles
+    column sep=-\pgflinewidth,
+    row sep=-\pgflinewidth
+  ] {
+    a_0 & a_4 & a_8 & a_{12} \\
+    a_1 & a_5 & a_9 & a_{13} \\
+    a_2 & a_6 & a_{10} & a_{14} \\
+    a_3 & a_7 & a_{11} & a_{15} \\
+  };
+\end{tikzpicture}
+\end{center}
+
+\begin{Revision}
+    \noindent Por ejemplo, supongamos que se quiere encriptar el texto ``$\xi$ ocupa 2 bytes''. Lo primero que se debe hacer es expresarlo en binario para poder introducirlo en la matriz. Así, tal y como se hizo en la Tabla \ref{HolaMundo_bin_hex}, se asocia a cada carácter 1, 2, 3 o 4 bytes. En este caso, todos ocupan 1 byte excepto $\xi$, que ocupa 2. En la Tabla \ref{Ksi_bin_hex} se muestra la conversión de cada carácter a hexadecimal y binario (véase \cite{symbl_unicode}). Luego, en la Tabla \ref{estado_hex} se muestra cómo se inicializa la matriz (se recuerda que se operará con bits, pero se expresa en hexadecimal para una mejor comprensión).
+
+    \begin{table}[H]
+    \centering
+        \begin{tabular}{ccc}
+            \hline
+            \textbf{Carácter} & \textbf{Hexadecimal} & \textbf{Binario} \\ \hline
+            $\xi$ & \texttt{ce} \texttt{be} & 11001110 10111110 \\
+            \textit{espacio} & \texttt{20} & 00100000 \\
+            o & \texttt{6f} & 01101111 \\
+            c & \texttt{63} & 01100011 \\
+            u & \texttt{75} & 01110101 \\
+            p & \texttt{70} & 01110000 \\
+            a & \texttt{61} & 01100001 \\
+            \textit{espacio} & \texttt{20} & 00100000 \\
+            2 & \texttt{32} & 00110010 \\
+            \textit{espacio} & \texttt{20} & 00100000 \\
+            b & \texttt{62} & 01100010 \\
+            y & \texttt{79} & 01111001 \\
+            t & \texttt{74} & 01110100 \\
+            e & \texttt{65} & 01100101 \\
+            s & \texttt{73} & 01110011 \\ \hline
+        \end{tabular}
+    \caption{Conversión ``$\xi$ ocupa 2 bytes'' a hexadecimal y binario.}
+    \label{Ksi_bin_hex}
+    \end{table}
+    
+    \vspace{-1em}
+    
+    \begin{table}[H]
+    \centering
+        \begin{tikzpicture}[>=latex]  % estilo de punta de flecha
+        
+          % --- Matriz izquierda (caracteres) ---
+          \matrix (M) [
+            matrix of math nodes,
+            nodes={draw, minimum size=0.8cm, anchor=center},
+            column sep=-\pgflinewidth,
+            row sep=-\pgflinewidth
+          ] {
+            |[draw=none]|     & \text{c} & \textvisiblespace & \text{y} \\
+            |[draw=none]|     & \text{u} & \text{2}          & \text{t} \\
+            \textvisiblespace & \text{p} & \textvisiblespace & \text{e} \\
+            \text{o}          & \text{a} & \text{b}          & \text{s} \\
+          };
+          
+          % Desplazamos la línea exactamente la mitad del grosor hacia adentro
+              \draw ([xshift=0.5\pgflinewidth]M-2-1.south west) -- 
+                    ([xshift=0.5\pgflinewidth]M-1-1.north west) -- 
+                    ([yshift=-0.5\pgflinewidth]M-1-1.north east);
+                    
+              % Añadimos el texto en el centro
+              \path (M-1-1.north west) rectangle (M-2-1.south east) node[midway] {$\xi$};
+                        
+        
+          % --- Matriz derecha (hexadecimal) ---
+          % La colocamos a 6.5 cm a la derecha de la primera
+          \matrix (N) [
+            matrix of math nodes,
+            nodes={draw, minimum size=0.8cm, anchor=center},
+            column sep=-\pgflinewidth,
+            row sep=-\pgflinewidth
+          ] at (6.5,0) {
+            \texttt{ce} & \texttt{63} & \texttt{20} & \texttt{79} \\
+            \texttt{be} & \texttt{75} & \texttt{32} & \texttt{74} \\
+            \texttt{20} & \texttt{70} & \texttt{20} & \texttt{65} \\
+            \texttt{6f} & \texttt{61} & \texttt{62} & \texttt{73} \\
+          };
+        
+          % --- Flecha de M a N ---
+          \draw[->, thick] (M.east) -- (N.west) node[midway, above, sloped]{};
+        
+        \end{tikzpicture}
+    \caption{Inicialización del \textit{estado} expresado en hexadecimal}
+    \label{estado_hex}
+\end{table}
+    
+A partir de aquí, cada paso de AES actúa sobre esta matriz, la cual se denomina \textit{estado}. Tras finalizar el proceso, el \textit{estado} estará compuesto por 16 celdas: $c_0, c_1, \ldots, c_{14},c_{15}$, distribuidas de la misma forma que los $a_i$, de manera que el bloque cifrado será $c = c_0c_1\ldots c_{14}c_{15}$. En la Figura \ref{Estructura_AES} se puede ver un diagrama de alto nivel de AES, compuesto por $n_r$ rondas. Cada ronda está formada por 3 capas, cuyo propósito es aportar confusión, difusión y un mezclado de la clave. Se aprecia también que la clave $k$, introducida al principio del algoritmo, no se inicializa en el \textit{estado}, sino que, a través de \textit{KeyExpansion}, se deriva en varias subclaves $k_i$ (llamadas \textit{RoundKey}), utilizadas en cada ronda.
+
+\end{Revision}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        >=latex,
+        box/.style={draw, rectangle, minimum width=4cm, minimum height=0.65cm, align=center},
+        sbox/.style={draw, rectangle, minimum width=3.4cm, minimum height=0.65cm, align=center},
+        kbox/.style={draw, rectangle, minimum width=2.8cm, minimum height=0.65cm, align=center},
+        dashbox/.style={draw, dashed, inner sep=0.2cm}
+    ]
+
+    % ----------------------------------------------------
+    % Nodos iniciales
+    % ----------------------------------------------------
+    \node[box] (mensaje) {Texto claro  $m = m_1m_2\ldots$};
+    \node[box, below=0.5cm of mensaje] (pt) {Bloque $m_i$ de texto claro  \\ 128 bits};
+    \node[kbox, right=4cm of pt] (key) {Clave $k$ \\ 128/192/256 bits};
+
+    % Key Addition 0
+    \node[box, below=0.7cm of pt] (ka0) {AddRoundKey};
+    \node[kbox] (t0) at (key |- ka0) {Clave $k_0$};
+
+    \draw[->] (mensaje) -- (pt);
+    \draw[->] (pt) -- (ka0);
+    \draw[->] (key) -- (t0);
+    \draw[->] (t0) -- (ka0) node[midway, above] {$k_0$};
+
+
+    % ----------------------------------------------------
+    % Round 1
+    % ----------------------------------------------------
+    \node[box, below=0.5cm of ka0] (bs1) {SubBytes};
+    \node[box, below=0.5cm of bs1] (sr1) {ShiftRows};
+    \node[box, below=0.5cm of sr1] (mc1) {MixColumns};
+    
+    \node[box, below=0.5cm of mc1] (ka1) {AddRoundKey};
+    \node[kbox] (t1) at (key |- ka1) {Clave $k_1$};
+
+    % Conexiones Round 1
+    \draw[->] (ka0) -- (bs1);
+    \draw[->] (bs1) -- (sr1);
+    \draw[->] (sr1) -- (mc1);
+    \draw[->] (mc1) -- (ka1);
+    \draw[->] (t0) -- (t1);
+    \draw[->] (t1) -- (ka1) node[midway, above] {$k_1$};
+
+    % Llaves (Braces) Round 1
+    \draw[decorate, decoration={brace, amplitude=6pt, mirror}]
+        ($(bs1.north west)+(-0.5,0)$) -- ($(ka1.south west)+(-0.5,0)$)
+        node[midway, left=0.3cm] {Ronda 1};
+
+    \draw[decorate, decoration={brace, amplitude=6pt}]
+        ($(bs1.north east)+(0.1,0)$) -- ($(bs1.south east)+(0.1,0)$)
+        node[midway, right=0.3cm] {Capa de confusión};
+        
+    \draw[decorate, decoration={brace, amplitude=6pt}]
+        ($(sr1.north east)+(0.1,0)$) -- ($(mc1.south east)+(0.1,0)$)
+        node[midway, right=0.3cm] {Capa de difusión};
+
+    % ----------------------------------------------------
+    % Puntos suspensivos (transición)
+    % ----------------------------------------------------
+    \draw (ka1.south) -- ++(0,-0.6) coordinate (d1);
+    \draw (t1.south) -- ++(0,-0.6) coordinate (dt1);
+    
+    % ----------------------------------------------------
+    % Round n_r-1
+    % ----------------------------------------------------
+    \node[box, below=2.2cm of ka1] (bs2) {SubBytes};
+    \node[box, below=0.5cm of bs2] (sr2) {ShiftRows};
+    \node[box, below=0.5cm of sr2] (mc2) {MixColumns};
+    
+    
+    \node[box, below=0.5cm of mc2] (ka2) {AddRoundKey};
+    \node[kbox] (t2) at (key |- ka2) {Clave $k_{n_r-1}$};
+
+    % Conexiones Puntos a Round n_r-1
+    \draw[<-] (bs2.north) -- ++(0,0.6) coordinate (d2);
+    \draw[<-] (t2.north) -- ++(0,0.6) coordinate (dt2);
+    
+    \draw[dotted, thick] (d1) -- (d2);
+    \draw[dotted, thick] (dt1) -- (dt2);
+
+    % Conexiones Round n_r-1
+    \draw[->] (bs2) -- (sr2);
+    \draw[->] (sr2) -- (mc2);
+    \draw[->] (mc2) -- (ka2);
+    \draw[->] (t2) -- (ka2) node[midway, above] {$k_{n_r-1}$};
+
+    % Llaves (Brace) Round n_r-1
+    \draw[decorate, decoration={brace, amplitude=6pt, mirror}]
+        ($(bs2.north west)+(-0.5,0)$) -- ($(ka2.south west)+(-0.5,0)$)
+        node[midway, left=0.3cm] {Ronda $n_r-1$};
+
+    % ----------------------------------------------------
+    % Last round n_r
+    % ----------------------------------------------------
+    \node[box, below=0.5cm of ka2] (bs3) {SubBytes};
+    \node[box, below=0.5cm of bs3] (sr3) {ShiftRows};
+    \node[box, below=0.5cm of sr3] (ka3) {AddRoundKey};
+    \node[kbox] (t3) at (key |- ka3) {Clave $k_{n_r}$};
+
+    % Conexiones Last round
+    \draw[->] (ka2) -- (bs3);
+    \draw[->] (bs3) -- (sr3);
+    \draw[->] (sr3) -- (ka3);
+    \draw[->] (t2) -- (t3);
+    \draw[->] (t3) -- (ka3) node[midway, above] {$k_{n_r}$};
+
+    % Llave (Brace) Last round
+    \draw[decorate, decoration={brace, amplitude=6pt, mirror}]
+        ($(bs3.north west)+(-0.5,0)$) -- ($(ka3.south west)+(-0.5,0)$)
+        node[midway, left=0.3cm] {Ronda $n_r$};
+
+    % Llave KeyExpansion
+        \draw[decorate, decoration={brace, amplitude=6pt}]
+        ($(t0.north east)+(0.5,0)$) -- ($(t3.south east)+(0.5,0)$)
+        node[midway, right=0.3cm, ] {\rotatebox{-90}{KeyExpansion}};
+
+    % ----------------------------------------------------
+    % Ciphertext final
+    % ----------------------------------------------------
+    \node[box, below=0.5cm of ka3] (ct) {Bloque $c_i$ de texto cifrado  \\ $c_i=\text{AES}(m_i)$};
+    \draw[->] (ka3) -- (ct);
+    \node[box, below=0.5cm of ct] (f) {Texto cifrado $c = c_1c_2\ldots$  };
+    \draw[->] (ct) -- (f);
+    \end{tikzpicture}
+    \vspace{0.5em}
+    \caption{Diagrama de alto nivel del algoritmo AES \cite[p.~91]{Understanding_Crypto}}
+    \label{Estructura_AES}
+\end{figure}

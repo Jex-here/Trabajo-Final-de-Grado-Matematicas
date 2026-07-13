@@ -1,0 +1,54 @@
+\textit{MixColumns} es \begin{Revision}la segunda transformación que genera difusión\end{Revision}. Cada columna del \textit{estado} se interpreta como un elemento del anillo $\F_{2^8} [x]/(\texttt{01}x^4+\texttt{01})$, es decir, un polinomio de grado menor o igual a 3 con coeficientes en $\F_{2^8}$. Cada celda se corresponde con cada coeficiente del polinomio de la siguiente manera:
+\(
+\text{si }A = \begin{bmatrix}a_0\\a_1\\a_2\\a_3\end{bmatrix}
+\)
+es una columna del \textit{estado}, entonces se le asocia el polinomio $$a(x)= a_0 + a_1x + a_2x^2 + a_3x^3\in \F_{2^8}[x]/(\texttt{01}x^4+\texttt{01}),$$ donde los coeficientes se suelen expresar en hexadecimal, por lo que \texttt{01} hace referencia al 1 de $\F_{2^8}$. \textit{MixColumns} realiza la siguiente función:
+\begin{align*}
+     \text{mixC}\colon \F_{2^8}[x]/(\texttt{01}x^4+\texttt{01}) &\longrightarrow \F_{2^8}[x]/(\texttt{01}x^4+\texttt{01})\\
+     a(x) &\mapsto b(x) = a(x) \cdot c(x)
+\end{align*}
+donde $c(x) = \texttt{02} + \texttt{01}x +\texttt{01}x^2 +\texttt{03}x^3$. Dicha multiplicación se puede expresar de forma más simple mediante una multiplicación matricial de la forma 
+\[
+\text{B}  =
+    \begin{bmatrix} 
+    b_0 \\ b_1 \\ b_2 \\ b_3
+    \end{bmatrix} 
+= 
+    \begin{bmatrix} 
+        \texttt{02} & \texttt{03} & \texttt{01} & \texttt{01}\\
+        \texttt{01} & \texttt{02} & \texttt{03} & \texttt{01}\\
+        \texttt{01} & \texttt{01} & \texttt{02} & \texttt{03}\\
+        \texttt{03} & \texttt{01} & \texttt{01} & \texttt{02}
+    \end{bmatrix} 
+\times 
+    \begin{bmatrix} 
+    a_0 \\ a_1 \\ a_2 \\ a_3
+    \end{bmatrix}
+,
+\]
+donde dicho producto se ha obtenido multiplicando $a(x)$ por $c(x)$ en $\F_{2^8}[x]/(\texttt{01}x^4+\texttt{01})$ y agrupando términos.\bigskip
+
+Se aprecia que $\F_{2^8}[x]/(\texttt{01}x^4+\texttt{01})$ no es un cuerpo, pues $\texttt{01}x^4+\texttt{01}$ no es un polinomio irreducible: $\texttt{01}x^4+\texttt{01} = (\texttt{01}x + \texttt{01})^4$. Sin embargo, $c(x) = \texttt{02} + \texttt{01}x +\texttt{01}x^2 +\texttt{03}x^3$ y $\texttt{01}x^4+\texttt{01}$ son coprimos, por lo que $c(x)$ tiene elemento inverso $d(x) = \texttt{0e} + \texttt{09}x +\texttt{0d}x^2 +\texttt{0b}x^3$. En consecuencia mixC es una aplicación biyectiva y se puede definir la operación inversa mixC$^{-1}$, utilizada para descifrar durante el paso \textit{InvMixColumns}. Se tiene entonces:
+\begin{align*}
+     \text{mixC}^{-1}\colon \F_{2^8}[x]/(\texttt{01}x^4+\texttt{01}) &\longrightarrow \F_{2^8}[x]/(\texttt{01}x^4+\texttt{01})\\
+     b(x) &\mapsto a(x) = b(x) \cdot d(x)
+\end{align*}
+donde $d(x) = \texttt{0e} + \texttt{09}x +\texttt{0d}x^2 +\texttt{0b}x^3$. De nuevo, se puede expresar dicho producto de la forma
+\[
+\text{A}  =
+    \begin{bmatrix} 
+    a_0 \\ a_1 \\ a_2 \\ a_3
+    \end{bmatrix} 
+= 
+    \begin{bmatrix} 
+        \texttt{0e} & \texttt{0b} & \texttt{0d} & \texttt{09}\\
+        \texttt{09} & \texttt{0e} & \texttt{0b} & \texttt{0d}\\
+        \texttt{0d} & \texttt{09} & \texttt{0e} & \texttt{0b}\\
+        \texttt{0b} & \texttt{0d} & \texttt{09} & \texttt{0e}
+    \end{bmatrix} 
+\times 
+    \begin{bmatrix} 
+    b_0 \\ b_1 \\ b_2 \\ b_3
+    \end{bmatrix}
+.
+\]

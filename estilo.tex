@@ -1,0 +1,117 @@
+\newtheoremstyle{Definiciones}
+  {10pt}         % Espacio arriba
+  {10pt}         % Espacio abajo
+  {\normalfont}  % Fuente del cuerpo
+  {0em}          % Sangría del cuerpo (puedes usar 20pt, 1cm, etc.)
+  {\bfseries}    % Fuente del encabezado (Definición 3.1)
+  {}            % Puntuación después del encabezado
+  {.5em}         % Espacio después del encabezado
+  {\thmname{#1}\thmnumber{ #2. }\thmnote{#3}} % Formato del encabezado
+
+\newtheoremstyle{Proposiciones}
+  {10pt}         % Espacio arriba
+  {10pt}         % Espacio abajo
+  {\normalfont}  % Fuente del cuerpo
+  {0em}          % Sangría del cuerpo (puedes usar 20pt, 1cm, etc.)
+  {\bfseries}    % Fuente del encabezado (Definición 3.1)
+  {}            % Puntuación después del encabezado
+  {.5em}         % Espacio después del encabezado
+  {\thmname{#1}\thmnumber{ #2. }\thmnote{\normalfont#3}} % Formato del encabezado
+
+\newtheoremstyle{Demostraciones}
+  {-5pt}         % Espacio arriba
+  {10pt}         % Espacio abajo
+  {\normalfont}  % Fuente del cuerpo
+  {0em}          % Sangría del cuerpo (puedes usar 20pt, 1cm, etc.)
+  {}    % Fuente del encabezado (Definición 3.1)
+  {}            % Puntuación después del encabezado
+  {0em}         % Espacio después del encabezado
+  {\thmname{#1}\thmnumber{ #2.}\thmnote{\normalfont(#3)}} % Formato del encabezado
+
+\newtheoremstyle{Lemas}
+  {5pt}         % Espacio arriba
+  {10pt}         % Espacio abajo
+  {\normalfont}  % Fuente del cuerpo
+  {0em}          % Sangría del cuerpo (puedes usar 20pt, 1cm, etc.)
+  {\bfseries}    % Fuente del encabezado (Definición 3.1)
+  {}            % Puntuación después del encabezado
+  {.3em}         % Espacio después del encabezado
+  {\thmname{#1}\thmnumber{ #2.}\thmnote{\normalfont(#3)}} % Formato del encabezado
+
+\newtheoremstyle{Observaciones}
+  {5pt}         % Espacio arriba
+  {10pt}        % Espacio abajo
+  {\normalfont} % Fuente del cuerpo
+  {}            % Sangría del cuerpo 
+  {\bfseries}   % Fuente del encabezado (Definición 3.1)
+  {.}           % Puntuación después del encabezado
+  {.5em}           % Espacio después del encabezado
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}} % Formato del encabezado
+
+\newtheoremstyle{entorno con itemize}
+  {5pt}         % Espacio arriba
+  {10pt}         % Espacio abajo
+  {\normalfont} % Fuente del cuerpo
+  {}            % Sangría del cuerpo (puedes usar 20pt, 1cm, etc.)
+  {\bfseries}   % Fuente del encabezado (Definición 3.1)
+  {.}           % Puntuación después del encabezado
+  {0pt}         % Espacio después del encabezado
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}} % Formato del encabezado
+
+% ==============================================================================
+\theoremstyle{Definiciones}
+\newtheorem{deff1}{Definición}[section]
+\newenvironment{deff}[2][]
+  {\begin{deff1}[#1] (#2).\leavevmode \vspace{-0.1\baselineskip}}
+  {\end{deff1}}
+
+\theoremstyle{Proposiciones}
+\newtheorem{_prop}[deff1]{Proposición}
+\newenvironment{prop}[1][]
+  {\begin{_prop}[#1]}
+  {\end{_prop}}
+
+\newtheorem{_teo}[deff1]{Teorema}
+\newenvironment{teorema}[1][]
+  {\begin{_teo}[#1] \leavevmode \vspace{-0.1\baselineskip} }
+  {\end{_teo}}
+% ==============================================================================
+\theoremstyle{Observaciones}
+
+\newtheorem{ej}{Ejemplo}[section]
+\newtheorem*{obs}{Observaciones}
+\newtheorem*{obs y ejs}{Observaciones y Ejemplos}
+
+% ==============================================================================
+\theoremstyle{entorno con itemize}
+
+\newtheorem*{_nott}{Notación}
+\newenvironment{nott}
+  {\begin{_nott} \leavevmode \vspace{-0.4\baselineskip} \begin{itemize}}
+  {\end{itemize}\end{_nott}}
+
+\newtheorem*{_obss}{Observaciones}
+\newenvironment{obss}
+  {\begin{_obss} \leavevmode \vspace{-0.4\baselineskip} \begin{itemize}}
+  {\end{itemize}\end{_obss}}
+  
+\newtheorem{_ejs}[ej]{Ejemplo}
+\newenvironment{ejs}
+  {\begin{_ejs}\leavevmode \vspace{-0.2\baselineskip} \begin{itemize}}
+  {\end{itemize}\end{_ejs}}
+
+% ==============================================================================
+\theoremstyle{Lemas}
+
+\newtheorem{_lema}[deff1]{Lema}
+\newenvironment{lema}[1][]
+  {\begin{_lema} #1 \leavevmode }
+  {\end{_lema}}
+% ==============================================================================
+\theoremstyle{Demostraciones}
+
+\newtheorem*{_dem}{}
+
+\newenvironment{dem}[2][]
+  {\begin{_dem} #1\textit{Demostración} (#2). }
+  {\end{_dem}}

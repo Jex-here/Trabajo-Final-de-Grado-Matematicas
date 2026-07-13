@@ -1,0 +1,69 @@
+\textit{KeyExpansion} toma como parámetro la clave $k$ de 128, 192 o 256 bits, interpretándola como una cadena de 4, 6 u 8 palabras de 32 bits \footnote{
+\begin{Revision}Una palabra de $x$ bits es una cadena de $x$ bits. Sin embargo, el uso de ``palabra'' connota que el número $x$ de bits es fijo, es decir, \textit{KeyExpansion} opera fundamentalmente con cadenas de 32 bits.\end{Revision}
+}.
+Por ejemplo, en el caso en el que $k$ esté compuesta por 192 bits, $k$ se puede expresar concatenando 6 palabras de 32 bits: $k = W_0W_1W_2W_3W_4W_5$. Cada \textit{RoundKey} (clave de ronda) está formada por 128 bits y AES utiliza $n_r + 1$ claves, donde $n_r$ es el número de rondas, por lo que \textit{KeyExpansion} devolverá una cadena de 1408, 1664 o 1920 bits. Dicha cadena se puede expresar concatenando palabras de 32 bits: $W = W_0W_1\ldots W_{4n_r+3}$, asignando a cada \textit{RoundKey} la cadena $k_i = W_{4i}W_{4i+1}W_{4i+2}W_{4i+3}$, es decir, $k_0 = W_0W_1W_2W_3,\ k_1 = W_4W_5W_6W_7,\ \ldots  ,\ k_{n_r} = W_{4n_r}W_{4n_r+1}W_{4n_r+2}W_{4n_r+3}$. Dependiendo del tamaño de la clave $k$, \textit{KeyExpansion} opera de manera diferente, aunque el procedimiento es similar. 
+
+\vspace{-0.5em}
+\subsection{KeyExpansion con clave de 128 bits}
+Si la clave $k$ es de 128 bits, el número de rondas es 10, necesitándose 11 claves de 128 bits, es decir, 44 palabras de 32 bits: $W = W_0\ldots W_{43}$. Las primeras 4 palabras, $W_0W_1W_2W_3$, se corresponden con la clave original proporcionada, por lo que es $k_0 = W_0W_1W_2W_3 = k$. 
+
+$W_4$ se obtiene aplicando una función $f_1$ a $W_3$ que devuelve una cadena de 32 bits, la cual se suma ($\Z_2$ bit a bit) a $W_0$, obteniendo $W_4 = W_0\oplus f_1(W_3) $. Las palabras $W_5$, $W_6$ y $W_7$ se construyen de la siguiente forma:
+\vspace{-1em}
+\begin{align*}
+    W_5 = W_1  \oplus W_4;\\ W_6 = W_2  \oplus W_5;\\W_7 = W_3  \oplus W_6;
+\end{align*}
+es decir, $W_i = W_{i-4} \oplus W_{i-1}$ para $i = 5,6,7$. La clave $k_1$ se corresponde entonces con $W_4W_5W_6W_7$, y el proceso de obtención de estas 4 palabras constituye una ronda. En este caso, como es la primera ronda, se inicializa $j = 1$.
+
+Para un término general $i \geq4$, $W_i$ se obtiene haciendo:
+\begin{align*}
+    &&W_i &= W_{i-4}  \oplus f_j(W_{i-1}), &&\text{ si } \eqmod{i}{0}{4};&&\\
+    &&W_i &= W_{i-4}  \oplus W_{i-1}, &&\text{ si } \neqmod{i}{0}{4}.&&
+\end{align*}
+
+La función $f_j$ toma como parámetro una cadena de 32 bits y la interpreta como un vector fila de 4 bytes: $(a,b,c,d)$. A continuación, \begin{segRevision}se \end{segRevision}realizan las siguientes operaciones:
+
+\begin{enumerate}[itemsep=-5pt]
+    \item Se rota cíclicamente hacia la izquierda en una unidad: 
+    \[(a,b,c,d) \to (b,c,d, a).\]
+    \item Se aplica a cada byte la S-box de AES, definida en \ref{tab:sbox}:
+    \[(b,c,d, a) \to (S(b),S(c),S(d),S(a)).\]
+    \item Se suma al primer byte el elemento \texttt{02}$^{j-1}\in \Z_2[x]/(x^8 + x^4 + x^3 + x + 1)$:
+    \[(S(b),S(c),S(d),S(a)) \to (S(b) + \texttt{02}^{j-1},S(c),S(d),S(a)).\]
+Cada ronda $j$ genera 4 palabras de 32 bits, es decir, una clave $k_j$, por lo que \textit{KeyExpansion} constará de 10 rondas. Los 10 valores de $\texttt{02}^{j-1}$ expresados en hexadecimal son:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|cccccccccc|}
+        \hline
+        $j$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+        \hline
+        $\texttt{02}^{j-1}$ & \texttt{01} & \texttt{02} & \texttt{04} & \texttt{08} & \texttt{10} & \texttt{20} & \texttt{40} & \texttt{80} & \texttt{1b} & \texttt{36} \\
+        \hline
+    \end{tabular}
+\end{table}
+\vspace{-0.2em}
+\begin{Revision}
+    Escribiéndolos en notación vectorial y polinómica, se tiene $\texttt{02} = 00000010 = x$, por lo que $\texttt{02}^2 = x^2 = 00000100= \texttt{04}$. Continuando, se tiene $\texttt{02}^3 = x^3 = 00001000= \texttt{08}$. Al llegar a la ronda 9 se tiene $\texttt{02}^8 = x^8$, donde ahora ha de efectuarse la división por $x^8 + x^4 + x^3 + x + 1$ para obtener el resto: $x^4 + x^3 + x + 1$, por lo que $\texttt{02}^8 = 00011011 = \texttt{1b}$. Para $\texttt{02}^9$, simplemente se multiplica $\texttt{1b} = x^4 + x^3 + x + 1$ por $x$, resultando en $x^5 + x^4 + x^2 + x = 00110110 = \texttt{36}$.
+\end{Revision}
+
+\end{enumerate}
+
+\subsection{KeyExpansion con clave de 192 bits}
+Si la clave $k$ es de 192 bits, el número de rondas de AES es 12, necesitándose 13 claves y 52 palabras de 32 bits: $W = W_0\ldots W_{51}$. El algoritmo funciona de igual manera que con 128 bits excepto que las rondas tienen 6 pasos en lugar de 4. La clave $k$ compone las primeras 6 palabras: $W_0W_1W_2W_3W_4W_5 = k$, y para $i\geq6$, $W_i$ se obtiene haciendo:
+\begin{align*}
+    &&W_i &= W_{i-6}  \oplus f_j(W_{i-1}), &&\text{ si } \eqmod{i}{0}{6};&&\\
+    &&W_i &= W_{i-6}  \oplus W_{i-1}, &&\text{ si } \neqmod{i}{0}{6};&&
+\end{align*}
+donde la función $f_j$ es la definida anteriormente. De esta manera se necesitan 8 rondas, y las 13 claves $k_j$ se derivan de la cadena obtenida: $W$.
+
+\vspace{-0.5em}
+\subsection{KeyExpansion con clave de 256 bits}
+Si la clave $k$ es de 256 bits, el número de rondas de AES es 14, necesitándose 15 claves y 60 palabras de 32 bits: $W = W_0\ldots W_{59}$. Ahora las rondas están compuestas por 8 pasos, pues la clave $k$ compone las primeras 8 palabras: $W_0W_1W_2W_3W_4W_5W_6W_7 = k$, y para $i\geq8$, $W_i$ se obtiene haciendo:
+\begin{align*}
+    &&W_i &= W_{i-8}  \oplus f_j(W_{i-1}), &&\text{ si } \eqmod{i}{0}{8};&&\\
+    &&W_i &= W_{i-8}  \oplus g(W_{i-1}), &&\text{ si } \eqmod{i}{0}{4} \ \land\ \neqmod{i}{0}{8};&&\\
+    &&W_i &= W_{i-8}  \oplus W_{i-1}, &&\text{ si } \neqmod{i}{0}{4};&&
+\end{align*}
+donde se mantiene $f_j$ y se añade la función $g$, que toma 32 bits expresados como un vector de 4 bytes, $(a,b,c,d)$, y aplica la S-box de AES a cada celda:\vspace{-0.5em}
+\[(a,b,c,d) \to (S(a),S(b),S(c),S(d))\]
+De esta manera se necesitan 7 rondas, y las 15 claves $k_j$ se derivan de la cadena $W$.

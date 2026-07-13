@@ -1,0 +1,35 @@
+Uno de los defectos que tiene la encriptación de clave simétrica es la necesidad de intercambiar claves a través de un canal seguro. Si dicho canal no estuviera disponible o no fuera práctico de usar, no podría establecerse una comunicación segura. Tampoco se puede proveer de no repudio en un esquema de clave simétrica, pues cualquier entidad en posesión de la clave privada puede encriptar, y por tanto alegar que no es quien de verdad escribió el mensaje. Para solventar este problema, Ralph Merkle, Whitfield Diffie y Martin Hellman idearon el concepto de criptografía de clave pública en la década de 1970 (\cite{merkle_puzzles}, \cite{diffie1976new}). La idea es la siguiente: no es necesario que la clave usada para \textit{encriptar} el mensaje sea privada, sino que lo sea la clave para \textit{descifrar}. De esta forma, si Alice quiere enviar un mensaje a Bob, Bob proveerá a Alice de su clave pública, $P_B$; luego, Alice encriptará el mensaje $m$ usando $P_B$: $c = e_{P_B}(m)$, enviando $c$ por el canal inseguro; por último, Bob desencriptará usando su clave secreta $S_B$: $m = d_{S_B}(c)$, tal y como se muestra en la Figura \ref{fig:clave_publica_basico}.
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}[>=latex]
+
+\node at (0,2) {\textbf{Alice}};
+\node at (7,2) {\textbf{Bob}};
+
+\node at (0,0) {$c = e_{P_B}(m)$};
+\node at (7,1) {$(P_B, S_B)$};
+\node at (7,-1) {$m = d_{S_B}(c)$};
+
+\draw[<-] (2,1) -- (5,1) node[midway, above] {$P_B$};
+\draw[->] (2,-1) -- (5,-1) node[midway, above] {$c$};
+
+\end{tikzpicture}
+
+\caption{Intercambio de información en un canal inseguro mediante clave pública.}
+\label{fig:clave_publica_basico}
+
+\end{figure}
+
+De esta manera, si Alice y Bob desean obtener una clave secreta compartida, Alice solo necesita elegir cierta clave $k$, encriptarla con la clave pública de Bob, y enviar el mensaje cifrado a Bob, quien podrá descifrarlo mediante su clave privada. Por otro lado, si Alice desea firmar un mensaje, debe ser ella quien posea una clave pública $P_A$ y una clave secreta $S_A$. Así, computa la firma $f$ del mensaje $m$ usando su clave secreta: $f = $\textit{Firma}$(m,S_A)$, y envía a Bob el par $(m,f)$, de tal forma que un tercero puede validar si $m$ y $f$ están realmente ligados usando la clave pública de Alice: \textit{Verificar}$(P_A, m, f)$. Si el mensaje o la firma no han sido manipulados, entonces dicha operación dará como resultado \textit{aceptar}. En el caso de que hayan sido manipulados (por ejemplo, Bob falsificando el mensaje), la función \textit{Verificar} dará como resultado \textit{no aceptar}.
+
+Una vez entendido el concepto, es necesario abordar sus limitaciones:
+
+\begin{enumerate}[label={--}]
+    \item El par de claves $(P,S)$ debe haber sido elegido de tal manera que obtener $S$ a partir de $P$ sea computacionalmente inviable, pero que aun así estén relacionados, pues $P$ debe poder encriptar y $S$ desencriptar. Por ejemplo, el criptosistema RSA involucra el producto de números primos grandes $p$ y $q$, cuyo producto $pq = n$ es fácil de obtener; pero dado $n$, no se puede computar $p$ y $q$  usando los mejores algoritmos conocidos con la tecnología actual (en un intervalo de tiempo razonable).
+
+    \item Durante la transmisión, Eve puede interceptar la clave pública de Bob, $P_B$ y enviar a Alice la suya propia, $P_E$. Cuando Alice envíe a Bob el texto encriptado $c' = e_{P_E}(m)$, Eve puede recuperar el mensaje original $m = d_{E_S}(c')$ y luego usar la clave pública de Bob $P_B$ para enviar $c = e_{P_B}(m)$, de tal forma que Bob puede descifrar $c$ sin sospechar que la seguridad se haya visto comprometida. Para evitar este tipo de ataques, conocidos como MITM (man-in-the-middle attack)\cite[p.~342]{Understanding_Crypto}, se necesita imponer que la distribución de la clave pública se realice a través de un canal autenticado, es decir, que aquellos que utilicen la clave pública para el encriptado puedan asegurarse de que dicha clave proviene de quien dice ser. Esto se consigue mediante la intervención de una entidad de confianza (Autoridad de certificación), quien firma la clave pública, asegurando que dicha clave pública es de quien dice ser.
+
+    \item Los sistemas de clave asimétrica pueden por lo tanto satisfacer los objetivos de confidencialidad, integridad, autenticación y no repudio. ¿Cuál es el propósito entonces de los sistemas de clave simétrica? Pues que estos últimos son mucho más rápidos que los de clave pública. De esta forma, en la práctica se suelen utilizar esquemas híbridos: para establecer una clave secreta y para garantizar el no repudio se utiliza un sistema de clave asimétrica, mientras que para cifrar y asegurar la integridad y la autenticación se utiliza un sistema de clave simétrica.
+\end{enumerate}
