@@ -12,7 +12,7 @@
 % \segRevisiontrue       % Sin comentar: aparecen revisiones; comentado, se eliminan
 
 \Preliminarestrue   % comentar para ocultar preliminares
-% \DedicatoriaAgradecimientostrue
+\Dedicatoriatrue    % comentar para ocultar dedicatoria (dentro de preliminares)
 \Introtrue          % comentar para ocultar introducción
 \Criptotrue         % comentar para ocultar capítulo 1:   criptografia
 \Algebratrue        % comentar para ocultar capítulo 2:   algebra
@@ -34,17 +34,18 @@
         
         \input{preludio/portada}
 
-        \chapter*{Abstract}
-        \input{preludio/abstract}
-
-        \ifDedicatoriaAgradecimientos
-        
+        \ifDedicatoria
+            \newpage
             \chapter*{Dedicatoria}
             \input{preludio/dedicatoria}
-        
-            \chapter*{Agradecimientos}
-            \input{preludio/agradecimientos}
+            
+            \newpage
+            \mbox{}
+            \newpage
         \fi    
+
+        \chapter*{Abstract}
+        \input{preludio/abstract}
         
         \tableofcontents
         \newpage
@@ -61,7 +62,9 @@
             \fancyfoot{}
             \fancyfoot[L]{Introducción}        
             \fancyfoot[R]{\thepage}
-            \fancyfoot[C]{Jesús Berdonces Encinas}
+            \fancyfoot[C]{\begin{CJK}{UTF8}{min}%
+                        ジェクザ
+                    \end{CJK}}
         
         \chapter*{Introducción}
         \addcontentsline{toc}{chapter}{Introducción}  % añade "Introducción" al TOC formato "chapter"
@@ -77,7 +80,9 @@
         \fancyhead[R]{\nouppercase{\rightmark}}
         \fancyfoot[L]{Capítulo \thechapter}
         \fancyfoot[R]{\thepage}
-        \fancyfoot[C]{Jesús Berdonces Encinas}
+        \fancyfoot[C]{\begin{CJK}{UTF8}{min}%
+                        ジェクザ
+                    \end{CJK}}
 
     \ifCripto
         \chapter{Sistemas criptográficos}       
@@ -113,7 +118,9 @@
         \fancyfoot{}
         \fancyfoot[L]{Bibliografía}
         \fancyfoot[R]{\thepage}
-        \fancyfoot[C]{Jesús Berdonces Encinas}
+        \fancyfoot[C]{\begin{CJK}{UTF8}{min}%
+                        ジェクザ
+                    \end{CJK}}
         
     \printbibliography[heading=bibintoc,title=Bibliografía]
 	
