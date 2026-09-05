@@ -21,7 +21,7 @@ El algoritmo AES opera de la siguiente manera: los 128 bits de entrada se distri
 \end{tikzpicture}
 \end{center}
 
-\begin{Revision}
+
     \noindent Por ejemplo, supongamos que se quiere encriptar el texto ``$\xi$ ocupa 2 bytes''. Lo primero que se debe hacer es expresarlo en binario para poder introducirlo en la matriz. Así, tal y como se hizo en la Tabla \ref{HolaMundo_bin_hex}, se asocia a cada carácter 1, 2, 3 o 4 bytes. En este caso, todos ocupan 1 byte excepto $\xi$, que ocupa 2. En la Tabla \ref{Ksi_bin_hex} se muestra la conversión de cada carácter a hexadecimal y binario (véase \cite{symbl_unicode}). Luego, en la Tabla \ref{estado_hex} se muestra cómo se inicializa la matriz (se recuerda que se operará con bits, pero se expresa en hexadecimal para una mejor comprensión).
 
     \begin{table}[H]
@@ -101,7 +101,7 @@ El algoritmo AES opera de la siguiente manera: los 128 bits de entrada se distri
     
 A partir de aquí, cada paso de AES actúa sobre esta matriz, la cual se denomina \textit{estado}. Tras finalizar el proceso, el \textit{estado} estará compuesto por 16 celdas: $c_0, c_1, \ldots, c_{14},c_{15}$, distribuidas de la misma forma que los $a_i$, de manera que el bloque cifrado será $c = c_0c_1\ldots c_{14}c_{15}$. En la Figura \ref{Estructura_AES} se puede ver un diagrama de alto nivel de AES, compuesto por $n_r$ rondas. Cada ronda está formada por 3 capas, cuyo propósito es aportar confusión, difusión y un mezclado de la clave. Se aprecia también que la clave $k$, introducida al principio del algoritmo, no se inicializa en el \textit{estado}, sino que, a través de \textit{KeyExpansion}, se deriva en varias subclaves $k_i$ (llamadas \textit{RoundKey}), utilizadas en cada ronda.
 
-\end{Revision}
+
 
 \begin{figure}[H]
     \centering

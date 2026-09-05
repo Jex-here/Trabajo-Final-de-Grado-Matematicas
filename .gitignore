@@ -1,0 +1,14 @@
+*.aux
+*.bbl
+*.blg
+*.log
+*.toc
+*.bcf
+*.synctex.gz
+*.out
+*.fdb_latexmk
+*.fls
+*.run.xml
+*.bbl-SAVE-ERROr
+#*.gitignore
+AES\ Python

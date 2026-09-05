@@ -1,0 +1,440 @@
+\documentclass[10pt,t]{beamer}
+\input{cabecera}
+\input{comandos}
+
+
+
+\begin{document}
+
+% Portada =========================================================
+{
+\usebackgroundtemplate{
+    \parbox[b][\paperheight][b]{\paperwidth}{\centering\includegraphics[width=\paperwidth]{Imágenes/logo_uned_enc_CBC.png}}
+    } 
+
+\begin{frame}[plain,noframenumbering]
+    \titlepage
+\end{frame}
+}		
+%=================================================================
+
+% Índice =========================================================
+\begin{frame}{\textsc{Índice}}
+	\hfill	{\large \parbox{.95\textwidth}{\textsc{\tableofcontents[hideothersubsections]}}}
+\end{frame}
+%=================================================================
+
+
+% SECTION 1 - ARITMÉTICA EN CUERPOS FINITOS
+\section{Aritmética en cuerpos finitos}
+
+% 蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々
+\subsection{Qué es un cuerpo finito}
+% 蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々蝶々
+
+%=========================ESTRUCTURA DE GRUPO=========================
+\begin{frame}%{Estructuras algebraicas}
+    \begin{block}{\centering \large Grupo: $(G,\star)$}
+        \begin{enumerate}[label=\roman*)]
+            \item \textit{Asociatividad}: \hspace{9em}
+                $(a \star b) \star c = a \star (b \star c)$
+            \item \textit{Existencia de elemento neutro}: \hspace{1.7em}
+                $\exists e \hspace{1.12em} \mid  a \star e = a = e \star a$
+            \item \textit{Existencia de elementos inversos}: \hspace{0.6em}
+                $\forall a \exists b \mid \hspace{0.1em} a \star b  = e = b \star a$
+        \end{enumerate}
+        Si además se cumple la propiedad de
+        \begin{enumerate}[label=iv)]
+            \item \textit{Conmutatividad}: \hspace{8.4em}
+            $a \star b  = b \star a$
+        \end{enumerate}
+        se dice que el grupo es un \alert{grupo conmutativo}.
+    \end{block} 
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item $(\N,+)$ no es un grupo.
+            \item $(\Z,+)$ es un grupo conmutativo.
+            \item $(\Q,+)$ es un grupo conmutativo.
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+%=========================ESTRUCTURA DE ANILLO=========================
+\begin{frame}%{Estructuras algebraicas}
+    \begin{block}{\centering \large Anillo: $(A,+,\cdot)$}
+        \begin{enumerate}[label=\roman*)]
+            \item $(A, +)$ es un \textit{grupo conmutativo}.
+            \item \textit{Asociatividad para el producto}: \hspace{0.5em}
+                $ (a \cdot b) \cdot c = a \cdot (b \cdot c)$
+            \item \textit{Propiedad distributiva}:\hspace{4.45em}
+                $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$
+        \end{enumerate}
+        Si además se cumple que
+        \begin{enumerate}[label=\roman*), start=4]
+            \item El producto tiene elemento neutro, $A$ es un \alert{anillo unitario}.
+            \item El producto es conmutativo, $A$ es un \alert{anillo conmutativo}.
+        \end{enumerate}
+            Si se cumplen ambas, $A$ es un \alert{anillo unitario conmutativo}.
+    \end{block} 
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item $(\Z,+, \cdot)$ no es un anillo
+            \item $(\Q,+, \cdot)$ es un anillo unitario conmutativo
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+%=========================ANILLO DE POLINOMIOS=========================
+\begin{frame}%{Estructuras algebraicas}
+\vspace{4em}
+    \begin{exampleblock}{\centering \large Anillo de polinomios}
+        Sea $A$ un anillo unitario conmutativo.\\
+        Se definen los polinomios sobre $A$ como el conjunto 
+        \[ A[X] = \{a_0 + a_1X +  \ldots + a_nX^n , \text{ con }  a_i \in A  \text{ y }  n \in \N\}\]
+        $(A[X], +, \cdot)$ con la suma y producto usual de polinomios es un anillo unitario conmutativo.
+    \end{exampleblock}
+\end{frame}
+
+%=========================UNIDADES=========================
+\begin{frame}%{Estructuras algebraicas}
+\vspace{3em}
+    \begin{block}{\centering \large Unidades}
+        Sea $A$ un anillo unitario.\\
+        Las unidades de $A$ son los elementos que tienen inversa respecto del producto.
+    \end{block}
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item Las unidades de $(\Z,+, \cdot)$ son el $1$ y el $-1$.
+            \item Las unidades de $(\Q,+, \cdot)$ son todos los elementos de $\Q$ menos el $0$.
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+%=========================CUERPO=========================
+\begin{frame}%{Estructuras algebraicas}
+    \begin{block}{\centering \large Cuerpo}
+        Un cuerpo $K$ es un anillo unitario conmutativo donde todo elemento no nulo es unidad.
+    \end{block}
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item $(\Z,+, \cdot)$ no es un cuerpo.
+            \item $\Q$, $\R$ y $\C$ son cuerpos con  su suma y producto usual.
+            \item Los anillos de polinomios no son cuerpos.
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+% 血漿血漿血漿血漿血漿血漿血漿血漿血漿血漿血漿血漿血漿
+\subsection{Cómo obtener cuerpos finitos}
+% 血漿血漿血漿血漿血漿血漿血漿血漿血漿血漿血漿血漿血漿 
+
+%=========================IDEAL=========================
+\begin{frame}
+    \begin{block}{\centering \large Ideal}
+        Sea $A$ un anillo unitario conmutativo.\\
+        Un ideal $I$ de $A$ es un subconjunto de $A$ que satisface:
+    \begin{enumerate}[label=\roman*)]
+        \item $I$ es subgrupo de (A,+).
+        \item Los elementos de $I$ son absorbentes en $A$ para el producto, es decir, para todo $i \in I, a\in A$ se cumple $i\cdot a \in I$
+    \end{enumerate}
+    \end{block}
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item Los ideales de $\Z$ son de la forma $n\Z:= \{ n \cdot x\mid x\in\Z\}$.\\[1ex]
+                Se dice entonces que el ideal está generado por $n$, y se denota como
+                \[(n) = n\Z\]
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+%=========================ANILLO COCIENTE=========================
+\begin{frame}
+    \begin{block}{\centering \large Anillos cociente}
+        Sea $A$ un anillo unitario conmutativo e $I$ un ideal de $A$.\\
+        Se define en $A$ la relación de equivalencia 
+            \vspace{-0.5em}
+            \[x \sim y \iff x -y \in I.\]
+        El conjunto cociente $A/I$ es un anillo unitario conmutativo con la suma y producto definidos como
+        \[[x] + [y] = [x + y]\]
+        \[[x] \cdot [y] = [x \cdot y]\]
+    \end{block}
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \setlength{\itemsep}{-0.2em}
+            \item El ideal $n\Z$ produce el cociente 
+                \vspace{-0.5em}
+                \[\Z_n = \{0,1, \ldotp, n-1\}\]
+            \item En el anillo cociente $\Z_6$ se verifica la identidad
+                \vspace{-0.5em}
+                \[2 \cdot 3 = 0\]
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+%=========================IDEAL MAXIMAL=========================
+\begin{frame}
+    \begin{block}{\centering \large Ideal maximal}
+        Sea $A$ un anillo unitario conmutativo e $I$ un ideal de $A$.\\[0.3ex]
+        $I$ es un ideal maximal si no existe otro ideal distinto a $A$ que lo contenga.
+    \end{block}
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item En $\Z$, el ideal generado por 6: (6), no es maximal, pues está contenido en los ideales $(2)$ y $(3)$.
+            \item En $\Z$, los ideales maximales están generados por números primos.
+        \end{enumerate}
+    \end{plainexample}
+
+    \begin{prop}
+        Proposición: \hspace{3em}$I$ es maximal $\iff$ si $A/I$ es un cuerpo.
+    \end{prop}
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item Tomando los números primos en $\Z$, se obtienen los cuerpos finitos 
+            \vspace*{-1.7em}
+            \begin{align*}
+                \Z_2 &= \{0,1\}\\
+                \Z_3 &= \{0,1,2\}\\
+                \Z_p &= \{0,1,2, \ldots, p-1\}
+            \end{align*}
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+
+% 橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙
+\subsection{Cómo operar en cuerpos finitos}
+% 橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙橙
+
+%=========================DOMINIO EUCLÍDEO=========================
+\begin{frame}
+    \begin{block}{\centering \large Dominio euclídeo}
+        Un dominio euclídeo es un anillo unitario conmutativo, $A$, sin divisores de 0, y donde existe una función norma $\norm{\cdot} \colon A^* \to \N$, verificando:
+        \begin{enumerate}[label=\roman*)]
+            \item Para todo $x,y\in A^*$ \[\norm{x} \leq\norm{xy}\]
+            \item Para todo $x,y \in A^*$, existen $q,r \in A$, tales que 
+                \[y = qx + r,\]
+                donde $r = 0 \text{ o bien } \norm{r} < \norm{x}$.
+        \end{enumerate}
+    \end{block}
+
+    \begin{prop}
+        \centering Si $K$ es un cuerpo $\Longrightarrow K[X]$ es un dominio euclídeo 
+    \end{prop}
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item En $\Z$, el valor absoluto $|x|$ es una norma.
+            \item En $K[X]$, el grado de los polinomios es una norma.
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+%=========================CUERPOS FINITOS=========================
+\begin{frame}
+    \begin{prop}
+        Un polinomio $f$ de grado $n$ que genera un ideal maximal en $\Z_p[X]$ produce el cuerpo:
+        \[ \Z_p[X]/(f) = \{a_0 + a_1X +  \ldots + a_nX^{n-1} , \  a_i \in \Z_p\},\]
+        formado por $p^n$ elementos.
+    \end{prop}
+
+    \begin{plainexample}
+        \begin{enumerate}[label=--]
+            \item Tomando $p = 2$ y $f = X^2+X+1$ se obtiene el cuerpo
+            \[\Z_2[X]/(f) = \{0,1,X,X+1\}\]
+            \item Tomando $p = 3$ y $g = X^2 + X + 2$ se obtiene el cuerpo
+            \begin{align*}
+                \Z_3[X]/(g) \quad = &&\{  &0   ,&& 1   ,&& 2  ,   &&&&\\
+                &&    &   X,&& X+1 ,&& X+2,   &&&&\\
+                &&    &  2X,&& 2X+1,&& 2X+2\} &&&&
+            \end{align*}
+        \end{enumerate}
+    \end{plainexample}
+\end{frame}
+
+%=========================CARACTERIZACIÓN CUERPOS FINITOS=========================
+\begin{frame}
+    \vspace{8em}
+    \begin{teo}{Caracterización de cuerpos finitos}
+        \begin{enumerate}[label=--]
+            \item Solo existen cuerpos finitos con $p^n$ elementos.
+            \item Existe un único cuerpo con $p^n$ elementos.
+        \end{enumerate}
+    \end{teo}
+\end{frame}
+
+%=========================BÉZOUT=========================
+\begin{frame}
+    \begin{block}{\centering \large Búsqueda de inverso}
+        Dado $x\in K[X]/(f)$, se ha de buscar $y\in K[X]/(f)$ tal que
+        \setlength{\belowdisplayskip}{-1pt}   % Reduce espacio abajo
+        \vspace{-0.5em}
+        \begin{align*}
+            \setlength{\itemsep}{-0.3em}
+            xy      &= 1    \\
+            [x][y]  &= [1]  \\
+            xy + fg  &= 1    
+        \end{align*}
+
+    \end{block}
+
+    \begin{prop}
+        La identidad de Bézout \[xy + fg  = 1\] es resoluble en un dominio euclídeo cuando  $\mcd{x,f} = 1$.
+    \end{prop}
+
+\end{frame}
+
+%=========================EUCLIDES=========================
+\begin{frame}
+    \renewcommand{\arraystretch}{1.2}
+    \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
+    \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
+    \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
+    \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
+    \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
+
+    \begin{block}{\centering \large Algoritmo de Euclides}
+        Algoritmo de Euclides para $y = r_0$, $x = r_1$
+        \vspace{-0.3em}
+        \begin{align*}
+            r_0 &= q_1r_1 + r_2 \\
+            r_1 &= q_2r_2 + r_3 \\
+            &\quad \quad\vdots  \\
+            r_{n-2} &= q_{n-1}r_{n-1} + r_n\\
+            r_{n-1} &= q_nr_n
+        \end{align*} 
+    \end{block}
+    \begin{plainexample}
+        \begin{center}
+            \begin{tabular}{cr}
+                \begin{minipage}[t]{0.40\textwidth}
+                    \begin{array}{rl}
+                        \textcolor{miRojo}    {51}\  =& 2 \cdot \textcolor{miRojo}    {20}+ \textcolor{miNaranja} {11} \\
+                        \textcolor{miRojo}    {20}\ =& 1 \cdot \textcolor{miNaranja} {11}+ \textcolor{miAmarillo}{9} \\
+                        \textcolor{miNaranja} {11}\ =& 1 \cdot \textcolor{miAmarillo}{9}\phantom{1} + \textcolor{miVerde}   {2} \\
+                        \textcolor{miAmarillo}{9} \ =& 4 \cdot \textcolor{miVerde}   {2}\phantom{1} + \textcolor{miAzul}    {1} \\
+                    \end{array} 
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.35\textwidth}
+                    \vspace{-3.5em}
+                    \[
+                    \begin{array}{|c|c|c|c|c|c|c|}
+                        \hline
+                        q_i     &  -                    & \cellcolor{miNaranja} 2  & \cellcolor{miAmarillo}1  &\cellcolor{miVerde}1    &\cellcolor{miAzul}4 & 2\\
+                        \hline
+                        r_i    &  \cellcolor{miRojo}51  & \cellcolor{miNaranja}    20 & \cellcolor{miAmarillo} 11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2 & 1\\
+                        \hline
+                        r_{i+1} &  \cellcolor{miRojo}20 & \cellcolor{miNaranja} 11 & \cellcolor{miAmarillo}9  &\cellcolor{miVerde}2    &\cellcolor{miAzul} 1 & 0 \\
+                        \hline 
+                    \end{array}
+                    \]
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+    \end{plainexample}
+
+\end{frame}
+
+%=========================INVERSO EN CUERPOS FINITOS=========================
+\begin{frame}
+    \renewcommand{\arraystretch}{1.2}
+    \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
+    \definecolor{fin}{rgb}{0.71,0.93,0.94}
+    \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
+    \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
+    \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
+    \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
+
+    \begin{plainexample}
+            \[
+            \begin{array}{rl}
+                \phantom{51 - 2\cdot 20}                                       &\phantom{=1}\textcolor{miNaranja} {11} =
+                    \phantom{-} 1 \cdot \textcolor{miRojo}{51} - 2 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+
+                \textcolor{miRojo}    {20} - 1 \cdot \textcolor{miNaranja} {11}&=\phantom{1} \textcolor{miAmarillo}{9}\phantom{1} =
+                              -1 \cdot \textcolor{miRojo} {51} + 3 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+
+                \textcolor{miNaranja} {11} - 1 \cdot \textcolor{miAmarillo}{9}\phantom{1} &=\phantom{1} \textcolor{miVerde}  {2}\phantom{1} = 
+                    \phantom{-} 2 \cdot \textcolor{miRojo}{51} - 5 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+
+                \textcolor{miAmarillo}{9} -  4 \cdot \textcolor{miVerde}   {2}\phantom{1} &=\phantom{1} \textcolor{miAzul}  {1}\phantom{1} =
+                              -9 \cdot \textcolor{miRojo} {51} + 23\cdot \textcolor{miRojo}{20}\\
+            \end{array} 
+            \]
+
+
+            \[
+            \begin{array}{|c|c|c|c|c|c|c|}
+                \hline
+                q_i     &  -                  &\cellcolor{miNaranja}2  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}1 &\cellcolor{miAzul}4 & \cellcolor{fin}2\\
+                \hline
+                r_i     &\cellcolor{miRojo}51 &\cellcolor{miNaranja}20 &\cellcolor{miAmarillo}11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2 &\cellcolor{fin} 1\\
+                \hline
+                r_{i+1} &\cellcolor{miRojo}20 &\cellcolor{miNaranja}11 &\cellcolor{miAmarillo}9  &\cellcolor{miVerde}2 &\cellcolor{miAzul} 1 & \cellcolor{fin}0 \\
+                \hline
+                a_i     &\cellcolor{miRojo}0  &\cellcolor{miRojo}   1  &\cellcolor{miAzul}    -2 &\cellcolor{miAzul} 3 &\cellcolor{miAzul} -5 &\cellcolor{fin}23\\
+                \hline
+                a_{i+1} &\cellcolor{miRojo}   1  &\cellcolor{miAzul}-2 &\cellcolor{miAzul}     3 &\cellcolor{miAzul} -5                       &         -      \\
+                \hline
+            \end{array}
+            \]
+
+
+
+    \end{plainexample}
+\end{frame}
+
+\section{Introducción a la criptografía}
+
+\subsection{Qué es la criptografía}
+
+\subsection{Cómo se procesa la información}
+
+\subsection{Tipos de sistemas cifrados}
+
+\section{Advanced Encryption Standard}
+
+\subsection{Qué es AES}
+
+\subsection{Funcionamiento de AES}
+
+\subsection{Cifrando con AES}
+
+
+
+
+
+
+\begin{frame}{prueba}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Imágenes/logo_uned_enc_ECB.png}
+    \end{center}
+\end{frame}
+
+
+
+
+{
+
+\setbeamercolor{background canvas}{bg=gray}
+\begin{frame}[c,plain]{}
+    \centering
+    \textcolor{white}{Thank you}
+\end{frame}
+
+}
+
+
+
+
+
+
+\end{document}

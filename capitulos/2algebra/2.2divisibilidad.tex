@@ -62,7 +62,7 @@
     Sea $A$ un dominio de integridad. $A$ es \textit{dominio de ideales principales} (DIP) si todo ideal $I$ de $A$ es principal.
 \end{deff}
 
-\begin{prop}[En un DIP todo ideal primo \begin{segRevision}no nulo \end{segRevision}es maximal.]\end{prop}
+\begin{prop}[En un DIP todo ideal primo no nulo es maximal.]\end{prop}
 
 \begin{dem}{\cite[p.~39]{GamboaAnillos}}
     Sean $A$ un dominio de ideales principales, $a\in A$ primo, e $I$ un ideal de $A$ que contiene al ideal generado por $a$: $(a) \subset I$. Por ser $A$ un dominio de ideales principales existe $b\in A$ tal que $I$ es generado por $b$, $I = (b)$, por lo que es $b\mid a$. Al ser $a$ primo, es irreducible, y $b$ deberá ser una unidad o un asociado de $a$. En el primer caso, es $I = A$, mientras que en el segundo es $I = (a)$. En conclusión, los únicos ideales que contienen a $(a)$ son el $(a)$ y $A$.
@@ -70,11 +70,11 @@
 
 Se tiene además que un dominio de ideales principales es un dominio de factorización única. \cite[p.~40]{Rosenberger}
 
-\begin{Revision}
+
     \begin{ejs}
         \item $\Z$ es un dominio de ideales principales, pues todos sus ideales son de la forma $n\Z = (n)$. Así, los números primos, $p$, generan ideales maximales $(p)$, y mediante la Proposición \ref{prop:IdealmaximalCuerpo}, se deduce que los anillos cocientes $\Z_p$ son cuerpos.
     \end{ejs}
-\end{Revision}
+
 
 
 
@@ -88,7 +88,7 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
 
 \begin{obss}
         \item El primer axioma se basa en que el producto de elementos nunca debe hacer decrecer la norma: solo la aumenta o la iguala.
-        \item El segundo axioma \begin{Revision}es una generalización de\end{Revision} la división usual de los números enteros, donde $y$ es el dividendo, $x$ el divisor, $q$ el cociente, y $r$ el resto.
+        \item El segundo axioma es una generalización de la división usual de los números enteros, donde $y$ es el dividendo, $x$ el divisor, $q$ el cociente, y $r$ el resto.
         \item Para evitar complicaciones, se suele evitar definir una norma para el cero del anillo.
         \item En $\Z$, la función $\norm{x} = |x|$ es una norma.
 \end{obss}
@@ -113,7 +113,7 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
 \end{dem}
 
 \begin{obs}
-    Se ha obtenido que si $A$ es un dominio euclídeo, entonces $A$ es un dominio de ideales principales, por lo que a su vez es también un dominio de factorización única. En consecuencia, todo elemento de $A$ no nulo no unidad se puede factorizar de forma única en elementos irreducibles. Además, por ser $A$ un DIP, todo elemento irreducible $x\in A$ genera un ideal maximal $I = (x)$. Se tiene entonces que el anillo cociente $A/I$ es un cuerpo \begin{Revision}por la Proposición \ref{prop:IdealmaximalCuerpo}\end{Revision}. Por otro lado, $A$ es dominio euclídeo, por lo que todo elemento de $A$ se puede expresar de la forma $y = qx + r$ con $r = 0 $ o $\norm{r} < \norm{x}$. Si $r = 0$, se tiene $y = qx \in (x)$, es decir, $y$ pertenece a la clase $[0]$ en $A/I$. Si $\norm{r} < \norm{x}$, se tiene $y = qx + r \iff y - r = qx \in (x)$, es decir, $y$ pertenece a la clase $[r]$ en $A/I$. En consecuencia, los representantes de las clases de equivalencia de $A/I$ se pueden elegir de tal forma que: o es 0, o su norma euclídea es menor que la de $x$.
+    Se ha obtenido que si $A$ es un dominio euclídeo, entonces $A$ es un dominio de ideales principales, por lo que a su vez es también un dominio de factorización única. En consecuencia, todo elemento de $A$ no nulo no unidad se puede factorizar de forma única en elementos irreducibles. Además, por ser $A$ un DIP, todo elemento irreducible $x\in A$ genera un ideal maximal $I = (x)$. Se tiene entonces que el anillo cociente $A/I$ es un cuerpo por la Proposición \ref{prop:IdealmaximalCuerpo}. Por otro lado, $A$ es dominio euclídeo, por lo que todo elemento de $A$ se puede expresar de la forma $y = qx + r$ con $r = 0 $ o $\norm{r} < \norm{x}$. Si $r = 0$, se tiene $y = qx \in (x)$, es decir, $y$ pertenece a la clase $[0]$ en $A/I$. Si $\norm{r} < \norm{x}$, se tiene $y = qx + r \iff y - r = qx \in (x)$, es decir, $y$ pertenece a la clase $[r]$ en $A/I$. En consecuencia, los representantes de las clases de equivalencia de $A/I$ se pueden elegir de tal forma que: o es 0, o su norma euclídea es menor que la de $x$.
     
     \item El resultado fundamental de lo explicado es el siguiente: en un anillo cociente $A/I$, la suma y el producto se hacen vía representantes: $[a] + [b] = [a + b]$ y $[a][b] = [ab]$, y dicha suma o producto en $A$ puede resultar en un elemento cuya clase a la que pertenece se desconozca. Si se tiene un elemento $y\in A$ y no se sabe a qué clase pertenece, solo hay que dividirlo por $x$ y tomar el resto $r$ como su representante. 
     
@@ -155,7 +155,7 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
     \end{itemize}
 \end{dem}
 
-\begin{Revision}
+
     \begin{ejs}\label{ej:algoritmo_division_polinomio}
         \item Sean $g = 4X^4 + 2X^2 + 3$ y $f = 2X^2 + X$ en $\Q[X]$. Entonces su división es
         \[
@@ -185,14 +185,14 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
         
         Y es $$X^6 + X^3 + 1 = (X^2 + 1)\cdot (X^4 +X^2 + 1) + X^3.$$En este ejemplo se ha optado por expresar cada paso sumando, es decir, $g_1 = g + q_1f$ y $r = g_1 + q_2f$, pues en $\Z_2[X]$ cada elemento es su propio opuesto, y por lo tanto sumar y restar es la misma operación.
     \end{ejs}
-\end{Revision}
+
 
 \begin{obss} \label{resultado:inv_cuerpos}
-    \item El algoritmo de división para polinomios con coeficientes en un cuerpo se basa en la existencia de elemento inverso para el coeficiente director de $f$. Si este fuera el $1$ ($f$ mónico), la condición de cuerpo podría relajarse a dominio de integridad. De forma más general, si se tiene $f,g'$ con $\gr{g'} \geq \gr{f}$, y el coeficiente director de $f$ es $a$, el polinomio $g'$ debe estar multiplicado por $a^k$, con $k = \gr{g'} -\gr{f} + 1$ el número máximo de pasos del algoritmo, para así poder aplicar el algoritmo con $g = a^kg'$ y $f$, asegurándose de que en cada paso $i$, $a$ pueda dividir al coeficiente director de $g_i, \ i = 0,1,\ldots k-1$. \begin{Revision}Se aprecia que en el Ejemplo \ref{ej:algoritmo_division_polinomio}, si se hubieran definido $f$ y $g$ sobre $\Z[X]$, no se podría haber efectuado la división, pues el último paso necesita del cálculo del inverso de 2 en $\Z$ ($\frac{1}{2}$ en $\Q$), el cual no está definido.\end{Revision}
+    \item El algoritmo de división para polinomios con coeficientes en un cuerpo se basa en la existencia de elemento inverso para el coeficiente director de $f$. Si este fuera el $1$ ($f$ mónico), la condición de cuerpo podría relajarse a dominio de integridad. De forma más general, si se tiene $f,g'$ con $\gr{g'} \geq \gr{f}$, y el coeficiente director de $f$ es $a$, el polinomio $g'$ debe estar multiplicado por $a^k$, con $k = \gr{g'} -\gr{f} + 1$ el número máximo de pasos del algoritmo, para así poder aplicar el algoritmo con $g = a^kg'$ y $f$, asegurándose de que en cada paso $i$, $a$ pueda dividir al coeficiente director de $g_i, \ i = 0,1,\ldots k-1$. Se aprecia que en el Ejemplo \ref{ej:algoritmo_division_polinomio}, si se hubieran definido $f$ y $g$ sobre $\Z[X]$, no se podría haber efectuado la división, pues el último paso necesita del cálculo del inverso de 2 en $\Z$ ($\frac{1}{2}$ en $\Q$), el cual no está definido.
         
     \item Continuando con la observación de la Proposición \ref{resultado:op_cocientes}, dado un cuerpo $K$, su anillo de polinomios $K[X]$ es dominio euclídeo y se pueden identificar las clases de $K[X]/(f)$, con $f$ polinomio no nulo, con los restos al dividir por $f$ en $K[X]$. Para realizar esta división se necesita encontrar el elemento inverso del coeficiente director de $f$, $a$, en el cuerpo $K$. En la práctica se suele multiplicar $f$ por $\inv{a}$, pues $(f) = (\inv{a}f)$ por ser $a$ unidad, y se divide por $f' = \inv{a}f $, que es mónico. Queda entonces por resolver el problema de obtención del inverso en un cuerpo. Específicamente, en este texto se tratará la obtención del inverso en un cuerpo finito. El problema consiste en el siguiente: dado $x\in \F^*$, encontrar $y\in \F^*$ tal que $xy = 1$. Si $\F$ fuera un cuerpo de la forma $\F = A/I$, $A$ dominio euclídeo e $I = (p)$ ideal maximal, la ecuación podría reformularse de la siguiente forma $[x][y] = [1]\iff \eqmod{xy}{1}{p}\iff xy - 1 = pk' \iff xy + pk = 1$, con $k'\in A$ y $k = -k'$. Se tiene entonces que el problema es equivalente a resolver la ecuación $xy + pk = 1$ para $y$ y $k$, con $x$ y $p$ dados. Aunque parezca que añadir una nueva incógnita puede complicar la resolución, se ha pasado de operar con elementos de $A/I$, a operar con elementos de $A$, que es más simple. Además, en ciertos anillos se puede resolver dicha ecuación de manera explícita, siempre que se satisfagan ciertas condiciones. En el resto de esta sección se verá que, efectivamente, se puede resolver dicha ecuación y, por lo tanto, calcular inversos de elementos en $\F = A/I$.
 
-    \item Por ejemplo, el inverso de $[X^2 + X + 1]$ en $\Z_2[X]/(X^4 + X + 1)$ es $[X^2 + X]$, pues se verifica $[X^2 + X + 1]\cdot [X^2 + X] = [X^4 + X] = [1]$. Para obtener $[X^2 + X]$, se expresa el problema de la forma $a\cdot(X^2 + X + 1) + b\cdot(X^4 + X + 1) = 1$ y se resuelve dicha ecuación. Una solución es $a = X^2 + X$, $b = 1$, pues es $(X^2 + X)\cdot(X^2 + X + 1) + 1\cdot(X^4 + X + 1) = 1$. El cómo se han obtenido $a$ y $b$ se \begin{Revision}estudiará\end{Revision} más adelante, tras la explicación del algoritmo de Euclides.
+    \item Por ejemplo, el inverso de $[X^2 + X + 1]$ en $\Z_2[X]/(X^4 + X + 1)$ es $[X^2 + X]$, pues se verifica $[X^2 + X + 1]\cdot [X^2 + X] = [X^4 + X] = [1]$. Para obtener $[X^2 + X]$, se expresa el problema de la forma $a\cdot(X^2 + X + 1) + b\cdot(X^4 + X + 1) = 1$ y se resuelve dicha ecuación. Una solución es $a = X^2 + X$, $b = 1$, pues es $(X^2 + X)\cdot(X^2 + X + 1) + 1\cdot(X^4 + X + 1) = 1$. El cómo se han obtenido $a$ y $b$ se estudiará más adelante, tras la explicación del algoritmo de Euclides.
 \end{obss}
 
 \medskip
@@ -238,14 +238,14 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
     \[
     r_0 = q_1r_1 + r_2
     \]
-    con $r_2 = 0$, en cuyo caso se termina el algoritmo; o \begin{Revision}$\norm{r_1}> \norm{r_2}$\end{Revision}, en cuyo caso se continúa el algoritmo:    \vspace{-0.5em}
+    con $r_2 = 0$, en cuyo caso se termina el algoritmo; o $\norm{r_1}> \norm{r_2}$, en cuyo caso se continúa el algoritmo:    \vspace{-0.5em}
         \begin{align*}
             r_1 &= q_2r_2 + r_3 \\
             &\quad \quad\vdots\\
             r_{n-2} &= q_{n-1}r_{n-1} + r_n\\
             r_{n-1} &= q_nr_n
         \end{align*} 
-    El algoritmo es finito, pues se tiene una sucesión descendiente \begin{Revision}$\norm{r_1} > \norm{r_2}> \norm{r_3}\ldots$\end{Revision} en $\N$, por lo que deberá ser 0 el último resto. Este algoritmo se denomina \textit{algoritmo de Euclides}, y se afirma que el último resto no nulo es el máximo común divisor de $x$ e $y$.    
+    El algoritmo es finito, pues se tiene una sucesión descendiente $\norm{r_1} > \norm{r_2}> \norm{r_3}\ldots$ en $\N$, por lo que deberá ser 0 el último resto. Este algoritmo se denomina \textit{algoritmo de Euclides}, y se afirma que el último resto no nulo es el máximo común divisor de $x$ e $y$.    
 \end{prop}
 
 \begin{dem}{\cite[p.~51]{GamboaAnillos}}
@@ -276,7 +276,7 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
 \begin{dem}{\cite[p.~53]{GamboaAnillos}}
     Sea la identidad de Bézout $ax + by = 1$ con $x,y\in A^*$ dominio euclídeo y $a,b$ a determinar. Para resolver la identidad se utilizará el algoritmo de Euclides escrito como en (\ref{ecEuclides_restos}). Si $x$ e $y$ son primos entre sí se tiene $\mcd{x,y}$ = 1, y expresando $r_0 = y$ y $r_1 = x$ en función del resto de elementos al sustituir en los $r_i, i\geq2$, se tiene:
     
-    \begin{Revision}%
+    %
         \begin{equation}
             \begin{aligned}
                 r_2 &= r_0 - q_1r_1 \\
@@ -290,16 +290,16 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
             \tag{**}
             \label{ec:EuclidesExtendidoBezout}
         \end{equation} 
-    \end{Revision}%
+    %
         obteniéndose explícitamente $a$ y $b$. Si se ha utilizado Bézout para calcular el inverso de $x$ módulo $y$, se tiene que dicho inverso es $a$, es decir, $\eqmod{xa}{1}{y}$.
 \end{dem}
 
 \begin{obs}
     Aunque parezca que la obtención de $a$ y $b$ pueda llegar a ser muy tediosa, se demuestra a continuación que se pueden definir de manera recurrente:
     
-    \begin{Revision}%
+    %
         Sean $b_i$ los coeficientes de $r_0$  y $a_i$ los coeficientes de $r_1$ en (\ref{ec:EuclidesExtendidoBezout}), es decir, de la primera ecuación se obtiene $b_2 = 1$ y $a_2 = -q_1$; en la segunda ecuación es $b_3 = -q_2$ y $a_3 = (1+q_1q_2)$; y así sucesivamente hasta llegar a $b = b_n$ y $a = a_n$.
-    \end{Revision}%
+    %
     Definiendo las dos primeras ecuaciones como
        
     \begin{equation}
@@ -333,7 +333,7 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
     \definecolor{miNaranja}{RGB}{252, 225, 208}
     \definecolor{miRojo}{RGB}{253, 235, 235}
 
-    \begin{Revision}%
+    %
     \item Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo $\Z_2[x]/(x^4 + x + 1)$.\\[1ex]
     Se tiene $a\cdot(x^2 + x + 1) + b\cdot (x^4 + x + 1) = 1$, por lo que se inicializan $r_0 = (x^4 + x + 1)$ y $r_1 = (x^2 + x + 1)$. Mediante el algoritmo de Euclides se obtiene
         \begin{center}
@@ -446,12 +446,12 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
                 \textcolor{red}{Inicialización} $\to$ \textcolor{orange}{Primer paso}$\to$ \textcolor{yellow}{Segundo paso}$\to$ \textcolor{green}{Tercer paso} y \textcolor{blue}{Solución}.
             \end{center} %
             \vspace{-0.5em}
-    \end{Revision}
+    
 \end{ejs}
 
 
 \bigskip
-En el resto de esta sección se introducirán resultados preliminares con el objetivo de fundamentar las demostraciones de los teoremas de la última sección. Se comenzará generalizando la definición de polinomio: en la \begin{segRevision}Definición\end{segRevision} \ref{definion:polinomios} vimos que se toman los anillos unitarios conmutativos $A$ y $B$, con $A$ subanillo de $B$ y $X$ como indeterminada en $B$, formando así el anillo de polinomios $A[X]$. Sin embargo, no se hizo mención alguna al anillo $B$. Solo que es un anillo más general que $A$ donde viven ciertos elementos, representados por la indeterminada $X$, que hace posible la definición de polinomio. Definamos de nuevo los polinomios sin apoyarnos en la existencia de tal anillo.
+En el resto de esta sección se introducirán resultados preliminares con el objetivo de fundamentar las demostraciones de los teoremas de la última sección. Se comenzará generalizando la definición de polinomio: en la Definición \ref{definion:polinomios} vimos que se toman los anillos unitarios conmutativos $A$ y $B$, con $A$ subanillo de $B$ y $X$ como indeterminada en $B$, formando así el anillo de polinomios $A[X]$. Sin embargo, no se hizo mención alguna al anillo $B$. Solo que es un anillo más general que $A$ donde viven ciertos elementos, representados por la indeterminada $X$, que hace posible la definición de polinomio. Definamos de nuevo los polinomios sin apoyarnos en la existencia de tal anillo.
 
 \begin{deff}[Anillo de polinomios]{\cite[p.~149]{Hungerford}}\label{definicion:gen_polinomios}
     Sea $A$ un anillo unitario conmutativo. Se define $A[X]$ como el conjunto de sucesiones de elementos de $A$: $(a_0, a_1, a_2, \ldots)$ tales que $a_i = 0$ para todo índice $i\geq 0 $ excepto para un número finito de índices. Se tiene entonces que $A[X]$ es un anillo unitario conmutativo, con la suma y producto definidos como:
@@ -493,7 +493,7 @@ De esta forma, se pueden definir los polinomios sin necesidad de un anillo más 
 \end{lema}
 
 \begin{dem}{\cite[pp.~54-55]{Rosenberger}}
-    Por ser $A[X]$ dominio euclídeo se tiene que \[p = (X-\alpha)q + r\] con $\gr{r} < \gr{X-\alpha}$ o $r = 0$. En el primer caso se tiene que $\gr{r} = 0$, pues es $\gr{X-\alpha} = 1$, por lo que $r$ es un elemento de $A$ no nulo. Sin embargo, $\alpha$ es una raíz de $p$, por lo que debe ser $p(\alpha) = 0q + r = 0$, y \begin{Revision}es\end{Revision} $r = 0$, en contra de la elección $\gr{r} < \gr{X-\alpha}$. Por lo tanto, debe ser $r = 0$, y se tiene $p = (X-\alpha)q$.
+    Por ser $A[X]$ dominio euclídeo se tiene que \[p = (X-\alpha)q + r\] con $\gr{r} < \gr{X-\alpha}$ o $r = 0$. En el primer caso se tiene que $\gr{r} = 0$, pues es $\gr{X-\alpha} = 1$, por lo que $r$ es un elemento de $A$ no nulo. Sin embargo, $\alpha$ es una raíz de $p$, por lo que debe ser $p(\alpha) = 0q + r = 0$, y es $r = 0$, en contra de la elección $\gr{r} < \gr{X-\alpha}$. Por lo tanto, debe ser $r = 0$, y se tiene $p = (X-\alpha)q$.
 \end{dem}
 
 \begin{obss}

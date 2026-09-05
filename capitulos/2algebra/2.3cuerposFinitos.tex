@@ -35,7 +35,7 @@ El propósito de esta sección es la clasificación de los cuerpos finitos a tra
             (x,y) & \longmapsto & x + a_2y
     \end{array}
     \]
-    vuelve a ser biyectiva, pues la sobreyectividad vuelve a ser trivial, y la inyectividad se prueba de manera idéntica. Se tiene que si $\F = \gen{1,a_1,a_2}$, entonces $\F$ tiene $p^3$ elementos. En caso contrario, se continúa hasta que $\F = \gen{1,a_1, a_2, \ldots, \begin{segRevision}a_{n-1}\end{segRevision}}$, pues $\F$ es un conjunto finito, y en cada paso la demostración de la biyectividad se realiza de manera idéntica. Se obtiene por lo tanto que un cuerpo finito cualquiera, $\F$, debe tener $p^n$ elementos.
+    vuelve a ser biyectiva, pues la sobreyectividad vuelve a ser trivial, y la inyectividad se prueba de manera idéntica. Se tiene que si $\F = \gen{1,a_1,a_2}$, entonces $\F$ tiene $p^3$ elementos. En caso contrario, se continúa hasta que $\F = \gen{1,a_1, a_2, \ldots, a_{n-1}}$, pues $\F$ es un conjunto finito, y en cada paso la demostración de la biyectividad se realiza de manera idéntica. Se obtiene por lo tanto que un cuerpo finito cualquiera, $\F$, debe tener $p^n$ elementos.
 \end{dem}
 
 El teorema \ref{teorema:cuerpo_finito_p^n_elementos} muestra que si $\F$ es un cuerpo finito, entonces debe tener $p^n$ elementos, para algún primo $p$ y algún $n\geq1$. Sin embargo, no garantiza la existencia de cualquier cuerpo finito con $p^n$ elementos.
@@ -97,10 +97,10 @@ Los teoremas \ref{teorema:cuerpo_finito_p^n_elementos} y \ref{teorema:existencia
     f_{p^n-1} = X^{p^n-1}&; f_{p^n-1}(\beta) =\beta^{p^n-1} = 1 \\
     \end{array}
     \]    
-    y por el Teorema de isomorfía se tiene que $\Z_p[X]/\ker(\evb) \cong \F$. Por ser $\Z_p$ cuerpo, $\Z_p[X]$ es dominio euclídeo, específicamente, dominio de ideales principales, por lo que el núcleo $\ker(\evb)$ está generado por un elemento $g\in\Z_p[X]$. Además, se ha obtenido que $\Z_p[X]/(g)$ es un cuerpo de $p^n$ elementos, \begin{Revision}por lo que $g$ debe ser un polinomio irreducible en $\Z_p[X]$ de grado $n$ (\ref{prop:IdealmaximalCuerpo}).\end{Revision} Queda así demostrado que todo cuerpo de $p^n$ elementos es isomorfo a  $\Z_p[X]/(g)$, con $g$ polinomio irreducible de grado $n$, \begin{Revision}y en consecuencia, todos los cuerpos finitos con la misma cantidad de elementos son isomorfos entre sí.\end{Revision}
+    y por el Teorema de isomorfía se tiene que $\Z_p[X]/\ker(\evb) \cong \F$. Por ser $\Z_p$ cuerpo, $\Z_p[X]$ es dominio euclídeo, específicamente, dominio de ideales principales, por lo que el núcleo $\ker(\evb)$ está generado por un elemento $g\in\Z_p[X]$. Además, se ha obtenido que $\Z_p[X]/(g)$ es un cuerpo de $p^n$ elementos, por lo que $g$ debe ser un polinomio irreducible en $\Z_p[X]$ de grado $n$ (\ref{prop:IdealmaximalCuerpo}). Queda así demostrado que todo cuerpo de $p^n$ elementos es isomorfo a  $\Z_p[X]/(g)$, con $g$ polinomio irreducible de grado $n$, y en consecuencia, todos los cuerpos finitos con la misma cantidad de elementos son isomorfos entre sí.
 \end{dem}
 
-\begin{Revision}
+
     Como consecuencia de este resultado se tiene la siguiente definición:
     \begin{deff}[Cuerpo de Galois]{\cite[p.~278]{Hungerford}}
         Sea $\F$ el cuerpo finito formado por $p^n$ elementos. Entonces, $\F$ se denomina \textit{cuerpo de Galois} y se suele denotar por GF($p^n$) o $\F_{p^n}$.
@@ -476,7 +476,7 @@ Los teoremas \ref{teorema:cuerpo_finito_p^n_elementos} y \ref{teorema:existencia
 
 
 \end{ejs}
-\end{Revision}
+
 
 
     

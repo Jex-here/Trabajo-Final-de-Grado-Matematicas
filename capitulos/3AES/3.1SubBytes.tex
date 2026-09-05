@@ -1,4 +1,4 @@
-La función $SubBytes$ es \begin{Revision}la transformación\end{Revision} que compone la capa de confusión, cuyo propósito es ocultar la relación entre texto claro y texto cifrado. En criptografía, esto se suele conseguir aplicando una función no lineal llamada S-box (Substitution box). En AES, esta función interpreta \begin{Revision}cada byte del \textit{estado} como un elemento del cuerpo finito $\F_{2^8} = \Z_2[x]/(f)$, con $f = x^8 + x^4 + x^3 + x + 1$, y opera individualmente cada byte de la siguiente forma:\end{Revision}
+La función $SubBytes$ es la transformación que compone la capa de confusión, cuyo propósito es ocultar la relación entre texto claro y texto cifrado. En criptografía, esto se suele conseguir aplicando una función no lineal llamada S-box (Substitution box). En AES, esta función interpreta cada byte del \textit{estado} como un elemento del cuerpo finito $\F_{2^8} = \Z_2[x]/(f)$, con $f = x^8 + x^4 + x^3 + x + 1$, y opera individualmente cada byte de la siguiente forma:
 \begin{enumerate}[label={--}]
     \item Inv: $\F_{2^8} \to \F_{2^8} \colon a \mapsto b = a^{-1}$, que transforma $a$ en su inverso en $\Z_2[x]/(f)$, extendiendo la operación al elemento $0$, de forma que $ 0 \mapsto 0$.
     \item Aff: $\F_{2^8} \to \F_{2^8} \colon b \mapsto c$, realizando una transformación afín sobre $b$ de la siguiente manera:
@@ -59,11 +59,11 @@ Por lo tanto, $SubBytes$ transforma cada byte $a$ en $c =$ Aff(Inv($a$)). Expres
 \label{tab:sbox}
 \end{table}
 
-\begin{Revision}
+
     Por ejemplo, sea una celda del \textit{estado} con valor $a = 10000011$. Para ver en qué elemento se transforma tras aplicar $SubBytes$, se expresa $a$ en hexadecimal: $a = 10000011 =\texttt{83}$. Luego, se busca en la fila \texttt{8} y en la columna \texttt{3} de la tabla, obteniendo $\texttt{ec}$. Por último, se vuelve a expresar en binario, resultando en $\texttt{ec} = 11101100$.
     
     Podemos comprobar que efectivamente se obtiene dicho resultado realizando las operaciones explícitamente: el byte $a = 10000011$ se corresponde con el polinomio $x^7 + x + 1$. En el Ejemplo \ref{Ejemplo:inversoEuclides} se obtuvo que el inverso de $x^7 + x + 1$ es $x^7$, por lo tanto, se tiene que Inv$(10000011) = 10000000$. Luego, se aplica Aff, obteniendo Aff$(10000000) = 10001111 + 01100011 = 11101100$, obteniendo el mismo resultado.
-    \end{Revision}
+    
 
 \medskip
 Para descifrar se utiliza la operación $InvSubBytes$, la cual consiste en primero aplicar la inversa de la transformación afín y luego el inverso en $\Z_2[x]/(f)$:

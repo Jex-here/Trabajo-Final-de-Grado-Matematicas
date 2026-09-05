@@ -1,0 +1,128 @@
+\usetheme{Heverlee}
+\usepackage{tikz}
+\usepackage{enumitem}
+
+%%% QUICK OPTIONS:
+% (A) Math font without serifs, enable line below to make math serif:
+    \usefonttheme[]{serif}
+
+% (B) Re-define primary colour by adjusting the RGB values
+    % \definecolor{pblue}	{RGB}{206,125,66}
+
+% (C) Title page graphic (optional) --- this is not for the background image, see \usebackgroundtemplate to change that ---
+    % \titlegraphic{\includegraphics[height=2.7cm]{example_figure.pdf}}
+
+% (D) Add logo to bottom right-corner (optional)
+    \logo{\includegraphics[height=1cm]{Imágenes/logo.png}\hspace{-3pt}\vspace{-9.1pt}}      
+
+% (E) Choose one (or none) of these lines to add footline bar on all frames
+    % \setbeamertemplate{footline}[infoline]  % author, title, insitute
+    % \setbeamertemplate{footline}[navigation] % dots swhowing progress
+    % \setbeamertemplate{footline}[navsym] % navigation symbols
+
+% (F) Widescreen 16:9 ratio
+    % \usepackage[orientation=landscape,size=custom,width=16,height=9,scale=0.45,debug]{beamerposter} 
+
+% \setbeamercolor{title page}{fg=white}
+% \setbeamercolor{author in head/foot}{fg=white}
+% \setbeamercolor{date in head/foot}{fg=white}
+
+
+
+% ==============================================================================
+% CONFIGURACIÓN IDIOMA, FUENTES Y TEXTO
+% ==============================================================================
+\usepackage[spanish,es-lcroman]{babel}   %espanish lowcase roman (si no, fuerza siempre I,II,III...
+\renewcommand{\spanishtablename}{Tabla}
+
+\usepackage[T1]{fontenc}       % Codificación de salida: permite copiar/pegar acentos y eñes en el PDF
+\usepackage[utf8]{inputenc}    % Codificación de entrada: permite escribir acentos y eñes directo desde el teclado
+
+           
+\usepackage{CJKutf8}            % Para japonés porque soy un friki
+
+\usepackage{textcomp}          % Soporte para símbolos especiales en texto plano (euro, grados, etc.)
+
+% ==============================================================================
+% ENTORNOS MATEMÁTICOS Y SÍMBOLOS
+% ==============================================================================
+\usepackage{amsmath} % Para comandos de estructura matemática como \align y demás
+\usepackage{amssymb} % Para símbolos matemáticos: \mathbb
+\usepackage{bbm}     % Para más símbolos matemáticos: \mathbbm
+
+\usepackage{amsthm}  %Para gestionar las definiciones y teoremas
+
+% ==============================================================================
+% CONFIGURACIÓN CAJAS DE COLORES
+% ==============================================================================
+\usepackage{tcolorbox}
+\usepackage[dvipsnames, table]{xcolor}     %Para colores
+\tcbuselibrary{skins}
+
+\newtcolorbox{plainexample}[1][]{
+  enhanced,
+  colback=white!90!green,   % Mismo fondo que block body example
+  colframe=black!20!green,           % Color de la barra lateral (usamos el del título)
+  boxrule=0pt,              % Sin borde exterior
+  leftrule=2pt,             % Barra lateral izquierda (estilo Haverlee)
+  arc=0pt,                  % Esquinas rectas (como Haverlee)
+  outer arc=0pt,
+  left=-2pt,                 % Ajusta el padding a tu gusto
+  right=2pt,
+  top=4pt,
+  bottom=4pt,
+  before skip=8pt,
+  after skip=8pt,
+  #1
+}
+
+\newtcolorbox{prop}[1][]{
+  enhanced,
+  colback=white!90!black,   % Mismo fondo que block body example
+  colframe=white!10!black,           % Color de la barra lateral (usamos el del título)
+  boxrule=0pt,              % Sin borde exterior
+  leftrule=2pt,             % Barra lateral izquierda (estilo Haverlee)
+  arc=0pt,                  % Esquinas rectas (como Haverlee)
+  outer arc=0pt,
+  left=2pt,                 % Ajusta el padding a tu gusto
+  right=2pt,
+  top=4pt,
+  bottom=4pt,
+  before skip=8pt,
+  after skip=8pt,
+  #1
+}
+
+\newtcolorbox{teo}[2][]{
+  enhanced,
+  colback=red!20!white,
+  colframe=red!60!white,
+  coltitle=black,
+  colbacktitle=red!40!white,
+  boxrule=0pt,
+  leftrule=0pt,
+  arc=0pt,
+  outer arc=0pt,
+  left=6pt,
+  right=4pt,
+  top=0pt,
+  bottom=4pt,
+  before skip=8pt,
+  after skip=8pt,
+  title={#2},
+  fonttitle=\centering\large,
+  #1
+}
+
+
+
+% ==============================================================================
+
+%%% TITLE PAGE INFO:
+\title[Aritmética en cuerpos finitos y su aplicación al algoritmo AES]{\scshape Aritmética en cuerpos finitos \\[1ex] y su aplicación al algoritmo AES}
+% \subtitle{\textbackslash usetheme\{Heverlee\}}
+\author{Jesús Berdonces Encinas}
+% \institute{Placeholder University}
+\date{Septiembre 2026}
+
+% Text inside {} is used on the title page. Text inside [] is optional, and is used in footline bar (if [] is omitted then text from {} will be used in both ; if [] is specified but left empty then the footline will not show any text)

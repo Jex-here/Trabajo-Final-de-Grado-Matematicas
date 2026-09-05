@@ -1,6 +1,6 @@
-\textit{AddRoundKey} toma como parámetros el \textit{estado} y la clave $k_i$ de la ronda correspondiente, la cual se compone de 128 bits y se expresa en una matriz $4 \times 4$, de la misma manera en la que se expresó el \textit{estado} al inicializarse el algoritmo de AES. Así, \textit{AddRoundKey} consiste en sumar celda a celda ambas matrices, donde la suma se efectúa sobre $\F_{2^8}$. Esta operación \begin{Revision}es sinónimo de efectuar la suma en $\Z_2$ bit a bit\end{Revision}, en ambas cadenas de 128 bits.
+\textit{AddRoundKey} toma como parámetros el \textit{estado} y la clave $k_i$ de la ronda correspondiente, la cual se compone de 128 bits y se expresa en una matriz $4 \times 4$, de la misma manera en la que se expresó el \textit{estado} al inicializarse el algoritmo de AES. Así, \textit{AddRoundKey} consiste en sumar celda a celda ambas matrices, donde la suma se efectúa sobre $\F_{2^8}$. Esta operación es sinónimo de efectuar la suma en $\Z_2$ bit a bit, en ambas cadenas de 128 bits.
 
-\begin{Revision}
+
     Por ejemplo, si el \textit{estado} es el inicializado en \ref{estado_hex}, y se le suma la clave $k_0$ , que se supone que es \texttt{0ef903333ba9613897060a04511dfa9f}, se tiene:
     \[
     \begin{bmatrix}
@@ -25,7 +25,7 @@
     \end{bmatrix}
     \]
     Para comprobarlo, tomemos un elemento cualquiera: el $(4,4)$ (la esquina inferior derecha). Se tiene $\texttt{73} \oplus \texttt{9f} = 01110011 \oplus 10011111 = 11101100 = \texttt{ec}$.
-\end{Revision}
+
 
 La operación inversa de \textit{AddRoundKey} es la propia \textit{AddRoundKey}.
 \vspace{-1em}

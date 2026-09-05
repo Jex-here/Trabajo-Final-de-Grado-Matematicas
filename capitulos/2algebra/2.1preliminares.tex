@@ -112,18 +112,18 @@ Se aprecia que la única propiedad que le falta a un anillo unitario $(A, +, \cd
         \]
         
         \item
-            \begin{Revision}
+            
                 La suma en $A[X]$ se define como 
                 \[
                     p + q = \left(\sum\limits_{i=0}^n a_i X^i\right) + \left(\sum\limits_{i=0}^m c_i X^i\right) = \sum\limits_{i=0}^{\text{max}(n,m)} (a_i + c_i)X^i.
                     \text{\footnotemark}
                 \]
                 \footnotetext{
-                \begin{Revision}
+                
                     Se ha realizado un abuso de notación en las sumatorias: cuando el índice \textit{i} excede $n$ o $m$, se asume $ a_i = 0 $ o $ c_i = 0 $ respectivamente.
-                \end{Revision}
+                
                 }
-            \end{Revision}\vspace{-1em}
+            \vspace{-1em}
         
         \item El producto en $A[X]$ se define como
         \[p \ \cdot \ q = \left(\sum\limits_{i=0}^n a_i X^i\right) \cdot \left(\sum\limits_{j=0}^m c_j X^j\right) = \sum\limits_{i=0}^{n} \sum\limits_{j = 0}^m a_i c_jX^{i+j}
@@ -135,9 +135,9 @@ Se aprecia que la única propiedad que le falta a un anillo unitario $(A, +, \cd
 
 \begin{nott}
     \item El término ``$X$'' se denomina \textit{indeterminada} y se suele representar de diferentes formas: $T,X,Y, t, x, y$.
-    \begin{Revision}%
+    %
         En los resultados teóricos predominará el uso de ``$X$'' como indeterminada, pues también se usa ``$x$'' para denotar los elementos de anillos. En los ejemplos y ejercicios se usarán ambas formas, de manera que su uso no genere confusión.
-    \end{Revision}A pesar de que la indeterminada sea un elemento de $B$ con el que se opera, es conveniente pensar en esta como nada más que un símbolo.
+    A pesar de que la indeterminada sea un elemento de $B$ con el que se opera, es conveniente pensar en esta como nada más que un símbolo.
     
     \item Los elementos $a_i$ se denominan \textit{coeficientes}, al $a_0$ se le llama \textit{término independiente} y al $a_i$ no nulo con mayor índice, $i$, se le llama \textit{coeficiente director}. Cuando un polinomio $p$ tenga coeficiente director $a = 1$, se dirá que $p$ es mónico.
 \end{nott}
@@ -247,7 +247,7 @@ Si $a\in U(A)$, $\inv{a}$ es un elemento de $A$ que pertenece también a $A[X]$,
 \end{obs}
 
 \begin{ejs}
-    \item Los ideales de $\Z$ son de la forma \begin{Revision}$n\Z:= \{ n \cdot x\mid x\in\Z, \ n\geq 0\}$.\end{Revision}
+    \item Los ideales de $\Z$ son de la forma $n\Z:= \{ n \cdot x\mid x\in\Z, \ n\geq 0\}$.
 
     \item Sea $K$ un cuerpo, $I$ un ideal no trivial de $K$, e $i\in I^*$. Se tiene $\inv{i}\in K$ por ser cuerpo, e $i \cdot \inv{i}  = 1\in I$, por ser $I$ ideal. Si $x \in K$, $1\cdot x = x \in I$, de nuevo, por ser $I$ ideal. Se afirma entonces que  $I = K$, y que un cuerpo solo tiene el ideal trivial y el impropio.
 
@@ -257,7 +257,7 @@ Si $a\in U(A)$, $\inv{a}$ es un elemento de $A$ que pertenece también a $A[X]$,
 
 
 \begin{deff}[Anillo cociente]{\cite[pp.~25-26]{GamboaAnillos}}
-    Sea $A$ un anillo unitario conmutativo e $I$ un ideal \begin{Revision}propio\end{Revision} de $A$. Se define en $A$ la relación de equivalencia $x \sim y$ si y solo si $x - y \in I$. El conjunto cociente es $A/I$, formado por las clases de equivalencia $[x] = \{x + i\mid i\in I\}$, con $x\in A$. A las clases de equivalencia también se las denota por $x + I$. Si dos elementos $x,y$ pertenecen a la misma clase, se denota por $\eqmod{x}{y}{I}$.
+    Sea $A$ un anillo unitario conmutativo e $I$ un ideal propio de $A$. Se define en $A$ la relación de equivalencia $x \sim y$ si y solo si $x - y \in I$. El conjunto cociente es $A/I$, formado por las clases de equivalencia $[x] = \{x + i\mid i\in I\}$, con $x\in A$. A las clases de equivalencia también se las denota por $x + I$. Si dos elementos $x,y$ pertenecen a la misma clase, se denota por $\eqmod{x}{y}{I}$.
     \item Se definen la suma y el producto en $A/I$ vía representantes:
     \[[x] + [y] = [x + y]\]
     \[[x] \cdot [y] = [x \cdot y]\]
@@ -330,9 +330,9 @@ Estas tres aplicaciones son homomorfismos de anillos y se cumple que $p$ es sobr
     \item En $\Z$, los ideales de la forma $(n)$ se corresponden con los conjuntos $n\Z$. Los anillos cocientes generados por estos ideales son de la forma $\Z/(n) = \{[0],[1], \ \ldots \ , [n-2], [n-1]\}$. Frecuentemente se denota $\Z/(n)$ como $\Z_n$.
     
     \item 
-    \begin{Revision}
+    
         Sea $\Z_2[X]$ el anillo de polinomios en una indeterminada con coeficientes en $\Z_2$ y sea $(X^2+1)$ el ideal generado por $X^2+1\in \Z_2[X]$, es decir, $(X^2+1) = \{q\cdot(X^2+1) \mid q\in \Z_2[X]\}$. Se tiene que el anillo cociente $\Z_2[X]/(X^2+1)$ está formado por las clases $\{[0],[1],[X],[X+1]\}$, pues todo elemento $p$ de $\Z_2[X]$ se puede expresar de la forma $p = q\cdot(X^2+1) + a$, con $q\in \Z_2[X]$ y $a = 0,1,X \text{ o } X+1$. Por ejemplo, $p = X^3 + X + 1$ pertenece a la clase $[1]$, pues es $X^3 + X + 1 = X\cdot (X^2+1) + 1$.
-    \end{Revision}
+    
 \end{ejs}
 
 
@@ -362,11 +362,11 @@ Estas tres aplicaciones son homomorfismos de anillos y se cumple que $p$ es sobr
     \end{enumerate}
 \end{dem}
 
-\begin{Revision}
+
     \begin{ejs}
         \item El anillo cociente $\Z_2[X]/(X^2+1)$ estudiado en el Ejemplo \ref{ej:idealGenerado} no es un dominio de integridad, pues el ideal $(X^2+1)$ no es primo: $(X+1)$ no pertenece al ideal, pero se tiene que $(X+1)^2 = X^2 + 2X + 1 = X^2 + 1$, por ser $[2] = [0]$ en $\Z_2$.
     \end{ejs}
-\end{Revision}
+
 
 
 
