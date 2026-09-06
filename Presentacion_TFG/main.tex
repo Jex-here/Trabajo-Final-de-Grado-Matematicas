@@ -78,37 +78,42 @@
             Si se cumplen ambas, $A$ es un \alert{anillo unitario conmutativo}.
     \end{block} 
 
-    \begin{plainexample}
-        \begin{enumerate}[label=--]
-            \item $(\Z,+, \cdot)$ no es un anillo
-            \item $(\Q,+, \cdot)$ es un anillo unitario conmutativo
-        \end{enumerate}
-    \end{plainexample}
+    \only<1>{
+        \begin{plainexample}
+            \begin{enumerate}[label=--]
+                \item $\Z$ y $\Q$ son anillos unitarios conmutativos.
+                \item $\mathcal{M}_n(\R)$ son anillos unitarios.
+            \end{enumerate}
+        \end{plainexample}
+    }
+%=========================ANILLO DE POLINOMIOS=========================
+    \only<2>{
+        \begin{exampleblock}{\centering \large Anillo de polinomios}
+            Sea $A$ un anillo unitario conmutativo.\\
+            Se definen los polinomios sobre $A$ como el conjunto
+            \[
+                A[X] = \{a_0 + a_1X +  \ldots + a_nX^n , \text{ con }  a_i \in A  \text{ y }  n \in \N\}
+            \]
+            $A[X]$ es un anillo unitario conmutativo.
+        \end{exampleblock}
+    }
+
+    
 \end{frame}
 
-%=========================ANILLO DE POLINOMIOS=========================
-\begin{frame}%{Estructuras algebraicas}
-\vspace{4em}
-    \begin{exampleblock}{\centering \large Anillo de polinomios}
-        Sea $A$ un anillo unitario conmutativo.\\
-        Se definen los polinomios sobre $A$ como el conjunto 
-        \[ A[X] = \{a_0 + a_1X +  \ldots + a_nX^n , \text{ con }  a_i \in A  \text{ y }  n \in \N\}\]
-        $(A[X], +, \cdot)$ con la suma y producto usual de polinomios es un anillo unitario conmutativo.
-    \end{exampleblock}
-\end{frame}
 
 %=========================UNIDADES=========================
 \begin{frame}%{Estructuras algebraicas}
-\vspace{3em}
+\vspace{5em}
     \begin{block}{\centering \large Unidades}
-        Sea $A$ un anillo unitario.\\
-        Las unidades de $A$ son los elementos que tienen inversa respecto del producto.
+        Sea $A$ un anillo unitario. Las \alert{unidades} de $A$ son los elementos que tienen inversa respecto del producto.
     \end{block}
 
     \begin{plainexample}
         \begin{enumerate}[label=--]
-            \item Las unidades de $(\Z,+, \cdot)$ son el $1$ y el $-1$.
-            \item Las unidades de $(\Q,+, \cdot)$ son todos los elementos de $\Q$ menos el $0$.
+            \item Las unidades de $\Z$ son el $1$ y el $-1$.
+            \item Las unidades de $\Q$ son todos los elementos de $\Q$ menos el $0$.
+            \item Las unidades de $\mathcal{M}_n(\R)$ son las matrices con determinante no nulo.
         \end{enumerate}
     \end{plainexample}
 \end{frame}
@@ -273,14 +278,16 @@
 %=========================BÉZOUT=========================
 \begin{frame}
     \begin{block}{\centering \large Búsqueda de inverso}
-        Dado $x\in K[X]/(f)$, se ha de buscar $y\in K[X]/(f)$ tal que
+        Dado $x\in \Z_p[X]/(f)$, se ha de buscar $y\in \Z_p[X]/(f)$ tal que
         \setlength{\belowdisplayskip}{-1pt}   % Reduce espacio abajo
         \vspace{-0.5em}
         \begin{align*}
             \setlength{\itemsep}{-0.3em}
             xy      &= 1    \\
             [x][y]  &= [1]  \\
-            xy + fg  &= 1    
+            xy      &\sim 1       \\
+            xy - 1  &= fg'    \\
+            x\alert{y} + f\alert{g}  &= 1    
         \end{align*}
 
     \end{block}
@@ -296,12 +303,13 @@
     \renewcommand{\arraystretch}{1.2}
     \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
     \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
+    \definecolor{fin}{rgb}{0.71,0.93,0.94}
     \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
     \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
     \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
 
     \begin{block}{\centering \large Algoritmo de Euclides}
-        Algoritmo de Euclides para $y = r_0$, $x = r_1$
+        Algoritmo de Euclides para $f = r_0$, $x = r_1$
         \vspace{-0.3em}
         \begin{align*}
             r_0 &= q_1r_1 + r_2 \\
@@ -313,8 +321,9 @@
     \end{block}
     \begin{plainexample}
         \begin{center}
+            \hspace{1.5em}
             \begin{tabular}{cr}
-                \begin{minipage}[t]{0.40\textwidth}
+                \begin{minipage}[t]{0.5\textwidth}
                     \begin{array}{rl}
                         \textcolor{miRojo}    {51}\  =& 2 \cdot \textcolor{miRojo}    {20}+ \textcolor{miNaranja} {11} \\
                         \textcolor{miRojo}    {20}\ =& 1 \cdot \textcolor{miNaranja} {11}+ \textcolor{miAmarillo}{9} \\
@@ -323,16 +332,16 @@
                     \end{array} 
                 \end{minipage}
                 &
-                \begin{minipage}[t]{0.35\textwidth}
+                \begin{minipage}[t]{0.5\textwidth}
                     \vspace{-3.5em}
                     \[
                     \begin{array}{|c|c|c|c|c|c|c|}
                         \hline
-                        q_i     &  -                    & \cellcolor{miNaranja} 2  & \cellcolor{miAmarillo}1  &\cellcolor{miVerde}1    &\cellcolor{miAzul}4 & 2\\
+                        q_i     &  -                    & \cellcolor{miNaranja} 2  & \cellcolor{miAmarillo}1  &\cellcolor{miVerde}1    &\cellcolor{miAzul}4 &\cellcolor{fin} 2\\
                         \hline
-                        r_i    &  \cellcolor{miRojo}51  & \cellcolor{miNaranja}    20 & \cellcolor{miAmarillo} 11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2 & 1\\
+                        r_i    &  \cellcolor{miRojo}51  & \cellcolor{miNaranja}    20 & \cellcolor{miAmarillo} 11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2 &\cellcolor{fin} 1\\
                         \hline
-                        r_{i+1} &  \cellcolor{miRojo}20 & \cellcolor{miNaranja} 11 & \cellcolor{miAmarillo}9  &\cellcolor{miVerde}2    &\cellcolor{miAzul} 1 & 0 \\
+                        r_{i+1} &  \cellcolor{miRojo}20 & \cellcolor{miNaranja} 11 & \cellcolor{miAmarillo}9  &\cellcolor{miVerde}2    &\cellcolor{miAzul} 1 &\cellcolor{fin} 0 \\
                         \hline 
                     \end{array}
                     \]
@@ -343,7 +352,7 @@
 
 \end{frame}
 
-%=========================INVERSO EN CUERPOS FINITOS=========================
+%=========================INVERSO EN Z_p=========================
 \begin{frame}
     \renewcommand{\arraystretch}{1.2}
     \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
@@ -354,7 +363,9 @@
     \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
 
     \begin{plainexample}
-            \[
+        \centering
+        \vspace{-1em}
+        \[
             \begin{array}{rl}
                 \phantom{51 - 2\cdot 20}                                       &\phantom{=1}\textcolor{miNaranja} {11} =
                     \phantom{-} 1 \cdot \textcolor{miRojo}{51} - 2 \phantom{3}\cdot \textcolor{miRojo}{20} \\
@@ -368,29 +379,74 @@
                 \textcolor{miAmarillo}{9} -  4 \cdot \textcolor{miVerde}   {2}\phantom{1} &=\phantom{1} \textcolor{miAzul}  {1}\phantom{1} =
                               -9 \cdot \textcolor{miRojo} {51} + 23\cdot \textcolor{miRojo}{20}\\
             \end{array} 
-            \]
-
-
-            \[
+        \]
+        \[
             \begin{array}{|c|c|c|c|c|c|c|}
                 \hline
-                q_i     &  -                  &\cellcolor{miNaranja}2  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}1 &\cellcolor{miAzul}4 & \cellcolor{fin}2\\
+                q_i     &  -                  &\cellcolor{miNaranja}2  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}1 &\cellcolor{miAzul}4  & \cellcolor{fin}2 \\
                 \hline
-                r_i     &\cellcolor{miRojo}51 &\cellcolor{miNaranja}20 &\cellcolor{miAmarillo}11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2 &\cellcolor{fin} 1\\
+                r_i     &\cellcolor{miRojo}51 &\cellcolor{miNaranja}20 &\cellcolor{miAmarillo}11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2  &\cellcolor{fin} 1 \\
                 \hline
                 r_{i+1} &\cellcolor{miRojo}20 &\cellcolor{miNaranja}11 &\cellcolor{miAmarillo}9  &\cellcolor{miVerde}2 &\cellcolor{miAzul} 1 & \cellcolor{fin}0 \\
                 \hline
-                a_i     &\cellcolor{miRojo}0  &\cellcolor{miRojo}   1  &\cellcolor{miAzul}    -2 &\cellcolor{miAzul} 3 &\cellcolor{miAzul} -5 &\cellcolor{fin}23\\
+                b_i &\cellcolor{miRojo}   1   &\cellcolor{miNaranja}0  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}-1&\cellcolor{miAzul}2  &\cellcolor{fin}-9 \\
                 \hline
-                a_{i+1} &\cellcolor{miRojo}   1  &\cellcolor{miAzul}-2 &\cellcolor{miAzul}     3 &\cellcolor{miAzul} -5                       &         -      \\
+                a_i     &\cellcolor{miRojo}0  &\cellcolor{miNaranja}1  &\cellcolor{miAmarillo}-2 &\cellcolor{miVerde}3 &\cellcolor{miAzul} -5&\cellcolor{fin}23 \\
                 \hline
             \end{array}
-            \]
-
-
-
+        \]
+         $b_i = (b_{i-2}-q_{i-1}b_{i-1})$\\
+         $a_i = (a_{i-2}-q_{i-1}a_{i-1})$
     \end{plainexample}
+
 \end{frame}
+
+%=========================INVERSO EN CUERPOS FINITOS=========================
+
+\begin{frame}
+    \renewcommand{\arraystretch}{1.2}
+    \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
+    \definecolor{fin}{rgb}{0.71,0.93,0.94}
+    \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
+    \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
+    \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
+    \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
+
+    \begin{plainexample}
+        \centering
+        Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo $\Z_2[x]/(x^4 + x + 1)$.\\[1ex]
+        \[
+        \vspace{-1em}
+            \begin{array}{|c|c|c|c|}
+                \hline
+                q_i     &  -          & \cellcolor{miNaranja}x^2 + x     & x^2 + x + 1 \\
+                \hline
+                r_i    &  \cellcolor{miRojo}x^4 + x + 1 & \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1  \\
+                \hline
+                r_{i+1} &  \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1           &  0        \\
+                \hline
+                a_i     &\cellcolor{miRojo}0            &  \cellcolor{miRojo}1          &  \cellcolor{miAzul}x^2 + x       \\
+                \hline
+            \end{array}
+        \]
+
+         \begin{center}
+            \[
+            \begin{array}{rl|l}
+                &x^4 + x + 1 & x^2 + x + 1 \\\cline{3-3} 
+                +&\underline{x^4 + x^3 + x^2 \phantom{{}+x^2 + 1}} & x^2\\
+                &x^3 + x^2 + x + 1 &  \\
+                +&\underline{x^3 + x^2 + x\phantom{{ }+ 1}} & x\\
+                r_2 =& 1 &  q_1 = x^2 + x 
+            \end{array}
+            \]
+        \end{center}
+    \end{plainexample}
+        
+
+\end{frame}
+
+        
 
 \section{Introducción a la criptografía}
 

@@ -337,31 +337,31 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
     \item Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo $\Z_2[x]/(x^4 + x + 1)$.\\[1ex]
     Se tiene $a\cdot(x^2 + x + 1) + b\cdot (x^4 + x + 1) = 1$, por lo que se inicializan $r_0 = (x^4 + x + 1)$ y $r_1 = (x^2 + x + 1)$. Mediante el algoritmo de Euclides se obtiene
         \begin{center}
-               \[
-                \begin{array}{rl|l}
-                    &x^4 + x + 1 & x^2 + x + 1 \\\cline{3-3} 
-                    +&\underline{x^4 + x^3 + x^2 \phantom{{}+x^2 + 1}} & x^2\\
-                    &x^3 + x^2 + x + 1 &  \\
-                    +&\underline{x^3 + x^2 + x\phantom{{ }+ 1}} & x\\
-                    r_2 =& 1 &  q_1 = x^2 + x 
-                \end{array}
-                \]
+            \[
+            \begin{array}{rl|l}
+                &x^4 + x + 1 & x^2 + x + 1 \\\cline{3-3} 
+                +&\underline{x^4 + x^3 + x^2 \phantom{{}+x^2 + 1}} & x^2\\
+                &x^3 + x^2 + x + 1 &  \\
+                +&\underline{x^3 + x^2 + x\phantom{{ }+ 1}} & x\\
+                r_2 =& 1 &  q_1 = x^2 + x 
+            \end{array}
+            \]
         \end{center}
         Y se ha terminado el algoritmo en un paso. Para el cálculo de $a$, se inicializan $a_0 = 0$ y $a_1 = 1$ tal y como en (\ref{inicializacion_coef_bezout}). El siguiente término, $a_2$, se calcula haciendo $a_2 = a_0 - q_1a_1 = 0 - (x^2 + x)\cdot 1 = x^2 + x$. Como no hay más pasos, se concluye que $a = a_2 = x^2 + x$, y el inverso de $[x^2 + x + 1]$ en $\Z_2[x]/(x^4 + x + 1)$ es $[x^2 + x]$.
         
         En la siguiente tabla se expresan los términos de manera compacta:
-         \[
-                \begin{array}{|c|c|c|c|}
-                    \hline
-                    q_i     &  -          & \cellcolor{miNaranja}x^2 + x     & x^2 + x + 1 \\
-                    \hline
-                    r_i    &  \cellcolor{miRojo}x^4 + x + 1 & \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1  \\
-                    \hline
-                    r_{i+1} &  \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1           &  0        \\
-                    \hline
-                    a_i     &\cellcolor{miRojo}0            &  \cellcolor{miRojo}1          &  \cellcolor{miAzul}x^2 + x       \\
-                    \hline
-                \end{array}
+        \[
+            \begin{array}{|c|c|c|c|}
+                \hline
+                q_i     &  -          & \cellcolor{miNaranja}x^2 + x     & x^2 + x + 1 \\
+                \hline
+                r_i    &  \cellcolor{miRojo}x^4 + x + 1 & \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1  \\
+                \hline
+                r_{i+1} &  \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1           &  0        \\
+                \hline
+                a_i     &\cellcolor{miRojo}0            &  \cellcolor{miRojo}1          &  \cellcolor{miAzul}x^2 + x       \\
+                \hline
+            \end{array}
         \]
          Donde los colores representan cada paso del algoritmo:%
         \begin{center}
