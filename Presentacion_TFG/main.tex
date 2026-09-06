@@ -55,20 +55,23 @@
         \begin{enumerate}[label=--]
             \item $(\N,+)$ no es un grupo.
             \item $(\Z,+)$ es un grupo conmutativo.
-            \item $(\Q,+)$ es un grupo conmutativo.
+            \item $(\R^*,\cdot)$ es un grupo conmutativo.
         \end{enumerate}
     \end{plainexample}
 \end{frame}
 
 %=========================ESTRUCTURA DE ANILLO=========================
 \begin{frame}%{Estructuras algebraicas}
+    \vspace{-0.5em}
     \begin{block}{\centering \large Anillo: $(A,+,\cdot)$}
         \begin{enumerate}[label=\roman*)]
             \item $(A, +)$ es un \textit{grupo conmutativo}.
             \item \textit{Asociatividad para el producto}: \hspace{0.5em}
                 $ (a \cdot b) \cdot c = a \cdot (b \cdot c)$
             \item \textit{Propiedad distributiva}:\hspace{4.45em}
-                $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$
+                $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$ \\[0.6ex]
+                \hspace{14.45em}
+                $ c \cdot (a + b) = (c \cdot a) + (c \cdot b)$
         \end{enumerate}
         Si además se cumple que
         \begin{enumerate}[label=\roman*), start=4]
@@ -77,6 +80,7 @@
         \end{enumerate}
             Si se cumplen ambas, $A$ es un \alert{anillo unitario conmutativo}.
     \end{block} 
+    \vspace{-0.5em}
 
     \only<1>{
         \begin{plainexample}
@@ -91,14 +95,13 @@
         \begin{exampleblock}{\centering \large Anillo de polinomios}
             Sea $A$ un anillo unitario conmutativo.\\
             Se definen los polinomios sobre $A$ como el conjunto
+            \vspace{-0.25em}
             \[
                 A[X] = \{a_0 + a_1X +  \ldots + a_nX^n , \text{ con }  a_i \in A  \text{ y }  n \in \N\}
             \]
             $A[X]$ es un anillo unitario conmutativo.
         \end{exampleblock}
     }
-
-    
 \end{frame}
 
 
@@ -293,7 +296,7 @@
     \end{block}
 
     \begin{prop}
-        La identidad de Bézout \[xy + fg  = 1\] es resoluble en un dominio euclídeo cuando  $\mcd{x,f} = 1$.
+        La identidad de Bézout \[x\alert{y} + f\alert{g}  = 1\] es resoluble en un dominio euclídeo cuando  $\mcd{x,f} = 1$.
     \end{prop}
 
 \end{frame}
@@ -303,13 +306,13 @@
     \renewcommand{\arraystretch}{1.2}
     \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
     \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
-    \definecolor{fin}{rgb}{0.71,0.93,0.94}
+    \definecolor{fin}{rgb}{0.57,0.74,0.75}
     \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
     \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
     \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
 
     \begin{block}{\centering \large Algoritmo de Euclides}
-        Algoritmo de Euclides para $f = r_0$, $x = r_1$
+        Algoritmo de Euclides para $f = r_0$, $x = r_1$ es:
         \vspace{-0.3em}
         \begin{align*}
             r_0 &= q_1r_1 + r_2 \\
@@ -325,10 +328,11 @@
             \begin{tabular}{cr}
                 \begin{minipage}[t]{0.5\textwidth}
                     \begin{array}{rl}
-                        \textcolor{miRojo}    {51}\  =& 2 \cdot \textcolor{miRojo}    {20}+ \textcolor{miNaranja} {11} \\
-                        \textcolor{miRojo}    {20}\ =& 1 \cdot \textcolor{miNaranja} {11}+ \textcolor{miAmarillo}{9} \\
-                        \textcolor{miNaranja} {11}\ =& 1 \cdot \textcolor{miAmarillo}{9}\phantom{1} + \textcolor{miVerde}   {2} \\
-                        \textcolor{miAmarillo}{9} \ =& 4 \cdot \textcolor{miVerde}   {2}\phantom{1} + \textcolor{miAzul}    {1} \\
+                        \textcolor{miRojo}    {51}\ =&\textcolor{miNaranja} 2 \cdot \textcolor{miNaranja}    {20}+ \textcolor{miNaranja} {11} \\
+                        \textcolor{miNaranja}    {20}\ =&\textcolor{miAmarillo} 1 \cdot \textcolor{miAmarillo} {11}+ \textcolor{miAmarillo}{9} \\
+                        \textcolor{miAmarillo} {11}\ =&\textcolor{miVerde} 1 \cdot \textcolor{miVerde}{9}\phantom{1} + \textcolor{miVerde}   {2} \\
+                        \textcolor{miVerde}{9} \ =&\textcolor{miAzul} 4 \cdot \textcolor{miAzul}   {2}\phantom{1} + \textcolor{miAzul}    {1} \\
+                        \textcolor{miAzul}   {2} \ =&\textcolor{gray} 2 \cdot \textcolor{gray}    {1}\phantom{1} %+ \textcolor{miAzul}    {0}
                     \end{array} 
                 \end{minipage}
                 &
@@ -356,7 +360,7 @@
 \begin{frame}
     \renewcommand{\arraystretch}{1.2}
     \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
-    \definecolor{fin}{rgb}{0.71,0.93,0.94}
+    \definecolor{fin}{rgb}{0.57,0.74,0.75}
     \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
     \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
     \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
@@ -364,34 +368,35 @@
 
     \begin{plainexample}
         \centering
-        \vspace{-1em}
+        Calcular el inverso de $[20]$ en el cuerpo de $51$ elementos: \(\Z_{51}\)
+        \[\alert{20}a + \alert{51}b = 1\]
         \[
-            \begin{array}{rl}
-                \phantom{51 - 2\cdot 20}                                       &\phantom{=1}\textcolor{miNaranja} {11} =
-                    \phantom{-} 1 \cdot \textcolor{miRojo}{51} - 2 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+        \begin{array}{rl}
+            \phantom{51 - 2\cdot 20}                                       &\phantom{=1}\textcolor{miNaranja} {11} =
+                \phantom{-} 1 \cdot \textcolor{miRojo}{51} - 2 \phantom{3}\cdot \textcolor{miRojo}{20} \\
 
-                \textcolor{miRojo}    {20} - 1 \cdot \textcolor{miNaranja} {11}&=\phantom{1} \textcolor{miAmarillo}{9}\phantom{1} =
-                              -1 \cdot \textcolor{miRojo} {51} + 3 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+            \textcolor{miRojo}    {20} - 1 \cdot \textcolor{miNaranja} {11}&=\phantom{1} \textcolor{miAmarillo}{9}\phantom{1} =
+                        -1 \cdot \textcolor{miRojo} {51} + 3 \phantom{3}\cdot \textcolor{miRojo}{20} \\
 
-                \textcolor{miNaranja} {11} - 1 \cdot \textcolor{miAmarillo}{9}\phantom{1} &=\phantom{1} \textcolor{miVerde}  {2}\phantom{1} = 
-                    \phantom{-} 2 \cdot \textcolor{miRojo}{51} - 5 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+            \textcolor{miNaranja} {11} - 1 \cdot \textcolor{miAmarillo}{9}\phantom{1} &=\phantom{1} \textcolor{miVerde}  {2}\phantom{1} = 
+                \phantom{-} 2 \cdot \textcolor{miRojo}{51} - 5 \phantom{3}\cdot \textcolor{miRojo}{20} \\
 
-                \textcolor{miAmarillo}{9} -  4 \cdot \textcolor{miVerde}   {2}\phantom{1} &=\phantom{1} \textcolor{miAzul}  {1}\phantom{1} =
-                              -9 \cdot \textcolor{miRojo} {51} + 23\cdot \textcolor{miRojo}{20}\\
-            \end{array} 
+            \textcolor{miAmarillo}{9} -  4 \cdot \textcolor{miVerde}   {2}\phantom{1} &=\phantom{1} \textcolor{miAzul}  {1}\phantom{1} =
+                        -9 \cdot \textcolor{miRojo} {51} + 23\cdot \textcolor{miRojo}{20}\\
+        \end{array} 
         \]
         \[
             \begin{array}{|c|c|c|c|c|c|c|}
                 \hline
-                q_i     &  -                  &\cellcolor{miNaranja}2  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}1 &\cellcolor{miAzul}4  & \cellcolor{fin}2 \\
+                q_i  &  -                  &\cellcolor{miNaranja}2  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}1 &\cellcolor{miAzul}4  & \cellcolor{fin}2 \\
                 \hline
-                r_i     &\cellcolor{miRojo}51 &\cellcolor{miNaranja}20 &\cellcolor{miAmarillo}11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2  &\cellcolor{fin} 1 \\
+                r_i  &\phantom{l}\cellcolor{miRojo}51\phantom{l} &\phantom{l}\cellcolor{miNaranja}20\phantom{l} &\cellcolor{miAmarillo}11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2  &\cellcolor{fin} 1 \\
                 \hline
                 r_{i+1} &\cellcolor{miRojo}20 &\cellcolor{miNaranja}11 &\cellcolor{miAmarillo}9  &\cellcolor{miVerde}2 &\cellcolor{miAzul} 1 & \cellcolor{fin}0 \\
                 \hline
-                b_i &\cellcolor{miRojo}   1   &\cellcolor{miNaranja}0  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}-1&\cellcolor{miAzul}2  &\cellcolor{fin}-9 \\
+                b_i &\cellcolor{miRojo}   1   &\cellcolor{miNaranja}0  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}-1\phantom{l}&\cellcolor{miAzul}2  &\cellcolor{fin}-9\phantom{l} \\
                 \hline
-                a_i     &\cellcolor{miRojo}0  &\cellcolor{miNaranja}1  &\cellcolor{miAmarillo}-2 &\cellcolor{miVerde}3 &\cellcolor{miAzul} -5&\cellcolor{fin}23 \\
+                a_i     &\cellcolor{miRojo}0  &\cellcolor{miNaranja}1  &\cellcolor{miAmarillo}-2\phantom{l} &\cellcolor{miVerde}3 &\cellcolor{miAzul} -5\phantom{l}&\cellcolor{fin}23 \\
                 \hline
             \end{array}
         \]
@@ -406,7 +411,7 @@
 \begin{frame}
     \renewcommand{\arraystretch}{1.2}
     \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
-    \definecolor{fin}{rgb}{0.71,0.93,0.94}
+    \definecolor{fin}{rgb}{0.57,0.74,0.75}
     \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
     \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
     \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
@@ -414,18 +419,19 @@
 
     \begin{plainexample}
         \centering
-        Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo $\Z_2[x]/(x^4 + x + 1)$.\\[1ex]
+        Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo de $16$ elementos: \[\Z_2[x]/(x^4 + x + 1)\]
+        \[(\alert{x^2 + x + 1})a + (\alert{x^4 + x + 1})b = 1\]
         \[
         \vspace{-1em}
             \begin{array}{|c|c|c|c|}
                 \hline
-                q_i     &  -          & \cellcolor{miNaranja}x^2 + x     & x^2 + x + 1 \\
+                q_i     &  -                            & \cellcolor{miNaranja}x^2 + x    & \cellcolor{fin}x^2 + x + 1 \\
                 \hline
-                r_i    &  \cellcolor{miRojo}x^4 + x + 1 & \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1  \\
+                r_i    &  \cellcolor{miRojo}x^4 + x + 1 & \cellcolor{miNaranja}x^2 + x + 1 & \cellcolor{fin}1           \\
                 \hline
-                r_{i+1} &  \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1           &  0        \\
+                r_{i+1} &  \cellcolor{miRojo}x^2 + x + 1 & \cellcolor{miNaranja}1           & \cellcolor{fin} 0        \\
                 \hline
-                a_i     &\cellcolor{miRojo}0            &  \cellcolor{miRojo}1          &  \cellcolor{miAzul}x^2 + x       \\
+                a_i     &\cellcolor{miRojo}0            &  \cellcolor{miNaranja}1          &  \cellcolor{fin}x^2 + x   \\
                 \hline
             \end{array}
         \]
@@ -434,10 +440,10 @@
             \[
             \begin{array}{rl|l}
                 &x^4 + x + 1 & x^2 + x + 1 \\\cline{3-3} 
-                +&\underline{x^4 + x^3 + x^2 \phantom{{}+x^2 + 1}} & x^2\\
+                -&\underline{x^4 + x^3 + x^2 \phantom{{}+x^2 + 1}} & x^2\\
                 &x^3 + x^2 + x + 1 &  \\
-                +&\underline{x^3 + x^2 + x\phantom{{ }+ 1}} & x\\
-                r_2 =& 1 &  q_1 = x^2 + x 
+                -&\underline{x^3 + x^2 + x\phantom{{ }+ 1}} & x\\
+                & 1 & a = x^2 + x 
             \end{array}
             \]
         \end{center}
