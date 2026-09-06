@@ -162,7 +162,7 @@
 
 %=========================ANILLO COCIENTE=========================
 \begin{frame}
-    \begin{block}{\centering \large Anillos cociente}
+    \begin{block}{\centering \large Anillos cocientes}
         Sea $A$ un anillo unitario conmutativo e $I$ un ideal de $A$.\\
         Se define en $A$ la relación de equivalencia 
             \vspace{-0.5em}
@@ -200,7 +200,7 @@
     \end{plainexample}
 
     \begin{prop}
-        Proposición: \hspace{3em}$I$ es maximal $\iff$ si $A/I$ es un cuerpo.
+        Proposición: \hspace{3em}$I$ es maximal $\iff A/I$ es un cuerpo.
     \end{prop}
 
     \begin{plainexample}
@@ -302,14 +302,16 @@
 \end{frame}
 
 %=========================EUCLIDES=========================
-\begin{frame}
+\begin{frame}<1-6>
     \renewcommand{\arraystretch}{1.2}
     \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
     \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
     \definecolor{fin}{rgb}{0.57,0.74,0.75}
     \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
-    \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
+    \definecolor{miNaranja}{rgb}{0.63,0.44,0.01}
     \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
+    \definecolor{dgray}{rgb}{0.45,0.48,0.57}
+    \definecolor{fondo}{RGB}{230,255,230}
 
     \begin{block}{\centering \large Algoritmo de Euclides}
         Algoritmo de Euclides para $f = r_0$, $x = r_1$ es:
@@ -322,17 +324,20 @@
             r_{n-1} &= q_nr_n
         \end{align*} 
     \end{block}
+
+    
+    \only<1>{
     \begin{plainexample}
         \begin{center}
             \hspace{1.5em}
             \begin{tabular}{cr}
                 \begin{minipage}[t]{0.5\textwidth}
                     \begin{array}{rl}
-                        \textcolor{miRojo}    {51}\ =&\textcolor{miNaranja} 2 \cdot \textcolor{miNaranja}    {20}+ \textcolor{miNaranja} {11} \\
-                        \textcolor{miNaranja}    {20}\ =&\textcolor{miAmarillo} 1 \cdot \textcolor{miAmarillo} {11}+ \textcolor{miAmarillo}{9} \\
-                        \textcolor{miAmarillo} {11}\ =&\textcolor{miVerde} 1 \cdot \textcolor{miVerde}{9}\phantom{1} + \textcolor{miVerde}   {2} \\
-                        \textcolor{miVerde}{9} \ =&\textcolor{miAzul} 4 \cdot \textcolor{miAzul}   {2}\phantom{1} + \textcolor{miAzul}    {1} \\
-                        \textcolor{miAzul}   {2} \ =&\textcolor{gray} 2 \cdot \textcolor{gray}    {1}\phantom{1} %+ \textcolor{miAzul}    {0}
+                        \textcolor{miRojo}    {71}\ =&\textcolor{miNaranja} 1 \cdot \textcolor{miNaranja} {40}+         \textcolor{miNaranja} {31} \\
+                        \textcolor{miNaranja} {40}\ =&\textcolor{miAmarillo}1 \cdot \textcolor{miAmarillo}{31}+         \textcolor{miAmarillo}{9} \\
+                        \textcolor{miAmarillo}{31}\ =&\textcolor{miVerde}   3 \cdot \textcolor{miVerde}   {9}\phantom{1} + \textcolor{miVerde}{4} \\
+                        \textcolor{miVerde}   {9} \ =&\textcolor{miAzul}    2 \cdot \textcolor{miAzul}    {4}\phantom{1} + \textcolor{miAzul} {1} \\
+                        \textcolor{miAzul}    {4} \ =&\textcolor{dgray}      4 \cdot \textcolor{dgray}      {1}\phantom{1} + \textcolor{dgray}{0}
                     \end{array} 
                 \end{minipage}
                 &
@@ -341,11 +346,11 @@
                     \[
                     \begin{array}{|c|c|c|c|c|c|c|}
                         \hline
-                        q_i     &  -                    & \cellcolor{miNaranja} 2  & \cellcolor{miAmarillo}1  &\cellcolor{miVerde}1    &\cellcolor{miAzul}4 &\cellcolor{fin} 2\\
+                        q_i     &  -                    & \cellcolor{miNaranja} 1  & \cellcolor{miAmarillo}1  &\cellcolor{miVerde}3 &\cellcolor{miAzul}2 &\cellcolor{fin} 4\\
                         \hline
-                        r_i    &  \cellcolor{miRojo}51  & \cellcolor{miNaranja}    20 & \cellcolor{miAmarillo} 11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2 &\cellcolor{fin} 1\\
+                        r_i    &  \cellcolor{miRojo} 71 & \cellcolor{miNaranja} 40 & \cellcolor{miAmarillo}31 &\cellcolor{miVerde}9 &\cellcolor{miAzul}4 &\cellcolor{fin} 1\\
                         \hline
-                        r_{i+1} &  \cellcolor{miRojo}20 & \cellcolor{miNaranja} 11 & \cellcolor{miAmarillo}9  &\cellcolor{miVerde}2    &\cellcolor{miAzul} 1 &\cellcolor{fin} 0 \\
+                        r_{i+1} &  \cellcolor{miRojo}40 & \cellcolor{miNaranja} 31 & \cellcolor{miAmarillo}9  &\cellcolor{miVerde}4 &\cellcolor{miAzul} 1 &\cellcolor{fin} 0 \\
                         \hline 
                     \end{array}
                     \]
@@ -353,6 +358,176 @@
             \end{tabular}
         \end{center}
     \end{plainexample}
+    }
+    \only<2>{
+    \begin{plainexample}
+        \begin{center}
+            \hspace{1.5em}
+            \begin{tabular}{cr}
+                \begin{minipage}[t]{0.5\textwidth}
+                    \begin{array}{rl}
+                        \textcolor{miRojo}    {71}\ =&\textcolor{miNaranja} 1 \cdot \textcolor{miNaranja} {40}+         \textcolor{miNaranja} {31} \\
+                        \textcolor{black} {40}\ =&\textcolor{black}1 \cdot \textcolor{black}{31}+         \textcolor{black}{9} \\
+                        \textcolor{black}{31}\ =&\textcolor{black}   3 \cdot \textcolor{black}   {9}\phantom{1} + \textcolor{black}{4} \\
+                        \textcolor{black}   {9} \ =&\textcolor{black}    2 \cdot \textcolor{black}    {4}\phantom{1} + \textcolor{black} {1} \\
+                        \textcolor{black}    {4} \ =&\textcolor{black}      4 \cdot \textcolor{black}      {1}\phantom{1} + \textcolor{black}{0}
+                    \end{array} 
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.5\textwidth}
+                    \vspace{-3.5em}
+                    \[
+                    \begin{array}{|c|c|c|c|c|c|c|}
+                        \hline
+                        q_i     &  -                    & \cellcolor{miNaranja} 1  & \cellcolor{fondo}1  &\cellcolor{fondo}3 &\cellcolor{fondo}2 &\cellcolor{fondo} 4\\
+                        \hline
+                        r_i    &  \cellcolor{miRojo} 71 & \cellcolor{miNaranja} 40 & \cellcolor{fondo}31 &\cellcolor{fondo}9 &\cellcolor{fondo}4 &\cellcolor{fondo} 1\\
+                        \hline
+                        r_{i+1} &  \cellcolor{fondo}40 & \cellcolor{miNaranja} 31 & \cellcolor{fondo}9  &\cellcolor{fondo}4 &\cellcolor{fondo} 1 &\cellcolor{fondo} 0 \\
+                        \hline 
+                    \end{array}
+                    \]
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+    \end{plainexample}
+    }
+
+    \only<3>{
+    \begin{plainexample}
+        \begin{center}
+            \hspace{1.5em}
+            \begin{tabular}{cr}
+                \begin{minipage}[t]{0.5\textwidth}
+                    \begin{array}{rl}
+                        \textcolor{black}    {71}\ =&\textcolor{black} 1 \cdot \textcolor{black} {40}+         \textcolor{black} {31} \\
+                        \textcolor{miNaranja} {40}\ =&\textcolor{miAmarillo}1 \cdot \textcolor{miAmarillo}{31}+         \textcolor{miAmarillo}{9} \\
+                        \textcolor{black}{31}\ =&\textcolor{black}   3 \cdot \textcolor{black}   {9}\phantom{1} + \textcolor{black}{4} \\
+                        \textcolor{black}   {9} \ =&\textcolor{black}    2 \cdot \textcolor{black}    {4}\phantom{1} + \textcolor{black} {1} \\
+                        \textcolor{black}    {4} \ =&\textcolor{black}      4 \cdot \textcolor{black}      {1}\phantom{1} + \textcolor{black}{0}
+                    \end{array} 
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.5\textwidth}
+                    \vspace{-3.5em}
+                   \[
+                    \begin{array}{|c|c|c|c|c|c|c|}
+                        \hline
+                        q_i     &  -                    & \cellcolor{fondo} 1  & \cellcolor{miAmarillo}1  &\cellcolor{fondo}3 &\cellcolor{fondo}2 &\cellcolor{fondo} 4\\
+                        \hline
+                        r_i    &  \cellcolor{fondo} 71 & \cellcolor{miNaranja} 40 & \cellcolor{miAmarillo}31 &\cellcolor{fondo}9 &\cellcolor{fondo}4 &\cellcolor{fondo} 1\\
+                        \hline
+                        r_{i+1} &  \cellcolor{fondo}40 & \cellcolor{fondo} 31 & \cellcolor{miAmarillo}9  &\cellcolor{fondo}4 &\cellcolor{fondo} 1 &\cellcolor{fondo} 0 \\
+                        \hline 
+                    \end{array}
+                    \]
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+    \end{plainexample}
+    }
+
+    \only<4>{
+    \begin{plainexample}
+        \begin{center}
+            \hspace{1.5em}
+            \begin{tabular}{cr}
+                \begin{minipage}[t]{0.5\textwidth}
+                    \begin{array}{rl}
+                        \textcolor{black}    {71}\ =&\textcolor{black} 1 \cdot \textcolor{black} {40}+         \textcolor{black} {31} \\
+                        \textcolor{black} {40}\ =&\textcolor{black}1 \cdot \textcolor{black}{31}+         \textcolor{black}{9} \\
+                        \textcolor{miAmarillo}{31}\ =&\textcolor{miVerde}   3 \cdot \textcolor{miVerde}   {9}\phantom{1} + \textcolor{miVerde}{4} \\
+                        \textcolor{black}   {9} \ =&\textcolor{black}    2 \cdot \textcolor{black}    {4}\phantom{1} + \textcolor{black} {1} \\
+                        \textcolor{black}    {4} \ =&\textcolor{black}      4 \cdot \textcolor{black}      {1}\phantom{1} + \textcolor{black}{0}
+                    \end{array} 
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.5\textwidth}
+                    \vspace{-3.5em}
+                   \[
+                    \begin{array}{|c|c|c|c|c|c|c|}
+                        \hline
+                        q_i     &  -                    & \cellcolor{fondo} 1  & \cellcolor{fondo}1  &\cellcolor{miVerde}3 &\cellcolor{fondo}2 &\cellcolor{fondo} 4\\
+                        \hline
+                        r_i    &  \cellcolor{fondo} 71 & \cellcolor{fondo} 40 & \cellcolor{miAmarillo}31 &\cellcolor{miVerde}9 &\cellcolor{fondo}4 &\cellcolor{fondo} 1\\
+                        \hline
+                        r_{i+1} &  \cellcolor{fondo}40 & \cellcolor{fondo} 31 & \cellcolor{fondo}9  &\cellcolor{miVerde}4 &\cellcolor{fondo} 1 &\cellcolor{fondo} 0 \\
+                        \hline 
+                    \end{array}
+                    \]
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+    \end{plainexample}
+    }
+
+    \only<5>{
+    \begin{plainexample}
+        \begin{center}
+            \hspace{1.5em}
+            \begin{tabular}{cr}
+                \begin{minipage}[t]{0.5\textwidth}
+                    \begin{array}{rl}
+                        \textcolor{black}    {71}\ =&\textcolor{black} 1 \cdot \textcolor{black} {40}+         \textcolor{black} {31} \\
+                        \textcolor{black} {40}\ =&\textcolor{black}1 \cdot \textcolor{black}{31}+         \textcolor{black}{9} \\
+                        \textcolor{black}{31}\ =&\textcolor{black}   3 \cdot \textcolor{black}   {9}\phantom{1} + \textcolor{black}{4} \\
+                        \textcolor{miVerde}   {9} \ =&\textcolor{miAzul}    2 \cdot \textcolor{miAzul}    {4}\phantom{1} + \textcolor{miAzul} {1} \\
+                        \textcolor{black}    {4} \ =&\textcolor{black}      4 \cdot \textcolor{black}      {1}\phantom{1} + \textcolor{black}{0}
+                    \end{array} 
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.5\textwidth}
+                    \vspace{-3.5em}
+                   \[
+                    \begin{array}{|c|c|c|c|c|c|c|}
+                        \hline
+                        q_i     &  -                    & \cellcolor{fondo} 1  & \cellcolor{fondo}1  &\cellcolor{fondo}3 &\cellcolor{miAzul}2 &\cellcolor{fondo} 4\\
+                        \hline
+                        r_i    &  \cellcolor{fondo} 71 & \cellcolor{fondo} 40 & \cellcolor{fondo}31 &\cellcolor{miVerde}9 &\cellcolor{miAzul}4 &\cellcolor{fondo} 1\\
+                        \hline
+                        r_{i+1} &  \cellcolor{fondo}40 & \cellcolor{fondo} 31 & \cellcolor{fondo}9  &\cellcolor{fondo}4 &\cellcolor{miAzul} 1 &\cellcolor{fondo} 0 \\
+                        \hline 
+                    \end{array}
+                    \]
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+    \end{plainexample}
+    }
+
+    \only<6>{
+    \begin{plainexample}
+        \begin{center}
+            \hspace{1.5em}
+            \begin{tabular}{cr}
+                \begin{minipage}[t]{0.5\textwidth}
+                    \begin{array}{rl}
+                        \textcolor{black}    {71}\ =&\textcolor{black} 1 \cdot \textcolor{black} {40}+         \textcolor{black} {31} \\
+                        \textcolor{black} {40}\ =&\textcolor{black}1 \cdot \textcolor{black}{31}+         \textcolor{black}{9} \\
+                        \textcolor{black}{31}\ =&\textcolor{black}   3 \cdot \textcolor{black}   {9}\phantom{1} + \textcolor{black}{4} \\
+                        \textcolor{black}   {9} \ =&\textcolor{black}    2 \cdot \textcolor{black}    {4}\phantom{1} + \textcolor{black} {1} \\
+                        \textcolor{miAzul}    {4} \ =&\textcolor{fin}      4 \cdot \textcolor{fin}      {1}\phantom{1} + \textcolor{fin}{0}
+                    \end{array} 
+                \end{minipage}
+                &
+                \begin{minipage}[t]{0.5\textwidth}
+                    \vspace{-3.5em}
+                   \[
+                    \begin{array}{|c|c|c|c|c|c|c|}
+                        \hline
+                        q_i     &  -                    & \cellcolor{fondo} 1  & \cellcolor{fondo}1  &\cellcolor{fondo}3 &\cellcolor{fondo}2 &\cellcolor{fin} 4\\
+                        \hline
+                        r_i    &  \cellcolor{fondo} 71 & \cellcolor{fondo} 40 & \cellcolor{fondo}31 &\cellcolor{fondo}9 &\cellcolor{miAzul}4 &\cellcolor{fin} 1\\
+                        \hline
+                        r_{i+1} &  \cellcolor{fondo}40 & \cellcolor{fondo} 31 & \cellcolor{fondo}9  &\cellcolor{fondo}4 &\cellcolor{fondo} 1 &\cellcolor{fin} 0 \\
+                        \hline 
+                    \end{array}
+                    \]
+                \end{minipage}
+            \end{tabular}
+        \end{center}
+    \end{plainexample}
+    }
 
 \end{frame}
 
@@ -363,49 +538,95 @@
     \definecolor{fin}{rgb}{0.57,0.74,0.75}
     \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
     \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
-    \definecolor{miNaranja}{rgb}{0.87,0.60,0.00}
+    \definecolor{miNaranja}{rgb}{0.63,0.44,0.01}
     \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
+    \definecolor{dgray}{rgb}{0.45,0.48,0.57}
+    \definecolor{fondo}{RGB}{230,255,230}
 
+    \only<1>{
     \begin{plainexample}
         \centering
-        Calcular el inverso de $[20]$ en el cuerpo de $51$ elementos: \(\Z_{51}\)
-        \[\alert{20}a + \alert{51}b = 1\]
+        Calcular el inverso de $[40]$ en el cuerpo de $71$ elementos: \(\Z_{71}\)
+        \[\alert{40}a + \alert{71}b = 1\]
         \[
         \begin{array}{rl}
-            \phantom{51 - 2\cdot 20}                                       &\phantom{=1}\textcolor{miNaranja} {11} =
-                \phantom{-} 1 \cdot \textcolor{miRojo}{51} - 2 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+            \phantom{71 - 1\cdot 40}                                                         \textcolor{miAmarillo}   {31} &=
+                         - 1\phantom{6}\cdot\textcolor{miRojo}{40} + 1\cdot\textcolor{miRojo}{71}  \\
 
-            \textcolor{miRojo}    {20} - 1 \cdot \textcolor{miNaranja} {11}&=\phantom{1} \textcolor{miAmarillo}{9}\phantom{1} =
-                        -1 \cdot \textcolor{miRojo} {51} + 3 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+            \textcolor{black} {40} - 1\cdot\textcolor{black}           {31} = \phantom{3}\textcolor{miVerde} {9}  &= 
+                \phantom{-}2\phantom{6}\cdot\textcolor{miRojo}{40}           -1\cdot\textcolor{miRojo}{71}  \\
 
-            \textcolor{miNaranja} {11} - 1 \cdot \textcolor{miAmarillo}{9}\phantom{1} &=\phantom{1} \textcolor{miVerde}  {2}\phantom{1} = 
-                \phantom{-} 2 \cdot \textcolor{miRojo}{51} - 5 \phantom{3}\cdot \textcolor{miRojo}{20} \\
+            \textcolor{black}{31} - 3\cdot\phantom{3}\textcolor{black}   {9} =  \phantom{3}\textcolor{miAzul}  {4}  &= 
+                - 7\phantom{6}\cdot\textcolor{miRojo}{40} + 4\cdot\textcolor{miRojo}{71} \\
 
-            \textcolor{miAmarillo}{9} -  4 \cdot \textcolor{miVerde}   {2}\phantom{1} &=\phantom{1} \textcolor{miAzul}  {1}\phantom{1} =
-                        -9 \cdot \textcolor{miRojo} {51} + 23\cdot \textcolor{miRojo}{20}\\
-        \end{array} 
+            \textcolor{black}   {9} - 2\cdot\phantom{3}\textcolor{black}     {4}  = \phantom{3}\textcolor{dgray}   {1}  &= 
+                \phantom{-}16          \cdot\textcolor{miRojo}{40}           -9\cdot\textcolor{miRojo}{71} 
+        \end{array}
         \]
         \[
             \begin{array}{|c|c|c|c|c|c|c|}
                 \hline
-                q_i  &  -                  &\cellcolor{miNaranja}2  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}1 &\cellcolor{miAzul}4  & \cellcolor{fin}2 \\
+                q_i  &  -                  &\cellcolor{miNaranja}1  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}3 &\cellcolor{miAzul}2  & \cellcolor{fin}4 \\
                 \hline
-                r_i  &\phantom{l}\cellcolor{miRojo}51\phantom{l} &\phantom{l}\cellcolor{miNaranja}20\phantom{l} &\cellcolor{miAmarillo}11 &\cellcolor{miVerde}9 &\cellcolor{miAzul}2  &\cellcolor{fin} 1 \\
+                r_i  &\phantom{l}\cellcolor{miRojo}71\phantom{l} &\phantom{l}\cellcolor{miNaranja}40\phantom{l} &\cellcolor{miAmarillo}31 &\cellcolor{miVerde}9 &\cellcolor{miAzul}4  &\cellcolor{fin} 1 \\
                 \hline
-                r_{i+1} &\cellcolor{miRojo}20 &\cellcolor{miNaranja}11 &\cellcolor{miAmarillo}9  &\cellcolor{miVerde}2 &\cellcolor{miAzul} 1 & \cellcolor{fin}0 \\
+                r_{i+1} &\cellcolor{miRojo}40 &\cellcolor{miNaranja}31 &\cellcolor{miAmarillo}9  &\cellcolor{miVerde}4 &\cellcolor{miAzul} 1 & \cellcolor{fin}0 \\
                 \hline
-                b_i &\cellcolor{miRojo}   1   &\cellcolor{miNaranja}0  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}-1\phantom{l}&\cellcolor{miAzul}2  &\cellcolor{fin}-9\phantom{l} \\
+                a_i     &\cellcolor{miRojo}0  &\cellcolor{miNaranja}1  &\cellcolor{miAmarillo}-1\phantom{l} &\cellcolor{miVerde}2 &\cellcolor{miAzul} -7\phantom{l}&\cellcolor{fin}16 \\
                 \hline
-                a_i     &\cellcolor{miRojo}0  &\cellcolor{miNaranja}1  &\cellcolor{miAmarillo}-2\phantom{l} &\cellcolor{miVerde}3 &\cellcolor{miAzul} -5\phantom{l}&\cellcolor{fin}23 \\
+                b_i &\cellcolor{miRojo}   1   &\cellcolor{miNaranja}0  &\cellcolor{miAmarillo}1  &\cellcolor{miVerde}-1\phantom{l}&\cellcolor{miAzul}4  &\cellcolor{fin}-9\phantom{l} \\
                 \hline
             \end{array}
         \]
-         $b_i = (b_{i-2}-q_{i-1}b_{i-1})$\\
-         $a_i = (a_{i-2}-q_{i-1}a_{i-1})$
+         $a_i = (a_{i-2}-q_{i-1}a_{i-1})$\\
+         $b_i = (b_{i-2}-q_{i-1}b_{i-1})$
     \end{plainexample}
+    }
+
+    \only<2-4>{
+    \begin{plainexample}
+        \centering
+        Calcular el inverso de $[40]$ en el cuerpo de $71$ elementos: \(\Z_{71}\)
+        \[\alert{40}a + \alert{71}b = 1\]
+        \[
+        \begin{array}{rl}
+            \phantom{71 - 1\cdot 40}                                                         \textcolor{miAmarillo}   {31} &=
+                         - 1\phantom{6}\cdot\textcolor{miRojo}{40} + 1\cdot\textcolor{miRojo}{71}  \\
+
+            \textcolor{black} {40} - 1\cdot\textcolor{black}           {31} = \phantom{3}\textcolor{black} {9}  &= 
+                \phantom{-}2\phantom{6}\cdot\textcolor{black}{40}           -1\cdot\textcolor{black}{71}  \\
+
+            \textcolor{black}{31} - 3\cdot\phantom{3}\textcolor{black}   {9} =  \phantom{3}\textcolor{black}  {4}  &= 
+                - 7\phantom{6}\cdot\textcolor{black}{40} + 4\cdot\textcolor{black}{71} \\
+
+            \textcolor{black}   {9} - 2\cdot\phantom{3}\textcolor{black}     {4}  = \phantom{3}\textcolor{black}   {1}  &= 
+                \phantom{-}16          \cdot\textcolor{black}{40}           -9\cdot\textcolor{black}{71} 
+        \end{array}
+        \]
+        \[
+            \begin{array}{|c|c|c|c|c|c|c|}
+                \hline
+                q_i  &  -                  &\cellcolor{fondo}1  &\alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<3>1  &\cellcolor{fondo}3 &\cellcolor{fondo}2  & \cellcolor{fondo}4 \\
+                \hline
+                r_i  &\phantom{l}\cellcolor{fondo}71\phantom{l} &\phantom{l}\cellcolor{fondo}40\phantom{l} &\cellcolor{fondo}31 &\cellcolor{fondo}9 &\cellcolor{fondo}4  &\cellcolor{fondo} 1 \\
+                \hline
+                r_{i+1} &\cellcolor{fondo}40 &\cellcolor{fondo}31 &\cellcolor{fondo}9  &\cellcolor{fondo}4 &\cellcolor{fondo} 1 & \cellcolor{fondo}0 \\
+                \hline
+                a_i     &\alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<2>0  &\alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<3>1  &\alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<4>-1\phantom{l} &\cellcolor{fondo}2 &\cellcolor{fondo} -7\phantom{l}&\cellcolor{fondo}16 \\
+                \hline
+                b_i &\cellcolor{fondo}   1   &\cellcolor{fondo}0  &\cellcolor{fondo}1  &\cellcolor{fondo}-1\phantom{l}&\cellcolor{fondo}4  &\cellcolor{fondo}-9\phantom{l} \\
+                \hline
+            \end{array}
+        \]
+        \begin{array}{rlll}
+            a_2 &= (a_0-q_1a_1) &= 0 - 1\cdot 1 &= -1\\
+            b_2 &= (b_0-q_1b_1) &= 1 - 1\cdot 0 &= 1
+        \end{array}
+    \end{plainexample}
+    }
 
 \end{frame}
-
+    
 %=========================INVERSO EN CUERPOS FINITOS=========================
 
 \begin{frame}
