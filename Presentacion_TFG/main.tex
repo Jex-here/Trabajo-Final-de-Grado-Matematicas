@@ -652,46 +652,132 @@
     \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
     \definecolor{fondo}{RGB}{230,255,230}
 
-    \only<1-4>{
+    \only<1-11>{
     \begin{plainexample}
         \centering
         Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo de $16$ elementos: \[\Z_2[x]/(x^4 + x + 1)\]
         \vspace{-1em}
-        \uncover<2-4>{\[({x^2 + x + 1})a + ({x^4 + x + 1})b = 1\]}
-        \vspace{-0.8em}
-        \uncover<3-4>{
-        \[
-            \begin{array}{|c|c|c|c|}
-                \hline
-                q_i     &  -                            & \cellcolor{miNaranja}x^2 + x    & \cellcolor{fondo}x^2 + x + 1 \\
-                \hline
-                r_i    &  \cellcolor{miRojo}x^4 + x + 1 & \cellcolor{miNaranja}x^2 + x + 1 & \cellcolor{fondo}1           \\
-                \hline
-                r_{i+1} &  \cellcolor{fondo}x^2 + x + 1 & \cellcolor{miNaranja}1           & \cellcolor{fondo} 0        \\
-                \hline
-                a_i     &\cellcolor{fondo}0            &  \cellcolor{fondo}1          &  \cellcolor{fondo}x^2 + x   \\
-                \hline
-            \end{array}
-        \]}
-        \uncover<4>{
+        \uncover<2->{\[({x^2 + x + 1})\alert{a} + ({x^4 + x + 1})b = 1\]}
+        \vspace{-1em}
+        \uncover<3->{
+            \alt{
+                \[
+                    \begin{array}{|c|c|c|c|}
+                        \hline
+                        q_i     &  \uncover<4->{-} &
+                        \uncover<10->{\cellcolor{fondo}x^2 + x}    &
+                            \uncover<11->{\cellcolor{fondo}x^2 + x + 1} \\
+                        \hline
+                        r_i    &  \uncover<4->{\cellcolor{fondo}x^4 + x + 1} & 
+                            \uncover<4->{\cellcolor{fondo}x^2 + x + 1} &
+                            \uncover<11->{\cellcolor{fondo}1 }          \\
+                        \hline
+                        r_{i+1} &  \uncover<4->{\cellcolor{fondo}x^2 + x + 1} &
+                        \uncover<10->{\cellcolor{fondo}1}&
+                            \uncover<11->{\cellcolor{fondo} 0}        \\
+                        \hline
+                        a_i     &\uncover<4->{\cellcolor{fondo}0}            & 
+                        \uncover<4->{\cellcolor{fondo}1}          & 
+                        \\
+                        \hline
+                    \end{array}
+                \]
+            }{
+                \alt{
+                    \[
+                        \begin{array}{|c|c|c|c|}
+                            \hline
+                            q_i     &  \uncover<4->{-} &
+                            \uncover<10->{\cellcolor{fondo}x^2 + x}    &
+                                \uncover<11->{\cellcolor{fondo}x^2 + x + 1} \\
+                            \hline
+                            r_i    &  \uncover<4->{\cellcolor{miRojo}x^4 + x + 1} & 
+                                \uncover<4->{\cellcolor{miRojo}x^2 + x + 1} &
+                                \uncover<11->{\cellcolor{fondo}1 }          \\
+                            \hline
+                            r_{i+1} &  \uncover<4->{\cellcolor{miRojo}x^2 + x + 1} &
+                            \uncover<10->{\cellcolor{fondo}1}&
+                                \uncover<11->{\cellcolor{fondo} 0}        \\
+                            \hline
+                            a_i     &\uncover<4->{\cellcolor{miRojo}0}            & 
+                            \uncover<4->{\cellcolor{miRojo}1}          & 
+                            \\
+                            \hline
+                        \end{array}
+                    \]
+                }{
+                    \alt{
+                        \[
+                            \begin{array}{|c|c|c|c|}
+                                \hline
+                                q_i     &  \uncover<4->{-} &
+                                \uncover<10->{\cellcolor{miNaranja}x^2 + x}    &
+                                    \uncover<11->{\cellcolor{fondo}x^2 + x + 1} \\
+                                \hline
+                                r_i    &  \uncover<4->{\cellcolor{miRojo}x^4 + x + 1} & 
+                                    \uncover<4->{\cellcolor{miRojo}x^2 + x + 1} &
+                                    \uncover<11->{\cellcolor{fondo}1 }          \\
+                                \hline
+                                r_{i+1} &  \uncover<4->{\cellcolor{miRojo}x^2 + x + 1} &
+                                \uncover<10->{\cellcolor{miNaranja}1}&
+                                    \uncover<11->{\cellcolor{fondo} 0}        \\
+                                \hline
+                                a_i     &\uncover<4->{\cellcolor{miRojo}0}            & 
+                                \uncover<4->{\cellcolor{miRojo}1}          & 
+                                \\
+                                \hline
+                            \end{array}
+                        \]
+                    }{
+                        \[
+                            \begin{array}{|c|c|c|c|}
+                                \hline
+                                q_i     &  \uncover<4->{-} &
+                                \uncover<10->{\cellcolor{miNaranja}x^2 + x}    &
+                                    \uncover<11->{\cellcolor{miAzul}x^2 + x + 1} \\
+                                \hline
+                                r_i    &  \uncover<4->{\cellcolor{miRojo}x^4 + x + 1} & 
+                                    \uncover<4->{\cellcolor{miRojo}x^2 + x + 1} &
+                                    \uncover<11->{\cellcolor{miAzul}1 }          \\
+                                \hline
+                                r_{i+1} &  \uncover<4->{\cellcolor{miRojo}x^2 + x + 1} &
+                                \uncover<10->{\cellcolor{miNaranja}1}&
+                                    \uncover<11->{\cellcolor{miAzul} 0}        \\
+                                \hline
+                                a_i     &\uncover<4->{\cellcolor{miRojo}0}            & 
+                                \uncover<4->{\cellcolor{miRojo}1}          & 
+                                \\
+                                \hline
+                            \end{array}
+                        \]
+                    }<10>
+                }<4-9>
+            }<3>
+        }
+        \vspace{-0.3em}
+        \uncover<4->{
             \[
             \begin{array}{rl|l}
                 &x^4 + x + 1 & x^2 + x + 1 \\\cline{3-3} 
-                -&\underline{x^4 + x^3 + x^2 \phantom{{}+x^2 + 1}} & x^2\\
-                &x^3 + x^2 + x + 1 &  \\
-                -&\underline{x^3 + x^2 + x\phantom{{ }+ 1}} & x\\
-                & r_2 = 1 & q_1 = x^2 + x 
+                \uncover<6->{-&\underline{x^4 + x^3 + x^2 \phantom{{}+x^2 + 1}}} 
+                    \uncover<5->{& x^2}\\
+                \uncover<7->{&x^3 + x^2 + x + 1&}   \\
+                \uncover<9->{-&\underline{x^3 + x^2 + x\phantom{{ }+ 1}}} 
+                    \uncover<8->{& x}\\
+                \uncover<10->{& r_2 = 1 & q_1 = x^2 + x }
             \end{array}
             \]
         }
     \end{plainexample}
     }
 
-    \only<5>{
+    \only<12->{
     \begin{plainexample}
         \centering
         Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo de $16$ elementos: \[\Z_2[x]/(x^4 + x + 1)\]
-        \[(\alert{x^2 + x + 1})a + (\alert{x^4 + x + 1})b = 1\]
+        \vspace{-1em}
+        \[(x^2 + x + 1)\alert{a} + (x^4 + x + 1)b = 1\]
+        \vspace{-0.8em}
         \[
         \vspace{-1em}
             \begin{array}{|c|c|c|c|}
@@ -706,14 +792,17 @@
                 \hline
             \end{array}
         \]
-
-         \begin{center}
-            \[
-            \begin{array}{rl|l}
-                [x^2 + x + 1] \cdot [x^2 + x] = 1 \text{ en } \Z_2[x]/(x^4 + x + 1)
-            \end{array}
-            \]
-        \end{center}
+        
+        \uncover<13>{
+            \begin{center}
+                \[
+                \begin{array}{rl|l}
+                    [x^2 + x + 1] \cdot [x^2 + x] = 1 \text{ en } \Z_2[x]/(x^4 + x + 1)
+                \end{array}
+                \]
+            \end{center}    
+        }
+         
     \end{plainexample}
     } 
 
