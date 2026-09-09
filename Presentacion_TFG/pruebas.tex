@@ -1,74 +1,223 @@
-
-
 \documentclass[10pt,t]{beamer}
 \input{cabecera}
 \input{comandos}
 
+\usetikzlibrary{arrows.meta, positioning, calc}
+
+
 
 \begin{document}
 
-%=========================INVERSO EN Z_p__INVERSO EUCLIDES=========================
+% SECCIÓN 2: INTRODUCCIÓN A LA CRIPTOGRAFÍA
+\section{Introducción a la criptografía}
+
+%猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫
+\subsection{Qué es la criptografía}
+%猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫%
+
+% =========================CRIPTOGRAFÍA=========================
 \begin{frame}
-    \renewcommand{\arraystretch}{1.2}
-    \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
-    \definecolor{fin}{rgb}{0.57,0.74,0.75}
-    \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
-    \definecolor{miAmarillo}{rgb}{0.75,0.70,0.00}
-    \definecolor{miNaranja}{rgb}{0.63,0.44,0.01}
-    \definecolor{miRojo}{rgb}{0.89,0.10,0.10}
-    \definecolor{dgray}{rgb}{0.45,0.48,0.57}
-    \definecolor{fondo}{RGB}{230,255,230}
-
-    \begin{plainexample}
+    \begin{block}{\centering \large Criptografía}
         \centering
-        Calcular el inverso de $[40]$ en el cuerpo de $71$ elementos: \(\Z_{71}\)
-        \[\alert{40}a + \alert{71}b = 1\]
-        \[
-        \begin{array}{rl}
-            \uncover<1->{\textcolor{miRojo}{71} -  \textcolor{miNaranja}{1\cdot40} =  \textcolor{miAmarillo}{31}}
-            \uncover<2->{&= - 1\phantom{6}\cdot\textcolor{miRojo}{40} + 1\cdot\textcolor{miRojo}{71}}\\
+        La criptografía es la disciplina que estudia la seguridad de la información durante su transmisión.
+    \end{block}
 
-            \uncover<3->{\textcolor{miNaranja} {40} - \textcolor{miAmarillo}{1\cdot31} = \phantom{3}\textcolor{miVerde} {9}}
-            \uncover<4->{&=\phantom{-}2\phantom{6}\cdot\textcolor{miRojo}{40}  -1\cdot\textcolor{miRojo}{71}}  \\
+    \begin{prop}
+        \begin{enumerate}[label=--]
+            \item Confidencialidad
+            \item Integridad y Autenticación
+            \item No repudio
+        \end{enumerate}
+    \end{prop}
 
-            \uncover<5->{\textcolor{miAmarillo}{31} - \phantom{3}\textcolor{miVerde}{3\cdot9} =  \phantom{3}\textcolor{miAzul}  {4}}  
-            \uncover<6->{&=     - 7\phantom{6}\cdot\textcolor{miRojo}{40} + 4\cdot\textcolor{miRojo}{71}} \\
+    \vspace{1em}
 
-            \uncover<7->{\textcolor{miVerde}   {9} - \phantom{3}\textcolor{miAzul}{2\cdot4}  = \phantom{3}\textcolor{fin}   {1}}
-            \uncover<8->{&=     \phantom{-}16          \cdot\textcolor{miRojo}{40}           -9\cdot\textcolor{miRojo}{71} }
-        \end{array}
-        \]
-        \[
-            \begin{array}{|c|c|c|c|c|c|c|}
-                \hline
-                q_i  &  -                  &
-                    \alt{\cellcolor{miNaranja}}{\cellcolor{fondo}}<1>      1  &
-                    \alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<3>  1  &
-                    \alt{\cellcolor{miVerde}}{\cellcolor{fondo}}<5>     3 &
-                    \alt{\cellcolor{miAzul}}{\cellcolor{fondo}}<7>      2  & 
-                    \cellcolor{fondo}4 \\
-                \hline
-                r_i  &\phantom{l}\alt{\cellcolor{miRojo}}{\cellcolor{fondo}}<1>71   \phantom{l} &
-                    \phantom{l}\alt{\cellcolor{miNaranja}}{\cellcolor{fondo}}<1,3> 40\phantom{l} &
-                    \alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<2,3,5> 31 &
-                    \alt{\cellcolor{miVerde}}{\cellcolor{fondo}}<4,5,7>    9 &
-                    \alt{\cellcolor{miAzul}}{\cellcolor{fondo}}<6,7>      4  &
-                    \alt{\cellcolor{fin}}{\cellcolor{fondo}}<8>          1 \\
-                \hline
-                r_{i+1} &\cellcolor{fondo}40 &\alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<1>31 &
-                \alt{\cellcolor{miVerde}}{\cellcolor{fondo}}<3>9  &
-                \alt{\cellcolor{miAzul}}{\cellcolor{fondo}}<5>4 &
-                \alt{\cellcolor{fin}}{\cellcolor{fondo}}<7> 1 &
-                 \cellcolor{fondo}0 \\
-                \hline
-                a_i     &\cellcolor{fondo}0  &\cellcolor{fondo}1  &\alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<2>-1\phantom{l} &
-                \alt{\cellcolor{miVerde}}{\cellcolor{fondo}}<4>2 &\alt{\cellcolor{miAzul}}{\cellcolor{fondo}}<6> -7\phantom{l}&\alt{\cellcolor{fin}}{\cellcolor{fondo}}<8>16 \\
-                \hline
-                b_i &\cellcolor{fondo}   1   &\cellcolor{fondo}0  &\alt{\cellcolor{miAmarillo}}{\cellcolor{fondo}}<2>1  &\alt{\cellcolor{miVerde}}{\cellcolor{fondo}}<4>-1\phantom{l}&\alt{\cellcolor{miAzul}}{\cellcolor{fondo}}<6>4  &\alt{\cellcolor{fin}}{\cellcolor{fondo}}<8>-9\phantom{l} \\
-                \hline
-            \end{array}
-        \]
-    \end{plainexample}
+    \begin{center}
+        \begin{tikzpicture}[>=latex]
+
+            % 2. Caja A (Alice)
+            \draw[thick] (-1, -0.8) rectangle (1, 0.2);
+            \node at (0, -0.3) {\Large Alice};
+
+            % 3. Caja B (Bob)
+            \draw[thick] (4, -0.8) rectangle (6,  0.2);
+            \node at (5, -0.3) {\Large Bob};
+
+            % 4. Caja O (Oscar) - abajo
+            \node at (2.42, -2) {\Large Oscar};
+
+            % 4. Flecha del mensaje
+            \draw[->, thick] (1, -0.3) -- (4, -0.3);
+            \node at (2.5, -0.1) {mensaje};
+            
+            % 5. Flecha de Eve
+            \draw[->, dashed, thick] (2.5, -1.8) -- (2.5, -0.4);
+
+            
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
+
+%桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ
+\subsection{Sistemas de cifrado simétricos}
+%二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ
+
+
+% =========================SISTEMAS DE CIFRADO=========================
+
+\begin{frame}
+    \begin{block}{\centering \large Cifrado de clave simétrica}
+        
+        \begin{enumerate}
+            \item Alice y Bob intercambian una clave \textcolor{blue}{k} mediante un \textcolor{blue}{canal seguro}.
+            \item Alice cifra el mensaje \alert{m}, obteniendo \alert{c}. \\
+            \item Alice envía el mensaje cifrado \alert{c} por el canal inseguro. \\
+            \item Bob recibe \alert{c} y los descifra para obtener \alert{m}.
+        \end{enumerate}
+        
+    \end{block}
+
+
+    \begin{center}
+        \begin{tikzpicture}[>=latex]
+            % 1. Caja grande exterior (canal inseguro)
+            \draw[thick] (-2, -1.2) rectangle (7, 2.5);
+            \node at (-0.5, 2.2) {\large Canal inseguro};
+
+            % 2. Caja A (Alice) - más arriba
+            \draw[thick] (-1, -0.8) rectangle (1, 0.2);
+            \node at (0, -0.3) {\Large Alice};
+
+            % 3. Caja B (Bob) - más arriba
+            \draw[thick] (4, -0.8) rectangle (6, 0.2);
+            \node at (5, -0.3) {\Large Bob};
+
+            % 4. Caja E (Eve) - abajo
+            \node at (2.42, 1.3) {\Large Oscar};
+
+            % 4. Flecha del mensaje
+            \draw[<->, thick] (1, -0.3) -- (4, -0.3);
+            \node at (2.5, -0.5) {c};
+            
+            % 5. Flecha de Eve
+            \draw[<-, dashed, thick] (2.5, -0.2) -- (2.5, 1);
+
+            % 6 canal seguro
+            \draw[<-,thick, blue] (0, -0.8) -- (0, -1.8);
+            \draw[-, thick, blue] (0, -1.8) -- (5, -1.8);
+            \draw[->, thick, blue] (5, -1.8) -- (5, -0.8);
+            \node at (2.5, -2.2) [blue] {\large Canal seguro};
+            \node at (2.5, -1.5) [blue] {k};
+            
+        \end{tikzpicture}
+    \end{center}   
+\end{frame}
+
+%城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア
+\subsection{Cifrado simétrico por bloques}
+%橘シェリー橘シェリー橘シェリー橘シェリー橘シェリー橘シェリー橘シェリー
+
+
+\begin{frame}
+   \begin{block}{\centering \large Cifrado por bloques}
+        \begin{enumerate}
+            \item El mensaje se divide en bloques. \\
+            \item Se realizan las mismas operaciones en cada bloque. \\
+            \item Se obtiene el texto cifrado de los bloques.
+        \end{enumerate}
+    \end{block}
+
+    \vspace{1em}
+
+    \centering
+    \begin{tikzpicture}[
+            >=Stealth,                    % punta de flecha estilizada
+            node distance=2cm,
+            every node/.style={
+                rectangle,
+                draw,
+                minimum width=2.2cm,
+                minimum height=0.8cm,
+                align=center,
+                font=\small
+            }
+        ]
+
+        % --- Nodos ---
+        % Columna 1: Mensaje (centrado verticalmente)
+        \node (msg) at (0,0) {Mensaje};
+
+        % Columna 2: Bloques de texto claro (tres, apilados)
+        \node (p1) at (3, 1.8) {Bloque 1};
+        \node (p2) at (3, 0)   {Bloque 2};
+        \node (p3) at (3,-1.8) {Bloque 3};
+
+        % Columna 3: Bloques de texto cifrado (tres, alineados con los anteriores)
+        \node (c1) at (6, 1.8) {Bloque 1 cifrado};
+        \node (c2) at (6, 0)   {Bloque 2 cifrado};
+        \node (c3) at (6,-1.8) {Bloque 3 cifrado};
+
+        % Columna 4: Texto cifrado final (centrado verticalmente)
+        \node (final) at (9,0) {Mensaje cifrado};
+
+        % --- Puntos suspensivos hacia abajo (indicando más bloques) ---
+        \node[draw=none] (dots_p) at (3, -2.8) {\vdots};
+        \node[draw=none] (dots_c) at (6, -2.8) {\vdots};
+
+        % --- Flechas ---
+        % Del mensaje a cada texto claro (apuntando exactamente al borde izquierdo)
+        \draw[->] (msg) -- (p1.west);
+        \draw[->] (msg) -- (p2.west);
+        \draw[->] (msg) -- (p3.west);
+
+        % De cada texto claro a su correspondiente texto cifrado (horizontales)
+        \draw[->] (p1) -- (c1);
+        \draw[->] (p2) -- (c2);
+        \draw[->] (p3) -- (c3);
+
+        % De cada texto cifrado al final (flechas convergentes)
+        \draw[->] (c1) -- (final);
+        \draw[->] (c2) -- (final);
+        \draw[->] (c3) -- (final);
+
+    \end{tikzpicture}
+\end{frame}
+
+\section{Advanced Encryption Standard}
+
+\subsection{Qué es AES}
+
+\subsection{Funcionamiento de AES}
+
+\subsection{Cifrando con AES}
+
+
+
+
+
+
+\begin{frame}{prueba}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Imágenes/logo_uned_enc_ECB.png}
+    \end{center}
+\end{frame}
+
+
+
+
+{
+
+\setbeamercolor{background canvas}{bg=gray}
+\begin{frame}[c,plain]{}
+    \centering
+    \textcolor{white}{Thank you}
+\end{frame}
+
+}
+
+
+
+
+
 
 \end{document}

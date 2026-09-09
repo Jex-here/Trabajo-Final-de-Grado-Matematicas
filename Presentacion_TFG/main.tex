@@ -6,7 +6,7 @@
 
 \begin{document}
 
-% Portada =========================================================
+%=========================Portada================================
 {
 \usebackgroundtemplate{
     \parbox[b][\paperheight][b]{\paperwidth}{\centering\includegraphics[width=\paperwidth]{Imágenes/logo_uned_enc_CBC.png}}
@@ -18,7 +18,7 @@
 }		
 %=================================================================
 
-% Índice =========================================================
+% ==========================Índice===============================
 \begin{frame}{\textsc{Índice}}
 	\hfill	{\large \parbox{.95\textwidth}{\textsc{\tableofcontents[hideothersubsections]}}}
 \end{frame}
@@ -124,7 +124,9 @@
 %=========================CUERPO=========================
 \begin{frame}%{Estructuras algebraicas}
     \begin{block}{\centering \large Cuerpo}
-        Un cuerpo $K$ es un anillo unitario conmutativo donde todo elemento no nulo es unidad.
+        \centering
+        Un cuerpo $K$ es un anillo unitario conmutativo verificando que \\
+        todo elemento no nulo es unidad.
     \end{block}
 
     \begin{plainexample}
@@ -175,12 +177,12 @@
     \begin{plainexample}
         \begin{enumerate}[label=--]
             \setlength{\itemsep}{-0.2em}
-            \item El ideal $n\Z$ produce el cociente 
+            \item El ideal $(n)$ produce el cociente $\Z/(n)$:
                 \vspace{-0.5em}
                 \[\Z_n = \{0,1, \ldotp, n-1\}\]
-            \item En el anillo cociente $\Z_6$ se verifica la identidad
-                \vspace{-0.5em}
-                \[2 \cdot 3 = 0\]
+            % \item En el anillo cociente $\Z_6$ se verifica la identidad
+            %     \vspace{-0.5em}
+            %     \[2 \cdot 3 = 0\]
         \end{enumerate}
     \end{plainexample}
 \end{frame}
@@ -189,7 +191,7 @@
 \begin{frame}
     \begin{block}{\centering \large Ideal maximal}
         Sea $A$ un anillo unitario conmutativo e $I$ un ideal de $A$.\\[0.3ex]
-        $I$ es un ideal maximal si no existe otro ideal distinto a $A$ que lo contenga.
+        $I$ es un ideal maximal si no existe otro ideal distinto a $A$ que lo contenga estrictamente.
     \end{block}
 
     \begin{plainexample}
@@ -200,7 +202,7 @@
     \end{plainexample}
 
     \begin{prop}
-        Proposición: \hspace{3em}$I$ es maximal $\iff A/I$ es un cuerpo.
+        \centering $I$ es maximal $\iff A/I$ es un cuerpo
     \end{prop}
 
     \begin{plainexample}
@@ -256,7 +258,7 @@
     \begin{plainexample}
         \begin{enumerate}[label=--]
             \item Tomando $p = 2$ y $f = X^2+X+1$ se obtiene el cuerpo
-            \[\Z_2[X]/(f) = \{0,1,X,X+1\}\]
+            \[\Z_2[X]/(f) = \{0,\ 1,\ X,\ X+1\}\]
             \item Tomando $p = 3$ y $g = X^2 + X + 2$ se obtiene el cuerpo
             \begin{align*}
                 \Z_3[X]/(g) \quad = &&\{  &0   ,&& 1   ,&& 2  ,   &&&&\\
@@ -271,6 +273,7 @@
 \begin{frame}
     \vspace{8em}
     \begin{teo}{Caracterización de cuerpos finitos}
+        \vspace{0.5em}
         \begin{enumerate}[label=--]
             \item Solo existen cuerpos finitos con $p^n$ elementos.
             \item Existe un único cuerpo con $p^n$ elementos.
@@ -328,14 +331,14 @@
     \begin{plainexample}
         \begin{center}
             \hspace{1.5em}
-            Algoritmo de euclides para $f = 71$, $x=40$. 
+            Algoritmo de Euclides para $f = 71$, $x=40$. 
             \[r_0 = 71; r_1 = 40\]
         \end{center}
     \end{plainexample}
 \end{frame}
 
 %=========================EUCLIDES_CAJAS=========================
-\begin{frame}<1-7>
+\begin{frame}
     \renewcommand{\arraystretch}{1.2}
     \definecolor{miAzul}{rgb}{0.00,0.75,0.89}
     \definecolor{miVerde}{rgb}{0.24,0.68,0.00}
@@ -392,41 +395,41 @@
     \end{plainexample}
     }
 
-     \only<6>{
-    \begin{plainexample}
-        \begin{center}
-            \hspace{1.5em}
-            \begin{tabular}{cr}
-                \begin{minipage}[t]{0.5\textwidth}
-                    \begin{array}{rl}
-                        \textcolor{miRojo}    {71}\ =&\textcolor{miNaranja} 1 \cdot \textcolor{miNaranja} {40}+         \textcolor{miNaranja} {31} \\
-                        \textcolor{miNaranja} {40}\ =&\textcolor{miAmarillo}1 \cdot \textcolor{miAmarillo}{31}+         \textcolor{miAmarillo}{9} \\
-                        \textcolor{miAmarillo}{31}\ =&\textcolor{miVerde}   3 \cdot \textcolor{miVerde}   {9}\phantom{1} + \textcolor{miVerde}{4} \\
-                        \textcolor{miVerde}   {9} \ =&\textcolor{miAzul}    2 \cdot \textcolor{miAzul}    {4}\phantom{1} + \textcolor{miAzul} {1} \\
-                        \textcolor{miAzul}    {4} \ =&\textcolor{dgray}      4 \cdot \textcolor{dgray}      {1}\phantom{1} + \textcolor{dgray}{0}
-                    \end{array} 
-                \end{minipage}
-                &
-                \begin{minipage}[t]{0.5\textwidth}
-                    \vspace{-3.5em}
-                    \[
-                    \begin{array}{|c|c|c|c|c|c|c|}
-                        \hline
-                        q_i     &  -                    & \cellcolor{miNaranja} 1  & \cellcolor{miAmarillo}1  &\cellcolor{miVerde}3 &\cellcolor{miAzul}2 &\cellcolor{fin} 4\\
-                        \hline
-                        r_i    &  \cellcolor{miRojo} 71 & \cellcolor{miNaranja} 40 & \cellcolor{miAmarillo}31 &\cellcolor{miVerde}9 &\cellcolor{miAzul}4 &\cellcolor{fin} 1\\
-                        \hline
-                        r_{i+1} &  \cellcolor{miRojo}40 & \cellcolor{miNaranja} 31 & \cellcolor{miAmarillo}9  &\cellcolor{miVerde}4 &\cellcolor{miAzul} 1 &\cellcolor{fin} 0 \\
-                        \hline 
-                    \end{array}
-                    \]
-                \end{minipage}
-            \end{tabular}
-        \end{center}
-    \end{plainexample}
-    }
+    %  \only<6>{
+    % \begin{plainexample}
+    %     \begin{center}
+    %         \hspace{1.5em}
+    %         \begin{tabular}{cr}
+    %             \begin{minipage}[t]{0.5\textwidth}
+    %                 \begin{array}{rl}
+    %                     \textcolor{miRojo}    {71}\ =&\textcolor{miNaranja} 1 \cdot \textcolor{miNaranja} {40}+         \textcolor{miNaranja} {31} \\
+    %                     \textcolor{miNaranja} {40}\ =&\textcolor{miAmarillo}1 \cdot \textcolor{miAmarillo}{31}+         \textcolor{miAmarillo}{9} \\
+    %                     \textcolor{miAmarillo}{31}\ =&\textcolor{miVerde}   3 \cdot \textcolor{miVerde}   {9}\phantom{1} + \textcolor{miVerde}{4} \\
+    %                     \textcolor{miVerde}   {9} \ =&\textcolor{miAzul}    2 \cdot \textcolor{miAzul}    {4}\phantom{1} + \textcolor{miAzul} {1} \\
+    %                     \textcolor{miAzul}    {4} \ =&\textcolor{dgray}      4 \cdot \textcolor{dgray}      {1}\phantom{1} + \textcolor{dgray}{0}
+    %                 \end{array} 
+    %             \end{minipage}
+    %             &
+    %             \begin{minipage}[t]{0.5\textwidth}
+    %                 \vspace{-3.5em}
+    %                 \[
+    %                 \begin{array}{|c|c|c|c|c|c|c|}
+    %                     \hline
+    %                     q_i     &  -                    & \cellcolor{miNaranja} 1  & \cellcolor{miAmarillo}1  &\cellcolor{miVerde}3 &\cellcolor{miAzul}2 &\cellcolor{fin} 4\\
+    %                     \hline
+    %                     r_i    &  \cellcolor{miRojo} 71 & \cellcolor{miNaranja} 40 & \cellcolor{miAmarillo}31 &\cellcolor{miVerde}9 &\cellcolor{miAzul}4 &\cellcolor{fin} 1\\
+    %                     \hline
+    %                     r_{i+1} &  \cellcolor{miRojo}40 & \cellcolor{miNaranja} 31 & \cellcolor{miAmarillo}9  &\cellcolor{miVerde}4 &\cellcolor{miAzul} 1 &\cellcolor{fin} 0 \\
+    %                     \hline 
+    %                 \end{array}
+    %                 \]
+    %             \end{minipage}
+    %         \end{tabular}
+    %     \end{center}
+    % \end{plainexample}
+    % }
 
-     \only<7>{
+     \only<6>{
     \begin{plainexample}
         \begin{center}
             \hspace{1.5em}
@@ -658,7 +661,7 @@
         Calcular el inverso de $[x^2 + x + 1]$ en el cuerpo de $16$ elementos: \[\Z_2[x]/(x^4 + x + 1)\]
         \vspace{-1em}
         \uncover<2->{\[({x^2 + x + 1})\alert{a} + ({x^4 + x + 1})b = 1\]}
-        \vspace{-1em}
+        \vspace{-0.8em}
         \uncover<3->{
             \alt{
                 \[
@@ -792,13 +795,19 @@
                 \hline
             \end{array}
         \]
-        
-        \uncover<13>{
+
+        \only<12>{
             \begin{center}
                 \[
-                \begin{array}{rl|l}
-                    [x^2 + x + 1] \cdot [x^2 + x] = 1 \text{ en } \Z_2[x]/(x^4 + x + 1)
-                \end{array}
+                    0 - (x^2 + x)\cdot 1 = x^2 + x
+                \]
+            \end{center}    
+        }
+        
+        \only<13>{
+            \begin{center}
+                \[
+                    \alert{x^2 + x} \text{ es el inverso de } x^2 + x + 1 \text{ en } \Z_2[x]/(x^4 + x + 1)
                 \]
             \end{center}    
         }
@@ -808,11 +817,26 @@
 
 \end{frame}
 
-        
 
+% SECCIÓN 2: INTRODUCCIÓN A LA CRIPTOGRAFÍA
 \section{Introducción a la criptografía}
 
+%猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫
 \subsection{Qué es la criptografía}
+%猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫
+
+%=========================CRIPTOGRAFÍA=========================
+\begin{frame}
+    \begin{block}{\centering \large Criptografía}
+        La criptografía es la disciplina que estudia la seguridad de la información durante su transmisión.
+
+    \end{block}
+
+    \begin{prop}
+        La identidad de Bézout \[x\alert{y} + f\alert{g}  = 1\] es resoluble en un dominio euclídeo cuando  $\mcd{x,f} = 1$.
+    \end{prop}
+
+\end{frame}
 
 \subsection{Cómo se procesa la información}
 
