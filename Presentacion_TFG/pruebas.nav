@@ -22,16 +22,26 @@
 \headcommand {\beamer@framepages {5}{5}}
 \headcommand {\beamer@subsectionpages {5}{5}}
 \headcommand {\beamer@subsectionentry {0}{2}{1}{6}{Qué es AES}}
-\headcommand {\beamer@subsectionpages {6}{5}}
-\headcommand {\beamer@subsectionentry {0}{2}{2}{6}{Funcionamiento de AES}}
-\headcommand {\beamer@subsectionpages {6}{5}}
-\headcommand {\beamer@subsectionentry {0}{2}{3}{6}{Cifrando con AES}}
-\headcommand {\slideentry {2}{3}{1}{6/6}{Cifrando con AES}{0}}
+\headcommand {\slideentry {2}{1}{1}{6/6}{Qué es AES}{0}}
 \headcommand {\beamer@framepages {6}{6}}
-\headcommand {\slideentry {2}{3}{2}{7/7}{Cifrando con AES}{0}}
+\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{7}{Funcionamiento de AES}}
+\headcommand {\slideentry {2}{2}{1}{7/7}{Funcionamiento de AES}{0}}
 \headcommand {\beamer@framepages {7}{7}}
-\headcommand {\beamer@partpages {1}{7}}
-\headcommand {\beamer@subsectionpages {6}{7}}
-\headcommand {\beamer@sectionpages {5}{7}}
-\headcommand {\beamer@documentpages {7}}
-\headcommand {\gdef \inserttotalframenumber {7}}
+\headcommand {\slideentry {2}{2}{2}{8/8}{Funcionamiento de AES}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\slideentry {2}{2}{3}{9/9}{Funcionamiento de AES}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\slideentry {2}{2}{4}{10/11}{Funcionamiento de AES}{0}}
+\headcommand {\beamer@framepages {10}{11}}
+\headcommand {\beamer@subsectionpages {7}{11}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{12}{Cifrando con AES}}
+\headcommand {\slideentry {2}{3}{1}{12/12}{Cifrando con AES}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\slideentry {2}{3}{2}{13/13}{Cifrando con AES}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\beamer@partpages {1}{13}}
+\headcommand {\beamer@subsectionpages {12}{13}}
+\headcommand {\beamer@sectionpages {5}{13}}
+\headcommand {\beamer@documentpages {13}}
+\headcommand {\gdef \inserttotalframenumber {12}}

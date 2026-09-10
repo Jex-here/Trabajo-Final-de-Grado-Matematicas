@@ -823,32 +823,415 @@
 
 %猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫
 \subsection{Qué es la criptografía}
-%猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫
+%猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫猫鮫%
 
-%=========================CRIPTOGRAFÍA=========================
+% =========================CRIPTOGRAFÍA=========================
 \begin{frame}
     \begin{block}{\centering \large Criptografía}
+        \centering
         La criptografía es la disciplina que estudia la seguridad de la información durante su transmisión.
-
     \end{block}
 
     \begin{prop}
-        La identidad de Bézout \[x\alert{y} + f\alert{g}  = 1\] es resoluble en un dominio euclídeo cuando  $\mcd{x,f} = 1$.
+        \begin{enumerate}[label=--]
+            \item Confidencialidad
+            \item Integridad y Autenticación
+            \item No repudio
+        \end{enumerate}
     \end{prop}
 
+    \vspace{1em}
+
+    \begin{center}
+        \begin{tikzpicture}[>=latex]
+
+            % 2. Caja A (Alice)
+            \draw[thick] (-1, -0.8) rectangle (1, 0.2);
+            \node at (0, -0.3) {\Large Alice};
+
+            % 3. Caja B (Bob)
+            \draw[thick] (4, -0.8) rectangle (6,  0.2);
+            \node at (5, -0.3) {\Large Bob};
+
+            % 4. Caja O (Oscar) - abajo
+            \node at (2.42, -2) {\Large Oscar};
+
+            % 4. Flecha del mensaje
+            \draw[->, thick] (1, -0.3) -- (4, -0.3);
+            \node at (2.5, -0.1) {mensaje};
+            
+            % 5. Flecha de Eve
+            \draw[->, dashed, thick] (2.5, -1.8) -- (2.5, -0.4);
+
+            
+        \end{tikzpicture}
+    \end{center}
 \end{frame}
 
-\subsection{Cómo se procesa la información}
+%桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ桜羽エマ
+\subsection{Sistemas de cifrado simétricos}
+%二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ二階堂ヒロ
 
-\subsection{Tipos de sistemas cifrados}
+
+% =========================SISTEMAS DE CIFRADO=========================
+
+\begin{frame}
+    \begin{block}{\centering \large Cifrado de clave simétrica}
+        \begin{enumerate}
+            \item Alice y Bob intercambian una clave \textcolor{blue}{k} mediante un \textcolor{blue}{canal seguro}.
+            \item Alice cifra el mensaje \alert{m}, obteniendo \alert{c}. \\
+            \item Alice envía el mensaje cifrado \alert{c} por el canal inseguro. \\
+            \item Bob recibe \alert{c} y lo descifra para obtener \alert{m}.
+        \end{enumerate}
+    \end{block}
+
+
+    \begin{center}
+        \begin{tikzpicture}[>=latex]
+            % 1. Caja grande exterior (canal inseguro)
+            \draw[thick] (-2, -1.2) rectangle (7, 2.5);
+            \node at (-0.5, 2.2) {\large Canal inseguro};
+
+            % 2. Caja A (Alice) - más arriba
+            \draw[thick] (-1, -0.8) rectangle (1, 0.2);
+            \node at (0, -0.3) {\Large Alice};
+
+            % 3. Caja B (Bob) - más arriba
+            \draw[thick] (4, -0.8) rectangle (6, 0.2);
+            \node at (5, -0.3) {\Large Bob};
+
+            % 4. Caja E (Eve) - abajo
+            \node at (2.42, 1.3) {\Large Oscar};
+
+            % 4. Flecha del mensaje
+            \draw[->, thick] (1, -0.3) -- (4, -0.3);
+            \node at (2.5, -0.5) {c};
+            
+            % 5. Flecha de Eve
+            \draw[<-, dashed, thick] (2.5, -0.2) -- (2.5, 1);
+
+            % 6 canal seguro
+            \draw[<-,thick, blue] (0, -0.8) -- (0, -1.8);
+            \draw[-, thick, blue] (0, -1.8) -- (5, -1.8);
+            \draw[->, thick, blue] (5, -1.8) -- (5, -0.8);
+            \node at (2.5, -2.2) [blue] {\large Canal seguro};
+            \node at (2.5, -1.5) [blue] {k};
+        \end{tikzpicture}
+    \end{center}   
+\end{frame}
+
+%城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア城ヶ崎ノア
+\subsection{Cifrado simétrico por bloques}
+%橘シェリー橘シェリー橘シェリー橘シェリー橘シェリー橘シェリー橘シェリー
+
+
+\begin{frame}
+   \begin{block}{\centering \large Cifrado por bloques}
+        \begin{enumerate}
+            \item El mensaje se divide en bloques. \\
+            \item Se realizan las mismas operaciones en cada bloque. \\
+            \item Se obtiene el texto cifrado de los bloques.
+        \end{enumerate}
+    \end{block}
+
+    \vspace{1em}
+
+    \centering
+    \begin{tikzpicture}[
+            >=Stealth,                    % punta de flecha estilizada
+            node distance=2cm,
+            every node/.style={
+                rectangle,
+                draw,
+                minimum width=2.2cm,
+                minimum height=0.8cm,
+                align=center,
+                font=\small
+            }
+        ]
+
+        % --- Nodos ---
+        % Columna 1: Mensaje (centrado verticalmente)
+        \node (msg) at (0,0) {Mensaje};
+
+        % Columna 2: Bloques de texto claro (tres, apilados)
+        \node (p1) at (3, 1.8) {Bloque 1};
+        \node (p2) at (3, 0)   {Bloque 2};
+        \node (p3) at (3,-1.8) {Bloque 3};
+
+        % Columna 3: Bloques de texto cifrado (tres, alineados con los anteriores)
+        \node (c1) at (6, 1.8) {Bloque 1 cifrado};
+        \node (c2) at (6, 0)   {Bloque 2 cifrado};
+        \node (c3) at (6,-1.8) {Bloque 3 cifrado};
+
+        % Columna 4: Texto cifrado final (centrado verticalmente)
+        \node (final) at (9,0) {Mensaje cifrado};
+
+        % --- Puntos suspensivos hacia abajo (indicando más bloques) ---
+        \node[draw=none] (dots_p) at (3, -2.8) {\vdots};
+        \node[draw=none] (dots_c) at (6, -2.8) {\vdots};
+
+        % --- Flechas ---
+        % Del mensaje a cada texto claro (apuntando exactamente al borde izquierdo)
+        \draw[->] (msg) -- (p1.west);
+        \draw[->] (msg) -- (p2.west);
+        \draw[->] (msg) -- (p3.west);
+
+        % De cada texto claro a su correspondiente texto cifrado (horizontales)
+        \draw[->] (p1) -- (c1);
+        \draw[->] (p2) -- (c2);
+        \draw[->] (p3) -- (c3);
+
+        % De cada texto cifrado al final (flechas convergentes)
+        \draw[->] (c1) -- (final);
+        \draw[->] (c2) -- (final);
+        \draw[->] (c3) -- (final);
+
+    \end{tikzpicture}
+\end{frame}
+
 
 \section{Advanced Encryption Standard}
 
+%宝生マーゴ宝生マーゴ宝生マーゴ宝生マーゴ宝生マーゴ宝生マーゴ
 \subsection{Qué es AES}
+%黒部ナノカ黒部ナノカ黒部ナノカ黒部ナノカ黒部ナノカ黒部ナノカ
 
+\begin{frame}
+    \begin{block}{\centering \large Advanced Encryption Standard}
+        \begin{enumerate}[label=--]
+            \item Estándar para proporcionar confidencialidad.\\
+            \item Algoritmo de clave simétrica por bloques.\\
+            \item Bloques de 128 bits.\\
+            \item Claves de 128, 192 o 256 bits.
+        \end{enumerate}
+    \end{block}
+\end{frame}
+    
+%遠野ハンマ遠野ハンマ遠野ハンマ遠野ハンマ遠野ハンマ
 \subsection{Funcionamiento de AES}
+%佐伯ミリア佐伯ミリア佐伯ミリア佐伯ミリア佐伯ミリア
+
+
+% Encriptar color funcionamiento AES
+\begin{frame}
+    \definecolor{azul}{RGB}{0, 0, 255}
+    \definecolor{verde}{RGB}{0, 255, 0}
+    \definecolor{rojo}{RGB}{255, 0, 0}
+    \definecolor{gris}{RGB}{96, 96, 96}
+    \centering
+    \vspace{1em}
+    \begin{tikzpicture}[
+        node distance=0.8cm,
+        flecha/.style={->, >={Stealth[length=3mm]}, thick}
+        ]
+        
+        \node (imagen) {\includegraphics[width=2.5cm]{Imágenes/pixels.png}};
+
+        \node (binario) [below=of imagen, align=center] {
+        \textcolor{azul}{\texttt{11111111}}\textcolor{verde}{\texttt{00000000}}\textcolor{rojo}{\texttt{00000000}}\textcolor{gris}{\texttt{01100000}}\\
+        \textcolor{azul}{\texttt{00000000}}\textcolor{verde}{\texttt{11111111}}\textcolor{rojo}{\texttt{00000000}}\textcolor{gris}{\texttt{01100000}}\\
+        \textcolor{azul}{\texttt{00000000}}\textcolor{verde}{\texttt{00000000}}\textcolor{rojo}{\texttt{11111111}}\textcolor{gris}{\texttt{01100000}}\\
+        \textcolor{azul}{\texttt{11111111}}\textcolor{verde}{\texttt{11111111}}\textcolor{rojo}{\texttt{11111111}}\textcolor{gris}{\texttt{11111111}} 								
+
+        };
+        
+        \matrix (matriz) [
+        matrix of math nodes,
+        below=of binario,
+        ampersand replacement=\&, 
+        nodes={draw, minimum size=0.6cm, anchor=center},
+        column sep=-\pgflinewidth,
+        row sep=-\pgflinewidth
+        ] {
+        \textcolor{azul}{\texttt{ff}} \& \textcolor{verde}{\texttt{00}} \& \textcolor{rojo}{\texttt{00}} \& \textcolor{gris}{\texttt{60}} \\
+        \textcolor{azul}{\texttt{00}} \& \textcolor{verde}{\texttt{ff}} \& \textcolor{rojo}{\texttt{00}} \& \textcolor{gris}{\texttt{60}} \\
+        \textcolor{azul}{\texttt{00}} \& \textcolor{verde}{\texttt{00}} \& \textcolor{rojo}{\texttt{ff}} \& \textcolor{gris}{\texttt{60}} \\
+        \textcolor{azul}{\texttt{ff}} \& \textcolor{verde}{\texttt{ff}} \& \textcolor{rojo}{\texttt{ff}} \& \textcolor{gris}{\texttt{ff}} \\
+        };
+        \node (estado) [below=0.1cm of matriz] {estado};
+        
+        \draw[flecha] (imagen) -- (binario);
+        \draw[flecha] (binario) -- (matriz);
+        
+    \end{tikzpicture}
+\end{frame}
+
+
+% Desencriptar color funcionamiento AES
+\begin{frame}
+    \definecolor{azul}{RGB}{79, 210, 4}
+    \definecolor{verde}{RGB}{32, 28, 186}
+    \definecolor{rojo}{RGB}{118, 43, 138}
+    \definecolor{gris}{RGB}{125, 176, 211}
+    \centering
+    \vspace{1em}
+    \begin{tikzpicture}[
+        node distance=0.8cm,
+        flecha/.style={->, >={Stealth[length=3mm]}, thick}
+        ]
+
+        \node (estado) {estado};
+       
+        \matrix (matriz) [
+        matrix of math nodes,
+        below=0.1cm of estado,
+        ampersand replacement=\&, 
+        nodes={draw, minimum size=0.6cm, anchor=center},
+        column sep=-\pgflinewidth,
+        row sep=-\pgflinewidth
+        ] {
+        \textcolor{azul}{\texttt{04}} \& \textcolor{verde}{\texttt{ba}} \& \textcolor{rojo}{\texttt{8a}} \& \textcolor{gris}{\texttt{d3}} \\
+        \textcolor{azul}{\texttt{d2}} \& \textcolor{verde}{\texttt{1c}} \& \textcolor{rojo}{\texttt{2b}} \& \textcolor{gris}{\texttt{b0}} \\
+        \textcolor{azul}{\texttt{4f}} \& \textcolor{verde}{\texttt{20}} \& \textcolor{rojo}{\texttt{76}} \& \textcolor{gris}{\texttt{7d}} \\
+        \textcolor{azul}{\texttt{5b}} \& \textcolor{verde}{\texttt{6d}} \& \textcolor{rojo}{\texttt{0c}} \& \textcolor{gris}{\texttt{03}} \\
+        };
+
+        \node (binario) [below=of matriz, align=center] {
+        \textcolor{azul}{\texttt{00000100}}\textcolor{verde}{\texttt{10111010}}\textcolor{rojo}{\texttt{10001010}}\textcolor{gris}{\texttt{11010011}}\\
+        \textcolor{azul}{\texttt{11010010}}\textcolor{verde}{\texttt{00011100}}\textcolor{rojo}{\texttt{00101011}}\textcolor{gris}{\texttt{10110000}}\\
+        \textcolor{azul}{\texttt{01001111}}\textcolor{verde}{\texttt{00100000}}\textcolor{rojo}{\texttt{01110110}}\textcolor{gris}{\texttt{01111101}}\\
+        \textcolor{azul}{\texttt{01011011}}\textcolor{verde}{\texttt{01101101}}\textcolor{rojo}{\texttt{00001100}}\textcolor{gris}{\texttt{00000011}}
+        };
+
+        \node (imagen)[below=of binario, align=center] {\includegraphics[width=2.5cm]{Imágenes/pixels_enc.png}};
+        
+        \draw[flecha] (matriz) -- (binario);
+        \draw[flecha] (binario) -- (imagen);
+        
+    \end{tikzpicture}
+\end{frame}
+
+
+% Desencriptar color funcionamiento AES
+\begin{frame}
+    \definecolor{azul}{RGB}{0, 0, 255}
+    \definecolor{verde}{RGB}{0, 255, 0}
+    \definecolor{rojo}{RGB}{255, 0, 0}
+    \definecolor{gris}{RGB}{96, 96, 96}
+
+    \definecolor{azul2}{RGB}{79, 210, 4}
+    \definecolor{verde2}{RGB}{32, 28, 186}
+    \definecolor{rojo2}{RGB}{118, 43, 138}
+    \definecolor{gris2}{RGB}{125, 176, 211}
+    \centering
+    \vspace{8em}
+
+    \begin{tikzpicture}[
+        node distance=3cm,
+        flecha/.style={->, >={Stealth[length=3mm]}, thick}
+        ]
+
+        \matrix (matriz1) [
+        matrix of math nodes,
+        ampersand replacement=\&, 
+        nodes={draw, minimum size=0.6cm, anchor=center},
+        column sep=-\pgflinewidth,
+        row sep=-\pgflinewidth
+        ] {
+        \textcolor{azul}{\texttt{04}} \& \textcolor{verde}{\texttt{ba}} \& \textcolor{rojo}{\texttt{8a}} \& \textcolor{gris}{\texttt{d3}} \\
+        \textcolor{azul}{\texttt{d2}} \& \textcolor{verde}{\texttt{1c}} \& \textcolor{rojo}{\texttt{2b}} \& \textcolor{gris}{\texttt{b0}} \\
+        \textcolor{azul}{\texttt{4f}} \& \textcolor{verde}{\texttt{20}} \& \textcolor{rojo}{\texttt{76}} \& \textcolor{gris}{\texttt{7d}} \\
+        \textcolor{azul}{\texttt{5b}} \& \textcolor{verde}{\texttt{6d}} \& \textcolor{rojo}{\texttt{0c}} \& \textcolor{gris}{\texttt{03}} \\
+        };
+       
+        \matrix (matriz2) [
+        matrix of math nodes,
+        right=of estado,
+        ampersand replacement=\&, 
+        nodes={draw, minimum size=0.6cm, anchor=center},
+        column sep=-\pgflinewidth,
+        row sep=-\pgflinewidth
+        ] {
+        \textcolor{azul2}{\texttt{04}} \& \textcolor{verde2}{\texttt{ba}} \& \textcolor{rojo2}{\texttt{8a}} \& \textcolor{gris2}{\texttt{d3}} \\
+        \textcolor{azul2}{\texttt{d2}} \& \textcolor{verde2}{\texttt{1c}} \& \textcolor{rojo2}{\texttt{2b}} \& \textcolor{gris2}{\texttt{b0}} \\
+        \textcolor{azul2}{\texttt{4f}} \& \textcolor{verde2}{\texttt{20}} \& \textcolor{rojo2}{\texttt{76}} \& \textcolor{gris2}{\texttt{7d}} \\
+        \textcolor{azul2}{\texttt{5b}} \& \textcolor{verde2}{\texttt{6d}} \& \textcolor{rojo2}{\texttt{0c}} \& \textcolor{gris2}{\texttt{03}} \\
+        };
+
+        \draw[flecha] (matriz1) -- (matriz2) node[midway, above] {AES};
+        \node (claro) [below=0.1cm of matriz1] {texto claro};
+        \node (cifrado) [below=0.1cm of matriz2] {texto cifrado};
+    \end{tikzpicture}
+\end{frame}
+
+%====================Rondas AES==============================
+\begin{frame}
+    \begin{block}{\centering AES: clave de 128 bits}
+        \begin{enumerate}[label=--]
+            \item 10 Rondas
+        \end{enumerate}
+    \end{block}
+
+    \vspace{2em}
+    \centering
+    \only{
+        \begin{tikzpicture}[
+            >=latex,
+            box/.style={draw, rectangle, minimum width=4cm, minimum height=0.65cm, align=center}
+        ]
+
+        % ----------------------------------------------------
+        % Round 0-9
+        % ----------------------------------------------------
+        \node[box] (ka0) {AddRoundKey};
+        \node[box, below=0.7cm of ka0] (bs1) {SubBytes};
+        \node[box, below=0.5cm of bs1] (sr1) {ShiftRows};
+        \node[box, below=0.5cm of sr1] (mc1) {MixColumns};
+        \node[box, below=0.5cm of mc1] (ka1) {AddRoundKey};
+
+        % Conexiones Round 1
+        \draw[->] (ka0) -- (bs1);
+        \draw[->] (bs1) -- (sr1);
+        \draw[->] (sr1) -- (mc1);
+        \draw[->] (mc1) -- (ka1);
+
+        % Llaves (Braces) Round 1
+        \draw[decorate, decoration={brace, amplitude=6pt, mirror}]
+            ($(bs1.north west)+(-0.5,0)$) -- ($(ka1.south west)+(-0.5,0)$)
+            node[midway, left=0.3cm] {Ronda 1 a 9};
+    \end{tikzpicture}
+    }<1>
+
+    \only{
+        \vspace{3em}
+        \begin{tikzpicture}[
+            >=latex,
+            box/.style={draw, rectangle, minimum width=4cm, minimum height=0.65cm, align=center}
+        ]
+        % ----------------------------------------------------
+        % Last round 10
+        % ----------------------------------------------------
+        \node[box] (bs1) {SubBytes};
+        \node[box, below=0.5cm of bs1] (sr1) {ShiftRows};
+        \node[box, below=2cm of sr1] (ka1) {AddRoundKey};
+
+        % Conexiones Round 1
+        \draw[->] (bs1) -- (sr1);
+        \draw[->] (sr1) -- (ka1);
+
+        % Llave (Brace) Last round
+        \draw[decorate, decoration={brace, amplitude=6pt, mirror}]
+            ($(bs1.north west)+(-0.5,0)$) -- ($(ka1.south west)+(-0.5,0)$)
+            node[midway, left=0.3cm] {Ronda 10};
+    \end{tikzpicture}
+    }<2>
+    
+\end{frame}
+
+%========SUBBYTES=========
+
+%========SHIFTROWS=========
+
+%========MIXCOLUMNS=========
+
+%========ADDROUNDKEY=========
+
+%========KEYEXPANSION=========
+
 
 \subsection{Cifrando con AES}
+
 
 
 
