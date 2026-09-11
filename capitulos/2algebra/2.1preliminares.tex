@@ -85,23 +85,22 @@ Se aprecia que la única propiedad que le falta a un anillo unitario $(A, +, \cd
         \item Para diferenciar el elemento inverso de la suma y del producto, se denotará ``opuesto'' al inverso de la suma, mientras que para el producto se mantiene el término ``inverso''. El opuesto de $a$ se denota $-a$ y al inverso de $a$, $\inv{a}$.
         \item Para designar a un anillo general que sea cuerpo se suele utilizar la letra K (Körper, que significa cuerpo en alemán). Los cuerpos que tengan un número finito de elementos se representarán por $\F$ (Field, en inglés) o GF (Galois Field).
         \item Solo se estudiarán en este texto los cuerpos conmutativos, por lo que se hará abuso de notación, llamándolos simplemente cuerpos.
-  \end{nott}
+\end{nott}
 
+\vspace{-0.3em}
 \begin{obs}
     El 0 no tiene elemento inverso en un anillo no trivial, pues $x\cdot 0 = 0 \neq 1$. Se obtiene por lo tanto que las unidades de un cuerpo, $U(K)$, son todos los elementos del cuerpo sin el 0: $U(K) = K^*$.
 \end{obs}
-
 
 
 \begin{deff}[Subanillo]{\cite[p.~33]{GamboaAnillos}}
     Sea $(A,+,\cdot)$ un anillo, y $B$ un subconjunto de $A$. Si $(B,+,\cdot)$ es un anillo con las operaciones inducidas por $A$, entonces se dirá que $B$ es subanillo de $A$.\footnote{Que una operación esté inducida por las operaciones de otro anillo significa que se comporta de la misma manera, excepto que solo se define sobre los elementos del nuevo conjunto. Es decir, si $B$ es subanillo de $A$, la suma y el producto en $B$ se definen respectivamente: $a + b$ y $a \cdot b$, con $a,b\in B$ y $+,\cdot$ las operaciones definidas en $A$.}
 \end{deff}
 
-
-
+\vspace{-1em}
 \begin{deff}[Anillo de polinomios]{\cite[p.~51]{Rosenberger}}\label{definion:polinomios}
     Sean $A$ y $B$ anillos unitarios conmutativos tal que $A$ es subanillo de $B$; sea $X$ un elemento de $B$. Se construye un nuevo anillo, $(A[X], +,\cdot)$, de la siguiente manera:
-
+    \vspace{-0.1em}
     \begin{itemize}
         \item Se define $A[X]$ como el conjunto de elementos de la forma  
         \[ p = a_0 + a_1X + a_2X^2 + \ldots + a_nX^n , \text{ con }  a_i \in A  \text{ y }  n \in \N.\]
@@ -110,9 +109,8 @@ Se aprecia que la única propiedad que le falta a un anillo unitario $(A, +, \cd
         \[
         \text{Si } p = \left(\sum\limits_{i=0}^{n} a_i X^i\right) \text{ y }q = \left(\sum\limits_{i=0}^{m} c_i X^i\right), \text{ entonces } p = q \iff a_i = c_i \ \text{ para todo $i$.}  
         \]
-        
+
         \item
-            
                 La suma en $A[X]$ se define como 
                 \[
                     p + q = \left(\sum\limits_{i=0}^n a_i X^i\right) + \left(\sum\limits_{i=0}^m c_i X^i\right) = \sum\limits_{i=0}^{\text{max}(n,m)} (a_i + c_i)X^i.
@@ -129,7 +127,8 @@ Se aprecia que la única propiedad que le falta a un anillo unitario $(A, +, \cd
         \[p \ \cdot \ q = \left(\sum\limits_{i=0}^n a_i X^i\right) \cdot \left(\sum\limits_{j=0}^m c_j X^j\right) = \sum\limits_{i=0}^{n} \sum\limits_{j = 0}^m a_i c_jX^{i+j}
         \]
     \end{itemize}
-    
+
+    \vspace{-1em}
     \item $(A[X], +,\cdot)$ es el \textit{anillo de polinomios en una indeterminada con coeficientes en A} y sus elementos se denominan polinomios en una indeterminada con coeficientes en $A$, o simplemente polinomios cuando no haya confusión.
 \end{deff}
 

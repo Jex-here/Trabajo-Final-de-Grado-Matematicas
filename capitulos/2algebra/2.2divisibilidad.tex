@@ -245,12 +245,12 @@ Se tiene además que un dominio de ideales principales es un dominio de factoriz
             r_{n-2} &= q_{n-1}r_{n-1} + r_n\\
             r_{n-1} &= q_nr_n
         \end{align*} 
-    El algoritmo es finito, pues se tiene una sucesión descendiente $\norm{r_1} > \norm{r_2}> \norm{r_3}\ldots$ en $\N$, por lo que deberá ser 0 el último resto. Este algoritmo se denomina \textit{algoritmo de Euclides}, y se afirma que el último resto no nulo es el máximo común divisor de $x$ e $y$.    
+    El algoritmo es finito, pues se tiene una sucesión descendente $\norm{r_1} > \norm{r_2}> \norm{r_3}\ldots$ en $\N$, por lo que deberá ser 0 el último resto. Este algoritmo se denomina \textit{algoritmo de Euclides}, y se afirma que el último resto no nulo es el máximo común divisor de $x$ e $y$.    
 \end{prop}
 
 \begin{dem}{\cite[p.~51]{GamboaAnillos}}
 \begin{itemize}[label=--]
-    \item Si $r_n$ divide a $r_0 = y$ y a $r_1 = x$:
+    \item $r_n$ divide a $r_0 = y$ y a $r_1 = x$:
     
     Empezando por la última ecuación se tiene $r_n \mid r_{n-1}$. Por lo tanto, en la penúltima ecuación se tiene $r_n\mid (q_{n-1}r_{n-1} + r_n)$, y $r_n\mid r_{n-2}$. Procediendo de esta manera se llega a $r_n \mid r_1$ y $r_n \mid r_0$.
     \item Si $z\mid x$ y $z\mid y$, entonces $z\mid r_n$:
