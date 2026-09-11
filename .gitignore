@@ -11,4 +11,14 @@
 *.run.xml
 *.bbl-SAVE-ERROr
 #*.gitignore
-AES\ Python
+
+#beamer
+*.nav
+*.snm
+*pruebas.tex
+
+# Python
+.idea
+.vscode
+.venv
+__pycache__
