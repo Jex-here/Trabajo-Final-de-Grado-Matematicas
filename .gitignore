@@ -9,13 +9,13 @@
 *.fdb_latexmk
 *.fls
 *.run.xml
-*.bbl-SAVE-ERROr
+*.bbl-SAVE-ERROR
 #*.gitignore
 
 #beamer
 *.nav
 *.snm
-*pruebas.tex
+pruebas.tex
 
 # Python
 .idea

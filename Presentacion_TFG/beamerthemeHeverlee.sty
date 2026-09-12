@@ -83,30 +83,17 @@
 	%footline
 	\defbeamertemplate{footline}{infoline}
 		{
-		\hypersetup{hidelinks} %disable link colors
-		\hspace{2.5em} \textcolor{gray}{ \insertshortauthor \hfill \insertshorttitle \hfill \insertshortinstitute} \hspace{2.5em}
-		\vspace{2pt}
+		\hypersetup{hidelinks}
+		\hspace{2.5em}
+		{\color{pblue}
+		\scshape
+		\vspace{1pt}
+		\insertsectionhead
+		\ifx\insertsubsectionhead\empty\else\ $\mid$\ \insertsubsectionhead\fi
+		}
 		}
 
-	\defbeamertemplate{footline}{navigation}
-		{
-		\hypersetup{hidelinks} %disable link colors
-		\resizebox{\textwidth}{!}{\insertnavigation{\textwidth}{}{}}
-		\vspace{2pt}		
-		}
-
-    \defbeamertemplate{footline}{navsym}
-		{
-		\hypersetup{hidelinks} %disable link colors
-		\hfill \color{gray}\insertslidenavigationsymbol%
-            \insertframenavigationsymbol%
-            \insertsubsectionnavigationsymbol%
-            \insertsectionnavigationsymbol%
-            \insertdocnavigationsymbol%
-            \insertbackfindforwardnavigationsymbol%
-            \hspace{2.5em}
-		\vspace{2pt}
-		}
+	
     
 
 \usepackage{tikz}
