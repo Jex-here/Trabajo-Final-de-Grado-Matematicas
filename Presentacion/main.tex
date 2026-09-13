@@ -1684,8 +1684,8 @@
         \begin{enumerate}[label=--]
             \item Rotación cíclica hacia la izquierda: 
             \[(a,b,c,d) \to (b,c,d, a).\]
-            \item Invertir cada byte en $\F_{2^8}$:
-            \[(b,c,d, a) \to (S(b),S(c),S(d),S(a)).\]
+            \item Aplicar SubBytes a cada byte:
+            \[(b,c,d,a) \to (S(b),S(c),S(d),S(a)).\]
             \item Sumar al primer byte el elemento \texttt{02}$^{j-1}$:
             \[(S(b),S(c),S(d),S(a)) \to (S(b) + \texttt{02}^{j-1},S(c),S(d),S(a)).\]
         \end{enumerate}
