@@ -33,43 +33,29 @@
 \newcommand{\wcor}[1]{{\left[#1\right]}}
 
 
-\newenvironment{Revision}{%    % Define un nuevo entorno llamado "Revision"
-  \ifRevision                  % Si la variable \ifRevision es verdadera...
-    %\leavevmode                %   Fuerza a iniciar un párrafo/modo horizontal
-    %\begingroup                %   Abre un grupo (para limitar el alcance del color)
-    \color{RawSienna}%         %   Cambia el color actual a Turquesa
-    %\ignorespaces              %   Ignora los espacios en blanco que sigan
-  \else                        % Si la variable \ifRevision es falsa...
-    %\leavevmode                %   Fuerza a iniciar un párrafo/modo horizontal
-    %\begingroup                %   Abre un grupo (aunque no se use color)
-    %\ignorespaces              %   Ignora los espacios en blanco que sigan
-  \fi                          % Fin de la condición
-}{%                            % Parte de cierre del entorno
-    %\endgroup                  %   Cierra el grupo abierto en la apertura
+\newenvironment{Revision}{%    
+  \ifRevision%
+    \color{RawSienna}% 
+  \else%                       
+  \fi%                    
+}{%
 }
 
-\newenvironment{segRevision}{%    % Define un nuevo entorno llamado "Revision"
-  \ifsegRevision                  % Si la variable \ifRevision es verdadera...
-    %\leavevmode                %   Fuerza a iniciar un párrafo/modo horizontal
-    %\begingroup                %   Abre un grupo (para limitar el alcance del color)
-    \color{green}%         %   Cambia el color actual a verde
-    %\ignorespaces              %   Ignora los espacios en blanco que sigan
-  \else                        % Si la variable \ifRevision es falsa...
-    %\leavevmode                %   Fuerza a iniciar un párrafo/modo horizontal
-    %\begingroup                %   Abre un grupo (aunque no se use color)
-    %\ignorespaces              %   Ignora los espacios en blanco que sigan
-  \fi                          % Fin de la condición
-}{%                            % Parte de cierre del entorno
-    %\endgroup                  %   Cierra el grupo abierto en la apertura
+\newenvironment{segRevision}{%    
+  \ifsegRevision%
+    \color{green}% 
+  \else%                       
+  \fi%                    
+}{%
 }
 
 
-%Para recordarme mis comentarios
+% Para recordarme mis comentarios
 \newcommand{\warning}{%
   \PackageWarning{autor}{***** WARNING: REVISAR *****}%
 }
 
 
-
+ % Tamaño cabecera y pie de página
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\footrulewidth}{0.3pt}

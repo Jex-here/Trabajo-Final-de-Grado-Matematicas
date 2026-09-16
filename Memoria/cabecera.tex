@@ -1,14 +1,14 @@
 % ==============================================================================
 % CONFIGURACIÓN IDIOMA, FUENTES Y TEXTO
 % ==============================================================================
-\usepackage[spanish,es-lcroman]{babel}   %espanish lowcase roman (si no, fuerza siempre I,II,III...
+\usepackage[spanish,es-lcroman]{babel}   % Lowcase Roman: i), ii) en vez de I), II)
 \renewcommand{\spanishtablename}{Tabla}
 
-\usepackage[T1]{fontenc}       % Codificación de salida: permite copiar/pegar acentos y eñes en el PDF
+\usepackage[T1]{fontenc}       % Codificación de salida:  permite copiar/pegar acentos y eñes en el PDF
 \usepackage[utf8]{inputenc}    % Codificación de entrada: permite escribir acentos y eñes directo desde el teclado
 
            
-\usepackage{CJKutf8}            % Para japonés porque soy un friki
+\usepackage{CJKutf8}           % Para japonés porque soy un friki
 
 \usepackage{textcomp}          % Soporte para símbolos especiales en texto plano (euro, grados, etc.)
 
@@ -19,7 +19,7 @@
 \usepackage{amssymb} % Para símbolos matemáticos: \mathbb
 \usepackage{bbm}     % Para más símbolos matemáticos: \mathbbm
 
-\usepackage{amsthm}  %Para gestionar las definiciones y teoremas
+\usepackage{amsthm}  % Para gestionar las definiciones y teoremas
 
 % ==============================================================================
 % Estilo de los teoremas
@@ -29,13 +29,13 @@
 % ==============================================================================
 % DISEÑO DE PÁGINA, MARGENES Y ESTILOS
 % ==============================================================================
-\usepackage[dvipsnames, table]{xcolor}     %Para colores
+\usepackage[dvipsnames, table]{xcolor}     % Para colores
 \usepackage{geometry}    % Dimensiones de página y margen de encuadernación (añadir 6mm si eso al terminar)
 \geometry{top=25mm, bottom=25mm, left=20mm, right=20mm, bindingoffset=0mm}
 \setlength{\headsep}{20pt}      % Distancia encabezadoi al texto
 
 \usepackage{fancyhdr}           % Personalización avanzada de encabezados y pies de página
-\setlength{\headheight}{15pt}   %El error del encabezado pequeño
+\setlength{\headheight}{15pt}   % El error del encabezado pequeño
 
 % Para poner el interlineado que quiera
 \usepackage{setspace}
@@ -46,10 +46,10 @@
 \usepackage{longtable}
 \usepackage{booktabs}
 
-%Enumeración (como el itemize)
+% Enumeración (como el itemize)
 \usepackage{enumitem}
 
-%Revisión, subrayado
+% Revisión, subrayado
 \usepackage{soul}
 \setulcolor{red}
 
@@ -60,7 +60,7 @@
 \usepackage{float}            % Añade el modificador [H] para fijar la posición exacta de las imágenes
 \usepackage{caption}          % Control personalizado de los títulos (leyendas) de figuras y tablas
 \usepackage{subcaption}       % Permite subfiguras (ej. Figura 1a, 1b) dentro de un entorno figure
-\graphicspath{ {imagenes/} }  %para decirle a graphics que busque a en la carptea imagenes
+\graphicspath{ {imagenes/} }  % Para decirle a graphics que busque a en la carptea imagenes
 
 % ==============================================================================
 % TIKZ PARA PINTAR
@@ -120,8 +120,8 @@
 % 蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蛙蜘蛛蜘蛛
 
 % Para comentar secciones utilizo condicionales. 
-%\newif\ifRevision     % Usar entorno   para comentar
-%\newif\ifsegRevision     % Usar entorno   para comentar
+%\newif\ifRevision        % Usar entorno para comentar
+%\newif\ifsegRevision     % Usar entorno para comentar
 
 \newif\ifPreliminares
 \newif\ifDedicatoria

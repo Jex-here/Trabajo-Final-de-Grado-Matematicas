@@ -234,7 +234,7 @@ def f_aux_key_expansion(palabra, ronda):
 
 
 def KeyExpansion(clave):
-    clave_extendida = clave
+    clave_extendida = clave[:]
     for n in range(1, 11):
         for i in range(4):
             if not i % 4:
