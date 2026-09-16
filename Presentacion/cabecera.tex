@@ -137,11 +137,12 @@
 
 %%% TITLE PAGE INFO:
 \title[Aritmética en cuerpos finitos y su aplicación al algoritmo AES]{\scshape Aritmética en cuerpos finitos \\[1ex] y su aplicación al algoritmo AES}
-% \subtitle{\textbackslash usetheme\{Heverlee\}}
-\author{\begin{CJK}{UTF8}{min}%
-            \myName
-        \end{CJK}}
-% \institute{Placeholder University}
+
+% Usar \texorpdfstring para poder poner el nombre en japonés
+\author{\texorpdfstring{%
+    \begin{CJK}{UTF8}{min}\myName\end{CJK}%
+  }{\myName}}
+
 \date{Septiembre 2026}
 
 % Text inside {} is used on the title page. Text inside [] is optional, and is used in footline bar (if [] is omitted then text from {} will be used in both ; if [] is specified but left empty then the footline will not show any text)
